@@ -1,10 +1,10 @@
 #ifndef DATA_STRUCTURE_HPP
 #define DATA_STRUCTURE_HPP
 
-#include "../list/linearList.hpp"
-#include "../../utils/Pair.hpp"
+#include "../list/linear_list.hpp"
+#include "../utils/pair.hpp"
 
-#include "Edge.hpp"
+#include "edge.hpp"
 #include <stdexcept>
 
 class DataStructure {

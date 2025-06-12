@@ -1,7 +1,7 @@
 #ifndef FAST_ADJACENCY_LIST_HPP
 #define FAST_ADJACENCY_LIST_HPP
 
-#include "DataStructure.hpp"
+#include "data_structure.hpp"
 #include <unordered_map>
 #include <unordered_set>
 #include <iostream>

@@ -1,26 +1,26 @@
 #ifndef GRAPH_HPP
 #define GRAPH_HPP
 
-#include "../list/linear_list.hpp"
-#include "../../utils/pair.hpp"
-
-#include "adjacency_matrix.hpp"
-#include "fast_adjacency_list.hpp"
-#include "adjacency_matrix_pointers.hpp"
-#include "adjacency_list.hpp"
-#include "data_structure.hpp"
-#include "edge.hpp"
-#include "fast_adjacency_list.hpp"
 #include <cmath>
+#include <format>
+#include <string>
+#include <ostream>
 #include <cstdint>
 #include <fstream>
-#include <string>
 #include <iostream>
-#include <ostream>
 #include <stdexcept>
-
-#include <format>
 #include <unordered_map>
+
+#include "../utils/pair.hpp"
+#include "../list/linear_list.hpp"
+
+#include "edge.hpp"
+#include "adjacency_list.hpp"
+#include "data_structure.hpp"
+#include "adjacency_matrix.hpp"
+#include "fast_adjacency_list.hpp"
+#include "fast_adjacency_list.hpp"
+#include "adjacency_matrix_pointers.hpp"
 
 // Custom hash specialization for std::pair
 namespace std {

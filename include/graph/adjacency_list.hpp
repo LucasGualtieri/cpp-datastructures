@@ -1,7 +1,7 @@
 #ifndef ADJACENCY_LIST_HPP
 #define ADJACENCY_LIST_HPP
 
-#include "DataStructure.hpp"
+#include "data_structure.hpp"
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
