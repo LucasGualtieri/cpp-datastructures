@@ -46,7 +46,7 @@ class LinearStack : public Stack<T> {
 		return false;
 	}
 
-	void push(const T& value) override {
+	void push(T value) override {
 
 		if (this->_size == maxSize) resize(maxSize * 2);
 
@@ -79,10 +79,10 @@ class LinearStack : public Stack<T> {
 	}
 
 	void shrink_to_fit() { resize(this->_size); }
-	virtual void clear() { this->_size = 0; }
+	void clear() override { this->_size = 0; }
 	size_t capacity() { return maxSize; }
 
-	virtual std::string str() const {
+	std::string str() const override {
 
 		std::ostringstream oss;
 

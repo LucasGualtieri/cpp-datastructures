@@ -15,12 +15,12 @@
 #include "../list/linear_list.hpp"
 
 #include "edge.hpp"
-#include "adjacency_list.hpp"
 #include "data_structure.hpp"
-#include "adjacency_matrix.hpp"
-#include "fast_adjacency_list.hpp"
-#include "fast_adjacency_list.hpp"
-#include "adjacency_matrix_pointers.hpp"
+#include "implementations/adjacency_list.hpp"
+#include "implementations/adjacency_matrix.hpp"
+#include "implementations/fast_adjacency_list.hpp"
+#include "implementations/fast_adjacency_list.hpp"
+#include "implementations/adjacency_matrix_pointers.hpp"
 
 // Custom hash specialization for std::pair
 namespace std {
@@ -475,14 +475,24 @@ public:
 			throw std::runtime_error("Não foi possível abrir o arquivo para escrita.");
 		}
 
+		// Salva configurações do grafo
+		uint8_t ds_type = static_cast<uint8_t>(this->choice); // Supondo que você armazene essa informação em um membro
+		bool is_directed = this->directed;
+		bool is_weighted = this->weighted;
+
+		file.write(reinterpret_cast<char*>(&ds_type), sizeof(uint8_t));
+		file.write(reinterpret_cast<char*>(&is_directed), sizeof(bool));
+		file.write(reinterpret_cast<char*>(&is_weighted), sizeof(bool));
+
+		// Salva número de vértices e arestas
 		uint32_t vertex_count = static_cast<uint32_t>(n);
 		uint32_t edge_count = static_cast<uint32_t>(m);
 
 		file.write(reinterpret_cast<char*>(&vertex_count), sizeof(uint32_t));
 		file.write(reinterpret_cast<char*>(&edge_count), sizeof(uint32_t));
 
+		// Salva arestas
 		for (const Edge& e : edges()) {
-
 			uint32_t u = static_cast<uint32_t>(e.u);
 			uint32_t v = static_cast<uint32_t>(e.v);
 			file.write(reinterpret_cast<char*>(&u), sizeof(uint32_t));
@@ -500,30 +510,39 @@ public:
 			throw std::runtime_error("Não foi possível abrir o arquivo para leitura.");
 		}
 
-		uint32_t vertex_count;
-		uint32_t edge_count;
+		// Lê configurações do grafo
+		uint8_t ds_type_raw;
+		bool directed, weighted;
 
+		file.read(reinterpret_cast<char*>(&ds_type_raw), sizeof(uint8_t));
+		file.read(reinterpret_cast<char*>(&directed), sizeof(bool));
+		file.read(reinterpret_cast<char*>(&weighted), sizeof(bool));
+
+		Graph::DataStructures ds_type = static_cast<Graph::DataStructures>(ds_type_raw);
+
+		// Lê número de vértices e arestas
+		uint32_t vertex_count, edge_count;
 		file.read(reinterpret_cast<char*>(&vertex_count), sizeof(uint32_t));
 		file.read(reinterpret_cast<char*>(&edge_count), sizeof(uint32_t));
 
-		Graph::DataStructures type = Graph::AdjacencyList;
-		bool directed = false, weighted = false;
+		Graph G(ds_type, 0, 0, directed, weighted);
 
-		Graph G(type, vertex_count, edge_count, directed, weighted);
+		for (int i = 0; i < vertex_count; i++) {
+			G.addVertex(i);
+		}
 
-		for (uint32_t i = 0; i < edge_count; ++i) {
-
+		// Lê arestas
+		for (uint32_t i = 0; i < edge_count; i++) {
 			uint32_t u, v;
-
 			file.read(reinterpret_cast<char*>(&u), sizeof(uint32_t));
 			file.read(reinterpret_cast<char*>(&v), sizeof(uint32_t));
 			G.addEdge(u, v);
 		}
 
 		file.close();
-
 		return G;
 	}
+
 };
 
 #endif

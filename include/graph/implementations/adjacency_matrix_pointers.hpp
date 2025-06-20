@@ -4,12 +4,11 @@
 #include <cmath>
 #include <cstddef>
 #include <iostream>
-// #include <limits>
 
-#include "edge.hpp"
-#include "data_structure.hpp"
-#include "../utils/pair.hpp"
-#include "../list/linear_list.hpp"
+#include "../edge.hpp"
+#include "../../utils/pair.hpp"
+#include "../data_structure.hpp"
+#include "../../list/linear_list.hpp"
 
 class AdjacencyMatrixPointers : public DataStructure {
 

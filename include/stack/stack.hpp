@@ -1,6 +1,9 @@
 #ifndef STACK_HPP
 #define STACK_HPP
 
+#include <cstddef>
+#include <string>
+
 template <typename T>
 class Stack {
 

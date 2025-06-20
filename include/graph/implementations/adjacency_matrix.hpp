@@ -3,13 +3,11 @@
 
 #include <cmath>
 #include <cstddef>
-#include <iostream>
-// #include <limits>
 
-#include "edge.hpp"
-#include "../utils/pair.hpp"
-#include "data_structure.hpp"
-#include "../list/linear_list.hpp"
+#include "../edge.hpp"
+#include "../../utils/pair.hpp"
+#include "../data_structure.hpp"
+#include "../../list/linear_list.hpp"
 
 // NOTE: Performance can be improved if we use LinearList<LinearList<float>*> matrix;
 class AdjacencyMatrix : public DataStructure {

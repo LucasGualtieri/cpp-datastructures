@@ -1,11 +1,12 @@
 #ifndef ADJACENCY_LIST_HPP
 #define ADJACENCY_LIST_HPP
 
-#include "data_structure.hpp"
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
 #include <iostream>
+
+#include "../data_structure.hpp"
 
 class AdjacencyList : public DataStructure {
 private:
