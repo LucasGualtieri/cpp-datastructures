@@ -39,4 +39,9 @@ public:
 		return os;
 	}
 
+	std::string str(int decimal_places = 3) {
+		std::ostringstream oss;
+		oss << std::fixed << std::setprecision(decimal_places) << result();
+		return oss.str();
+	}
 };

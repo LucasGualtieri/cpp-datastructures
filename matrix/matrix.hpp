@@ -1,7 +1,9 @@
 #pragma once
 
+#include <initializer_list>
 #include <stdexcept>
 #include <sstream>
+#include <iostream>
 #include <iomanip>
 
 template <typename T>
@@ -13,11 +15,11 @@ class Matrix {
 
 	const int height, width;
 
-	Matrix(int height, int width) : height(height), width(width) {
+	Matrix(const std::initializer_list<std::initializer_list<T>>& m) : height(m.size()), width(m.begin()->size()) {
 
 		matrix = (T**)malloc(height * sizeof(T*));
 
-		if (matrix == NULL) {
+		if (matrix == nullptr) {
 			throw std::runtime_error("Memory allocation failed!");
 		}
 
@@ -25,7 +27,39 @@ class Matrix {
 
 			matrix[i] = (T*)malloc(width * sizeof(T));
 
-			if (matrix[i] == NULL) {
+			if (matrix[i] == nullptr) {
+				throw std::runtime_error("Memory allocation failed!");
+			}
+		}
+
+		int i = 0;
+
+		for (const std::initializer_list<T>& row : m) {
+
+			int j = 0;
+
+			for (const T& value : row) {
+				matrix[i][j] = value;
+				j++;
+			}
+
+			i++;
+		}
+	}
+
+	Matrix(int height, int width) : height(height), width(width) {
+
+		matrix = (T**)malloc(height * sizeof(T*));
+
+		if (matrix == nullptr) {
+			throw std::runtime_error("Memory allocation failed!");
+		}
+
+		for (int i = 0; i < height; i++) {
+
+			matrix[i] = (T*)malloc(width * sizeof(T));
+
+			if (matrix[i] == nullptr) {
 				throw std::runtime_error("Memory allocation failed!");
 			}
 		}
@@ -35,7 +69,7 @@ class Matrix {
 
 		matrix = (T**)malloc(height * sizeof(T*));
 
-		if (matrix == NULL) {
+		if (matrix == nullptr) {
 			throw std::runtime_error("Memory allocation failed!");
 		}
 
@@ -45,7 +79,7 @@ class Matrix {
 
 				matrix[i] = (T*)malloc(width * sizeof(T));
 
-				if (matrix[i] == NULL) {
+				if (matrix[i] == nullptr) {
 					throw std::runtime_error("Memory allocation failed!");
 				}
 			}
@@ -57,7 +91,7 @@ class Matrix {
 
 				matrix[i] = (T*)calloc(width, sizeof(T));
 
-				if (matrix[i] == NULL) {
+				if (matrix[i] == nullptr) {
 					throw std::runtime_error("Memory allocation failed!");
 				}
 			}
@@ -72,15 +106,6 @@ class Matrix {
 
 		free(matrix);
 	}
-
-	// Matrix(std::initializer_list<std::initializer_list<T>> list) : height(list.size()), width(list.begin()->size()) {
-	//
-	// 	matrix.reserve(height); // Optionally reserve memory for efficiency
-	//
-	// 	for (auto row : list) {
-	// 		matrix.push_back(row);
-	// 	}
-	// }
 
 	bool inBounds(int i, int j) const {
 		return 0 <= i && i < height && 0 <= j && j < width;

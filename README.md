@@ -69,11 +69,17 @@ git subtree pull --prefix=cpp-datastructures https://github.com/LucasGualtieri/c
 
 ### 💻 incluindo no código
 ```cpp
-#include "cpp-datastructures/stack.hpp"
+#include "cpp-datastructures/list/linear_list.hpp"
+
+using namespace std;
+using namespace ds;
 
 int main() {
-    ds::Stack<int> s;
-    s.push(42);
+
+    LinearList<int> list = { 1, 2, 3, 4, 5 };
+    cout << list << endl;
+
+    return 0;
 }
 ```
 
