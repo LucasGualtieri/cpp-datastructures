@@ -67,9 +67,9 @@ git subtree pull --prefix=cpp-datastructures https://github.com/LucasGualtieri/c
 
 ---
 
-### 💻 Incluindo no código
+### 💻 incluindo no código
 ```cpp
-#include "ds/stack.hpp"
+#include "cpp-datastructures/stack.hpp"
 
 int main() {
     ds::Stack<int> s;
@@ -78,5 +78,5 @@ int main() {
 ```
 
 ⚙️ Sobre estrutura
-- Os headers ficam em ``include/ds/``, então você sempre inclui com ``#include "ds/estrutura.hpp"``
-- Não é necessário referenciar a pasta ``include/`` nos ``#include``, pois ela é tratada como raiz via CMake ou -I
+- Os headers ficam em ``cpp-datastructures/``, então você sempre inclui com ``#include "cpp-datastructures/estrutura/estrutura.hpp"``
+<!-- - Não é necessário referenciar a pasta ``include/`` nos ``#include``, pois ela é tratada como raiz via CMake ou -I -->
