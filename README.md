@@ -19,16 +19,16 @@ O submódulo permite adicionar esta biblioteca como um "sub-repositório" vincul
 #### ➕ Adicionando ao seu projeto
 
 ```bash
-git submodule add https://github.com/LucasGualtieri/cpp-ds-lib external/cpp-ds-lib
+git submodule add https://github.com/LucasGualtieri/cpp-datastructures
 git submodule update --init --recursive
 ```
 
-Isso criará a pasta external/cpp-ds-lib/ com os arquivos da biblioteca.
+Isso criará a pasta cpp-datastructures/ com os arquivos da biblioteca.
 
 ### 🛠️ Usando no CMake
 
 ```cmake
-add_subdirectory(external/cpp-ds-lib)
+add_subdirectory(cpp-datastructures)
 target_link_libraries(seu_projeto PRIVATE ds)
 ```
 
@@ -37,7 +37,7 @@ target_link_libraries(seu_projeto PRIVATE ds)
 - Pode facilmente atualizar a lib com:
 
 ```bash
-cd external/cpp-ds-lib
+cd cpp-datastructures
 git pull origin main
 ```
 
@@ -49,12 +49,12 @@ Com o subtree, o conteúdo do outro repositório é mesclado diretamente na árv
 #### ➕ Adicionando a lib como subtree
 
 ```bash
-git subtree add --prefix=external/cpp-ds-lib https://github.com/LucasGualtieri/cpp-ds-lib main --squash
+git subtree add --prefix=cpp-datastructures https://github.com/LucasGualtieri/cpp-datastructures main --squash
 ```
 
 #### 🔄 Atualizando a subtree
 ```bash
-git subtree pull --prefix=external/cpp-ds-lib https://github.com/LucasGualtieri/cpp-ds-lib main --squash
+git subtree pull --prefix=cpp-datastructures https://github.com/LucasGualtieri/cpp-datastructures main --squash
 ```
 
 ### 🧠 Vantagens:
