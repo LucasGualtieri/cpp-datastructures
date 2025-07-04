@@ -1,5 +1,4 @@
-#ifndef DOUBLY_LINKED_LIST_HPP
-#define DOUBLY_LINKED_LIST_HPP
+#pragma once
 
 #include <sstream>
 #include "list.hpp"
@@ -193,5 +192,3 @@ class DLinkedList : public List<T> {
 
 	void sort() override { quicksort(head->next, tail); }
 };
-
-#endif

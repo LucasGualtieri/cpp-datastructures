@@ -1,5 +1,4 @@
-#ifndef MATRIX_HPP
-#define MATRIX_HPP
+#pragma once
 
 #include <stdexcept>
 #include <sstream>
@@ -236,5 +235,3 @@ class Matrix {
     }
 
 };
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef MAX_HEAP_HPP
-#define MAX_HEAP_HPP
+#pragma once
 
 #include <iostream>
 #include <sstream>
@@ -191,5 +190,3 @@ public:
 		return os;
 	}
 };
-
-#endif

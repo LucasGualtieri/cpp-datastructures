@@ -1,5 +1,4 @@
-#ifndef UTIL_HPP
-#define UTIL_HPP
+#pragma once
 
 #include "../include/list/list.hpp"
 
@@ -27,5 +26,3 @@ bool isSorted(List<T>& list) {
 
 	return true;
 }
-
-#endif

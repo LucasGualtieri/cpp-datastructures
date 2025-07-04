@@ -1,5 +1,4 @@
-#ifndef LINKED_STACK_HPP
-#define LINKED_STACK_HPP
+#pragma once
 
 #include <sstream>
 #include "stack.hpp"
@@ -84,5 +83,3 @@ public:
 		return os;
 	}
 };
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef LIST_HPP
-#define LIST_HPP
+#pragma once
 
 #include <cstddef>
 
@@ -29,5 +28,3 @@ class List {
 	// virtual bool is_sorted_ascending() const = 0;
 	// virtual bool is_sorted_descending() const = 0;
 };
-
-#endif

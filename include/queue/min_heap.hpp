@@ -1,5 +1,4 @@
-#ifndef PRIORITY_QUEUE_HPP
-#define PRIORITY_QUEUE_HPP
+#pragma once
 
 #include <iostream>
 #include <sstream>
@@ -192,5 +191,3 @@ public:
 		return os;
 	}
 };
-
-#endif

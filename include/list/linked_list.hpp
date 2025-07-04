@@ -1,5 +1,4 @@
-#ifndef LINKED_LIST_HPP
-#define LINKED_LIST_HPP
+#pragma once
 
 #include <sstream>
 #include <iostream>
@@ -180,5 +179,3 @@ class LinkedList : public List<T> {
 
 	void sort() override { quicksort(head->next, tail); }
 };
-
-#endif

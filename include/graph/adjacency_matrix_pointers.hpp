@@ -1,5 +1,4 @@
-#ifndef ADJACENCY_MATRIX_FAST_HPP
-#define ADJACENCY_MATRIX_FAST_HPP
+#pragma once
 
 #include <cmath>
 #include <cstddef>
@@ -147,5 +146,3 @@ public:
         }
     }
 };
-
-#endif

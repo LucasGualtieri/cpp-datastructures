@@ -1,5 +1,4 @@
-#ifndef STACK_HPP
-#define STACK_HPP
+#pragma once
 
 template <typename T>
 class Stack {
@@ -20,5 +19,3 @@ class Stack {
 	virtual bool empty() const final { return _size == 0; }
 	virtual std::string str() const = 0;
 };
-
-#endif

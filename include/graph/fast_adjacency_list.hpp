@@ -1,5 +1,4 @@
-#ifndef FAST_ADJACENCY_LIST_HPP
-#define FAST_ADJACENCY_LIST_HPP
+#pragma once
 
 #include "data_structure.hpp"
 #include <unordered_map>
@@ -145,5 +144,3 @@ public:
 
     ~FastAdjacencyList() override {}
 };
-
-#endif

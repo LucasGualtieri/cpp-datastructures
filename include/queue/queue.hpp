@@ -1,5 +1,4 @@
-#ifndef QUEUE_HPP
-#define QUEUE_HPP
+#pragma once
 
 template <typename T>
 class Queue {
@@ -22,5 +21,3 @@ class Queue {
 	virtual bool empty() const final { return _size == 0; }
 	virtual std::string str() const = 0;
 };
-
-#endif

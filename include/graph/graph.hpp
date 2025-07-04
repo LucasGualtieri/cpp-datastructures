@@ -1,5 +1,4 @@
-#ifndef GRAPH_HPP
-#define GRAPH_HPP
+#pragma once
 
 #include <cmath>
 #include <format>
@@ -181,7 +180,7 @@ public:
 		}
 
 		return *this;
-	}	
+	}
 
 	Graph cloneDataStructure(size_t n = 0) const {
 		return { choice, n, m, directed, weighted };
@@ -401,7 +400,7 @@ public:
 		for (const Edge& e : edges()) {
 
 			if (!directed && e.u > e.v) continue;  // Avoid duplicate edges for undirected graphs
-			
+
 			Prop prop = edgeMap.Find({e.u, e.v});
 			auto [color, line] = prop == base && !directed ? edgeMap.Find({e.v, e.u}) : prop;
 
@@ -525,5 +524,3 @@ public:
 		return G;
 	}
 };
-
-#endif

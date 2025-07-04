@@ -1,5 +1,4 @@
-#ifndef LINKED_STACK_HPP
-#define LINKED_STACK_HPP
+#pragma once
 
 #include <sstream>
 #include "queue.hpp"
@@ -112,5 +111,3 @@ class LinearQueue : public Queue<T> {
 	T* begin() const { return array; }
 	T* end() const { return array + this->_size; }
 };
-
-#endif

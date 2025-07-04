@@ -1,5 +1,4 @@
-#ifndef LINEAR_LIST_HPP
-#define LINEAR_LIST_HPP
+#pragma once
 
 #include <initializer_list>
 #include <sstream>
@@ -159,7 +158,7 @@ class LinearList : public List<T> {
 	LinearList<T>& operator+=(T value) {
 
 		push_back(value);
-		
+
 		return *this;
 	}
 
@@ -543,5 +542,3 @@ class LinearList : public List<T> {
 		return Iterator(array + this->_size);
 	}
 };
-
-#endif

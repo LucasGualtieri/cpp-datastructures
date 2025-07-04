@@ -1,5 +1,4 @@
-#ifndef LINKED_QUEUE_HPP
-#define LINKED_QUEUE_HPP
+#pragma once
 
 #include <sstream>
 #include "queue.hpp"
@@ -91,5 +90,3 @@ public:
 		return os;
 	}
 };
-
-#endif

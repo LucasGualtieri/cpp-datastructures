@@ -1,5 +1,4 @@
-#ifndef ADJACENCY_MATRIX_HPP
-#define ADJACENCY_MATRIX_HPP
+#pragma once
 
 #include <cmath>
 #include <cstddef>
@@ -143,5 +142,3 @@ class AdjacencyMatrix : public DataStructure {
 		}
 	}
 };
-
-#endif

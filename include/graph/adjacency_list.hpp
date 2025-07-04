@@ -1,5 +1,4 @@
-#ifndef ADJACENCY_LIST_HPP
-#define ADJACENCY_LIST_HPP
+#pragma once
 
 #include "data_structure.hpp"
 #include <unordered_map>
@@ -154,5 +153,3 @@ public:
 
     ~AdjacencyList() override {}
 };
-
-#endif

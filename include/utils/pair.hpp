@@ -1,5 +1,4 @@
-#ifndef PAIR_HPP
-#define PAIR_HPP
+#pragma once
 
 #include <limits>
 #include <ostream>
@@ -58,5 +57,3 @@ public:
 		return os;
 	}
 };
-
-#endif

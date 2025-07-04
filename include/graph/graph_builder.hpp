@@ -1,5 +1,4 @@
-#ifndef GRAPH_BUILDER_HPP
-#define GRAPH_BUILDER_HPP
+#pragma once
 
 #include "graph.hpp"
 #include <cstddef>
@@ -48,5 +47,3 @@ class GraphBuilder {
 	Graph build() { return Graph(choice, _n, _m, _directed, _weighted); }
 
 };
-
-#endif

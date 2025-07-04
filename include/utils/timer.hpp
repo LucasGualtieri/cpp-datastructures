@@ -1,5 +1,4 @@
-#ifndef TIMER_HPP
-#define TIMER_HPP
+#pragma once
 
 #include <chrono>
 #include <iostream>
@@ -41,5 +40,3 @@ public:
 	}
 
 };
-
-#endif

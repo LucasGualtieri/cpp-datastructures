@@ -1,5 +1,4 @@
-#ifndef EDGE_HPP
-#define EDGE_HPP
+#pragma once
 
 #include <ostream>
 
@@ -39,7 +38,7 @@ public:
     bool operator>(const Edge& other) const {
         return (this->weight > other.weight);
     }
-	
+
     bool operator>=(const Edge& other) const {
         return (this->weight >= other.weight);
     }
@@ -73,5 +72,3 @@ public:
 		return os;
 	}
 };
-
-#endif

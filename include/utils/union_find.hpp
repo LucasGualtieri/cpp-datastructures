@@ -1,5 +1,4 @@
-#ifndef UNION_FIND
-#define UNION_FIND
+#pragma once
 
 #include <unordered_map>
 
@@ -67,5 +66,3 @@ class UnionFind {
 		return heads;
 	}
 };
-
-#endif

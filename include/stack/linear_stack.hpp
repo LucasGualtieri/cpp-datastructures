@@ -1,5 +1,4 @@
-#ifndef LINEAR_STACK_HPP
-#define LINEAR_STACK_HPP
+#pragma once
 
 #include <sstream>
 #include "stack.hpp"
@@ -106,5 +105,3 @@ class LinearStack : public Stack<T> {
 	T* begin() const { return array; }
 	T* end() const { return array + this->_size; }
 };
-
-#endif

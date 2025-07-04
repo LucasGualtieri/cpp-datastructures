@@ -1,5 +1,4 @@
-#ifndef CELL_HPP
-#define CELL_HPP
+#pragma once
 
 template <typename T>
 struct Cell {
@@ -17,5 +16,3 @@ struct Cell {
 	bool operator>(const Cell*& other) const { return value > other->value; }
 	bool operator>=(const Cell*& other) const { return value >= other->value; }
 };
-
-#endif
