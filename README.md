@@ -8,12 +8,12 @@ Perfeita para ser reutilizada em projetos acadêmicos através de **submódulos*
 
 ## 📦 Como utilizar a biblioteca
 
-Você pode integrar esta biblioteca ao seu projeto de duas formas:
+Você pode integrar a biblioteca no seu projeto de duas formas:
 
 ---
 <details>
-<summary><h3>🔗 Opção 1: Git Submodule (recomendado)</h3></summary>
-
+<summary>🔗 Opção 1: Git Submodule (recomendado)</summary>
+<br>
 O submódulo permite adicionar esta biblioteca como um "sub-repositório" vinculado a um commit específico.
 
 #### ➕ Adicionando ao seu projeto
@@ -38,7 +38,8 @@ git pull origin main
 ---
 
 <details>
-<summary><h3>🔗 🌳 Opção 2: Git Subtree (alternativa mais simples)</h3></summary>
+<summary>🌳 Opção 2: Git Subtree (alternativa mais simples)</summary>
+<br>
 Com o subtree, o conteúdo do outro repositório é mesclado diretamente na árvore do seu projeto.
 
 #### ➕ Adicionando a lib como subtree
