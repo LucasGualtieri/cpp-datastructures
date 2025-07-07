@@ -8,8 +8,9 @@ Perfeita para ser reutilizada em projetos acadêmicos através de **submódulos*
 ## 📦 Como utilizar a biblioteca
 
 Você pode integrar a biblioteca no seu projeto de duas formas:
-
+    
 ---
+
 <details>
 <summary>🔗 Opção 1: Git Submodule (recomendado)</summary>
 <br>
@@ -90,3 +91,66 @@ int main() {
 ⚙️ Sobre estrutura
 - Os headers ficam em ``cpp-datastructures/estrutura/``, então você sempre inclui com ``#include "cpp-datastructures/estrutura/estrutura.hpp"``
 <!-- - Não é necessário referenciar a pasta ``include/`` nos ``#include``, pois ela é tratada como raiz via CMake ou -I -->
+- <details>
+    <summary>📂 File Tree</summary>
+    
+    ```bash
+    .
+    ├── LICENSE
+    ├── README.md
+    ├── graph
+    │   ├── data_structure.hpp
+    │   ├── edge.hpp
+    │   ├── graph.hpp
+    │   ├── graph_builder.hpp
+    │   └── implementations
+    │       ├── adjacency_list.hpp
+    │       ├── adjacency_matrix.hpp
+    │       ├── adjacency_matrix_pointers.hpp
+    │       ├── adjacency_tree.hpp
+    │       └── fast_adjacency_list.hpp
+    ├── list
+    │   ├── doubly_linkedList.hpp
+    │   ├── linear_list.hpp
+    │   ├── linked_list.hpp
+    │   └── list.hpp
+    ├── matrix
+    │   ├── matrix.hpp
+    │   └── matrixInt.hpp
+    ├── queue
+    │   ├── linear_queue.hpp
+    │   ├── linked_queue.hpp
+    │   ├── max_heap.hpp
+    │   ├── min_heap.hpp
+    │   └── queue.hpp
+    ├── stack
+    │   ├── linear_stack.hpp
+    │   ├── linked_stack.hpp
+    │   └── stack.hpp
+    ├── tests
+    │   ├── test_AVL.cpp
+    │   ├── test_adjacency_list.cpp
+    │   ├── test_adjacency_matrix.cpp
+    │   ├── test_doubly_linked_list.cpp
+    │   ├── test_fast_adjacency_list.cpp
+    │   ├── test_linear_list.cpp
+    │   ├── test_linear_queue.cpp
+    │   ├── test_linear_stack.cpp
+    │   ├── test_linked_list.cpp
+    │   ├── test_linked_queue.cpp
+    │   ├── test_linked_stack.cpp
+    │   ├── test_matrix.cpp
+    │   ├── test_matrix_int.cpp
+    │   └── test_min_heap.cpp
+    ├── tree
+    │   ├── AVL.hpp
+    │   └── node.hpp
+    └── utils
+        ├── cell.hpp
+        ├── pair.hpp
+        ├── timer.hpp
+        ├── triple.hpp
+        ├── union_find.hpp
+        └── util.hpp
+    ```
+    </details>
