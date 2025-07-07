@@ -1,0 +1,122 @@
+\doxysection{Linked\+Queue\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classLinkedQueue}{}\label{classLinkedQueue}\index{LinkedQueue$<$ T $>$@{LinkedQueue$<$ T $>$}}
+
+
+Inheritance diagram for Linked\+Queue\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{classLinkedQueue__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Linked\+Queue\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{classLinkedQueue__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLinkedQueue_ade82669ef4450c6b5dbdf20d1d62206c}\label{classLinkedQueue_ade82669ef4450c6b5dbdf20d1d62206c} 
+{\bfseries Linked\+Queue} (T value)
+\item 
+bool \mbox{\hyperlink{classLinkedQueue_aa69b2f434832c3f54291b92a8fd12a58}{contains}} (const T \&value) const override
+\item 
+void \mbox{\hyperlink{classLinkedQueue_a9b4077a3ebb9bb73c1c2b852368c9dc2}{push}} (const T \&value) override
+\item 
+T \mbox{\hyperlink{classLinkedQueue_a45baaea5cfd4ca4ebe233b26e402c228}{pop}} () override
+\item 
+T \& \mbox{\hyperlink{classLinkedQueue_a14d7db0b51ae87a60cd9ff8860704c69}{peek}} () const override
+\item 
+virtual std\+::string \mbox{\hyperlink{classLinkedQueue_ab5af30f2d9a65ec55dc192aabd73aee5}{str}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classQueue}{Queue$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries clear} ()
+\item 
+virtual size\+\_\+t {\bfseries size} () const final
+\item 
+virtual bool {\bfseries empty} () const final
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLinkedQueue_a32a8e5576411b89a90a47d6f58be30c9}\label{classLinkedQueue_a32a8e5576411b89a90a47d6f58be30c9} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&os, const \mbox{\hyperlink{classQueue}{Queue}}$<$ T $>$ \&list)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classQueue}{Queue$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t {\bfseries \+\_\+size}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLinkedQueue_aa69b2f434832c3f54291b92a8fd12a58}\label{classLinkedQueue_aa69b2f434832c3f54291b92a8fd12a58} 
+\index{LinkedQueue$<$ T $>$@{LinkedQueue$<$ T $>$}!contains@{contains}}
+\index{contains@{contains}!LinkedQueue$<$ T $>$@{LinkedQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classLinkedQueue}{Linked\+Queue}}$<$ T $>$\+::contains (\begin{DoxyParamCaption}\item[{const T \&}]{value }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classQueue}{Queue$<$ T $>$}}.
+
+\Hypertarget{classLinkedQueue_a14d7db0b51ae87a60cd9ff8860704c69}\label{classLinkedQueue_a14d7db0b51ae87a60cd9ff8860704c69} 
+\index{LinkedQueue$<$ T $>$@{LinkedQueue$<$ T $>$}!peek@{peek}}
+\index{peek@{peek}!LinkedQueue$<$ T $>$@{LinkedQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{peek()}{peek()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \& \mbox{\hyperlink{classLinkedQueue}{Linked\+Queue}}$<$ T $>$\+::peek (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classQueue}{Queue$<$ T $>$}}.
+
+\Hypertarget{classLinkedQueue_a45baaea5cfd4ca4ebe233b26e402c228}\label{classLinkedQueue_a45baaea5cfd4ca4ebe233b26e402c228} 
+\index{LinkedQueue$<$ T $>$@{LinkedQueue$<$ T $>$}!pop@{pop}}
+\index{pop@{pop}!LinkedQueue$<$ T $>$@{LinkedQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{pop()}{pop()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classLinkedQueue}{Linked\+Queue}}$<$ T $>$\+::pop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classQueue}{Queue$<$ T $>$}}.
+
+\Hypertarget{classLinkedQueue_a9b4077a3ebb9bb73c1c2b852368c9dc2}\label{classLinkedQueue_a9b4077a3ebb9bb73c1c2b852368c9dc2} 
+\index{LinkedQueue$<$ T $>$@{LinkedQueue$<$ T $>$}!push@{push}}
+\index{push@{push}!LinkedQueue$<$ T $>$@{LinkedQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{push()}{push()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classLinkedQueue}{Linked\+Queue}}$<$ T $>$\+::push (\begin{DoxyParamCaption}\item[{const T \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classQueue}{Queue$<$ T $>$}}.
+
+\Hypertarget{classLinkedQueue_ab5af30f2d9a65ec55dc192aabd73aee5}\label{classLinkedQueue_ab5af30f2d9a65ec55dc192aabd73aee5} 
+\index{LinkedQueue$<$ T $>$@{LinkedQueue$<$ T $>$}!str@{str}}
+\index{str@{str}!LinkedQueue$<$ T $>$@{LinkedQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{str()}{str()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+virtual std\+::string \mbox{\hyperlink{classLinkedQueue}{Linked\+Queue}}$<$ T $>$\+::str (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classQueue}{Queue$<$ T $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+queue/linked\+\_\+queue.\+hpp\end{DoxyCompactItemize}

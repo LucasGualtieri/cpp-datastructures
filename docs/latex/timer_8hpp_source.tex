@@ -1,0 +1,53 @@
+\doxysection{timer.\+hpp}
+\hypertarget{timer_8hpp_source}{}\label{timer_8hpp_source}\index{utils/timer.hpp@{utils/timer.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTimer}{Timer}}\ \{}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \ \ \ \ std::chrono::high\_resolution\_clock::time\_point\ beginning;}
+\DoxyCodeLine{00009\ \ \ \ \ std::chrono::high\_resolution\_clock::time\_point\ end;}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{bool}\ running;}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{classTimer}{Timer}}()\ \{\ \}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{void}\ start()\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ beginning\ =\ std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ running\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00018\ \ \ \ \ \}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ stop()\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ end\ =\ std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ running\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00023\ \ \ \ \ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//\ int\ result()\ \{}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ \ duration<double>\ duration\ =\ end\ -\/\ beginning;}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ \ return\ static\_cast<int>(duration.count()\ *\ 1000);}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{double}\ result()\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (running)\ stop();}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ duration<double,\ std::milli>\ duration\ =\ end\ -\/\ beginning;\ //\ NOTE:\ Result\ in\ ms}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ std::chrono::duration<double>\ duration\ =\ end\ -\/\ beginning;\ \textcolor{comment}{//\ NOTE:\ Result\ in\ seconds}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ duration.count();}
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ operator<<(std::ostream\&\ os,\ \mbox{\hyperlink{classTimer}{Timer}}\&\ timer)\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ os\ <<\ timer.result();}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ std::string\ str(\textcolor{keywordtype}{int}\ decimal\_places\ =\ 3)\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ std::ostringstream\ oss;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ oss\ <<\ std::fixed\ <<\ std::setprecision(decimal\_places)\ <<\ result();}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ oss.str();}
+\DoxyCodeLine{00046\ \ \ \ \ \}}
+\DoxyCodeLine{00047\ \};}
+
+\end{DoxyCode}

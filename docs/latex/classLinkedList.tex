@@ -1,0 +1,190 @@
+\doxysection{Linked\+List\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classLinkedList}{}\label{classLinkedList}\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+
+
+Inheritance diagram for Linked\+List\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{classLinkedList__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Linked\+List\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{classLinkedList__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classLinkedList_a96cf944494689f38f48311586fd0ebc1}{contains}} (const T \&value) const override
+\item 
+void \mbox{\hyperlink{classLinkedList_ad2602ace88de4893a258232341d6bb68}{push\+\_\+front}} (T value) override
+\item 
+void \mbox{\hyperlink{classLinkedList_abf1e5f9f71042131c09fbba1f038815c}{push\+\_\+back}} (T value) override
+\item 
+T \mbox{\hyperlink{classLinkedList_a6a446535265586f76efb1aa4906b46cd}{pop\+\_\+front}} () override
+\item 
+T \mbox{\hyperlink{classLinkedList_ae0a30f0f61d5f4fb96d2827d01d90637}{pop\+\_\+back}} () override
+\item 
+void \mbox{\hyperlink{classLinkedList_adaa03b3b07797dbef4f02101981ccf1d}{add}} (T value, unsigned int pos=0) override
+\item 
+T \mbox{\hyperlink{classLinkedList_ae684b39c188900c035dcd2851ba52763}{remove}} (unsigned int pos) override
+\item 
+T \& \mbox{\hyperlink{classLinkedList_aada31400b235610dfa251be60512e534}{front}} () const override
+\item 
+T \& \mbox{\hyperlink{classLinkedList_adf86659f4023139afd484587bdfe6f9a}{back}} () const override
+\item 
+\Hypertarget{classLinkedList_a9d70e60d374620fc515bd30276d7297f}\label{classLinkedList_a9d70e60d374620fc515bd30276d7297f} 
+virtual std\+::string {\bfseries str} () const
+\item 
+\Hypertarget{classLinkedList_a34acfbec5723e32fd8ed7449ec405cb0}\label{classLinkedList_a34acfbec5723e32fd8ed7449ec405cb0} 
+void {\bfseries quicksort} (\mbox{\hyperlink{structCell}{Cell}}$<$ T $>$ \texorpdfstring{$\ast$}{*}left, \mbox{\hyperlink{structCell}{Cell}}$<$ T $>$ \texorpdfstring{$\ast$}{*}right)
+\item 
+void \mbox{\hyperlink{classLinkedList_ae5a3a43fe432ed814f6ebdb048a6dad8}{sort}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classList}{List$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries clear} () final
+\item 
+virtual size\+\_\+t {\bfseries size} () const final
+\item 
+virtual bool {\bfseries empty} () const final
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLinkedList_a1fcb68f3522aaf1a95fcd2c716c2727a}\label{classLinkedList_a1fcb68f3522aaf1a95fcd2c716c2727a} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&os, const \mbox{\hyperlink{classLinkedList}{Linked\+List}}$<$ T $>$ \&list)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classList}{List$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t {\bfseries \+\_\+size}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLinkedList_adaa03b3b07797dbef4f02101981ccf1d}\label{classLinkedList_adaa03b3b07797dbef4f02101981ccf1d} 
+\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}!add@{add}}
+\index{add@{add}!LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classLinkedList}{Linked\+List}}$<$ T $>$\+::add (\begin{DoxyParamCaption}\item[{T}]{value,  }\item[{unsigned int}]{pos = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classList}{List$<$ T $>$}}.
+
+\Hypertarget{classLinkedList_adf86659f4023139afd484587bdfe6f9a}\label{classLinkedList_adf86659f4023139afd484587bdfe6f9a} 
+\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}!back@{back}}
+\index{back@{back}!LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{back()}{back()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \& \mbox{\hyperlink{classLinkedList}{Linked\+List}}$<$ T $>$\+::back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classList}{List$<$ T $>$}}.
+
+\Hypertarget{classLinkedList_a96cf944494689f38f48311586fd0ebc1}\label{classLinkedList_a96cf944494689f38f48311586fd0ebc1} 
+\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}!contains@{contains}}
+\index{contains@{contains}!LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classLinkedList}{Linked\+List}}$<$ T $>$\+::contains (\begin{DoxyParamCaption}\item[{const T \&}]{value }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classList}{List$<$ T $>$}}.
+
+\Hypertarget{classLinkedList_aada31400b235610dfa251be60512e534}\label{classLinkedList_aada31400b235610dfa251be60512e534} 
+\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}!front@{front}}
+\index{front@{front}!LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{front()}{front()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \& \mbox{\hyperlink{classLinkedList}{Linked\+List}}$<$ T $>$\+::front (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classList}{List$<$ T $>$}}.
+
+\Hypertarget{classLinkedList_ae0a30f0f61d5f4fb96d2827d01d90637}\label{classLinkedList_ae0a30f0f61d5f4fb96d2827d01d90637} 
+\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}!pop\_back@{pop\_back}}
+\index{pop\_back@{pop\_back}!LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{pop\_back()}{pop\_back()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classLinkedList}{Linked\+List}}$<$ T $>$\+::pop\+\_\+back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classList}{List$<$ T $>$}}.
+
+\Hypertarget{classLinkedList_a6a446535265586f76efb1aa4906b46cd}\label{classLinkedList_a6a446535265586f76efb1aa4906b46cd} 
+\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}!pop\_front@{pop\_front}}
+\index{pop\_front@{pop\_front}!LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{pop\_front()}{pop\_front()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classLinkedList}{Linked\+List}}$<$ T $>$\+::pop\+\_\+front (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classList}{List$<$ T $>$}}.
+
+\Hypertarget{classLinkedList_abf1e5f9f71042131c09fbba1f038815c}\label{classLinkedList_abf1e5f9f71042131c09fbba1f038815c} 
+\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}!push\_back@{push\_back}}
+\index{push\_back@{push\_back}!LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{push\_back()}{push\_back()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classLinkedList}{Linked\+List}}$<$ T $>$\+::push\+\_\+back (\begin{DoxyParamCaption}\item[{T}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classList}{List$<$ T $>$}}.
+
+\Hypertarget{classLinkedList_ad2602ace88de4893a258232341d6bb68}\label{classLinkedList_ad2602ace88de4893a258232341d6bb68} 
+\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}!push\_front@{push\_front}}
+\index{push\_front@{push\_front}!LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{push\_front()}{push\_front()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classLinkedList}{Linked\+List}}$<$ T $>$\+::push\+\_\+front (\begin{DoxyParamCaption}\item[{T}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classList}{List$<$ T $>$}}.
+
+\Hypertarget{classLinkedList_ae684b39c188900c035dcd2851ba52763}\label{classLinkedList_ae684b39c188900c035dcd2851ba52763} 
+\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}!remove@{remove}}
+\index{remove@{remove}!LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classLinkedList}{Linked\+List}}$<$ T $>$\+::remove (\begin{DoxyParamCaption}\item[{unsigned int}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classList}{List$<$ T $>$}}.
+
+\Hypertarget{classLinkedList_ae5a3a43fe432ed814f6ebdb048a6dad8}\label{classLinkedList_ae5a3a43fe432ed814f6ebdb048a6dad8} 
+\index{LinkedList$<$ T $>$@{LinkedList$<$ T $>$}!sort@{sort}}
+\index{sort@{sort}!LinkedList$<$ T $>$@{LinkedList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{sort()}{sort()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classLinkedList}{Linked\+List}}$<$ T $>$\+::sort (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classList}{List$<$ T $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+list/linked\+\_\+list.\+hpp\end{DoxyCompactItemize}

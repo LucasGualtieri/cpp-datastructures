@@ -1,0 +1,271 @@
+\doxysection{AVL.\+hpp}
+\hypertarget{AVL_8hpp_source}{}\label{AVL_8hpp_source}\index{tree/AVL.hpp@{tree/AVL.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ AVL\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ AVL\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <format>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}node.hpp"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ TESTE\ 1}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classAVL}{AVL}}\ \{}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{structNode}{Node<T>}}*\ root;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ DEBBUGING;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{classAVL}{AVL}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\&\ debbuging\ =\ \textcolor{keyword}{false})\ :\ DEBBUGING(debbuging)\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ root\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classAVL}{\string~AVL}}()\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ freeNodes(root);}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ root\ =\ nullptr;}}
+\DoxyCodeLine{00027\ \ \ \ \ \}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ freeNodes(\mbox{\hyperlink{structNode}{Node<T>}}*\ node)\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (node\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ freeNodes(node-\/>left);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ freeNodes(node-\/>right);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ node;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ height()\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ height(root);}
+\DoxyCodeLine{00041\ \ \ \ \ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{int}\ height(\mbox{\hyperlink{structNode}{Node<T>}}*\ node)\ \{}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (DEBBUGING\ \&\&\ node\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Erro\ ao\ calcular\ altura\ da\ árvore:\ Árvore\ vazia."{}});}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::max(}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ node-\/>left\ ?\ node-\/>left-\/>level\ :\ 0,}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ node-\/>right\ ?\ node-\/>right-\/>level\ :\ 0}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ )\ +\ 1;}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{structNode}{Node<T>}}*\ Balance(\mbox{\hyperlink{structNode}{Node<T>}}*\ node)\ \{}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ node-\/>updateLevel();}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (DEBBUGING)\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ std::format(\textcolor{stringliteral}{"{}Node:\ \{\},\ level:\ \{\},\ \ factor:\ \{\}"{}},\ node-\/>value,\ node-\/>level,\ node-\/>getFactor())\ <<\ std::endl;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (node-\/>getFactor()\ ==\ 2)\ \{}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (node-\/>right-\/>getFactor()\ ==\ 1)\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ node\ =\ SimpleRotationLeft(node);}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ node\ =\ DoubleRotationRightLeft(node);}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (node-\/>getFactor()\ ==\ -\/2)\ \{}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (node-\/>left-\/>getFactor()\ ==\ -\/1)\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ node\ =\ SimpleRotationRight(node);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ node\ =\ DoubleRotationLeftRight(node);}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ node;}
+\DoxyCodeLine{00083\ \ \ \ \ \}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{structNode}{Node<T>}}*\ SimpleRotationLeft(\mbox{\hyperlink{structNode}{Node<T>}}*\ node)\ \{}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (DEBBUGING)\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SimpleRotationLeft"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNode}{Node<T>}}*\ aux\ =\ node-\/>right;}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ node-\/>right\ =\ aux-\/>left;}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ aux-\/>left\ =\ node;}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ node-\/>updateLevel();}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ aux-\/>updateLevel();}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ aux;}
+\DoxyCodeLine{00099\ \ \ \ \ \}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \mbox{\hyperlink{structNode}{Node<T>}}*\ SimpleRotationRight(\mbox{\hyperlink{structNode}{Node<T>}}*\ node)\ \{}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (DEBBUGING)\ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SimpleRotationRight"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNode}{Node<T>}}*\ aux\ =\ node-\/>left;}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ node-\/>left\ =\ aux-\/>right;}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ aux-\/>right\ =\ node;}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ node-\/>updateLevel();}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ aux-\/>updateLevel();}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ aux;}
+\DoxyCodeLine{00115\ \ \ \ \ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \mbox{\hyperlink{structNode}{Node<T>}}*\ DoubleRotationRightLeft(\mbox{\hyperlink{structNode}{Node<T>}}*\ node)\ \{}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (DEBBUGING)\ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}DoubleRotationRightLeft"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ node-\/>right\ =\ SimpleRotationRight(node-\/>right);}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ SimpleRotationLeft(node);}
+\DoxyCodeLine{00126\ \ \ \ \ \}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \mbox{\hyperlink{structNode}{Node<T>}}*\ DoubleRotationLeftRight(\mbox{\hyperlink{structNode}{Node<T>}}*\ node)\ \{}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (DEBBUGING)\ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}DoubleRotationLeftRight"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ node-\/>left\ =\ SimpleRotationLeft(node-\/>left);}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ SimpleRotationRight(node);}
+\DoxyCodeLine{00136\ \ \ \ \ \}}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{void}\ insert(\textcolor{keywordtype}{int}\ value)\ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ root\ =\ insert(value,\ root,\ 0);}
+\DoxyCodeLine{00141\ \ \ \ \ \}}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00144\ \ \ \ \ \mbox{\hyperlink{structNode}{Node<T>}}*\ insert(\textcolor{keywordtype}{int}\ value,\ \mbox{\hyperlink{structNode}{Node<T>}}*\ node,\ \textcolor{keywordtype}{int}\ height)\ \{}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (node\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ node\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{structNode}{Node<T>}}(value);}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (value\ <\ node-\/>value)\ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ node-\/>left\ =\ insert(value,\ node-\/>left,\ height\ +\ 1);}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (value\ >\ node-\/>value)\ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ node-\/>right\ =\ insert(value,\ node-\/>right,\ height\ +\ 1);}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ printf("{}Erro\ ao\ inserir\ na\ árvore:\ '\%d'\ já\ pertece\ à\ árvore."{},\ value);}}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ errx(0,\ "{}Erro\ ao\ inserir\ na\ árvore:\ '\%d'\ já\ pertece\ à\ árvore."{},\ value);}}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Balance(node);}
+\DoxyCodeLine{00164\ \ \ \ \ \}}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{comment}{//\ int\ DeleteAVL(int\ value,\ AVL*\ tree)\ \{}}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{comment}{//\ \ if\ (tree-\/>root\ ==\ nullptr)\ \{}}
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ errx(0,\ "{}Erro\ ao\ remover\ na\ árvore:\ Árvore\ vazia."{});}}
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{comment}{//\ \ return\ DeleteAVLAux(value,\ \&tree-\/>root);}}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{comment}{//\ int\ DeleteAVLAux(int\ value,\ Node<T>**\ root)\ \{}}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{comment}{//\ \ int\ removed;}}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{comment}{//\ \ if\ (*root\ ==\ nullptr)\ \{}}
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ errx(0,\ "{}Erro\ ao\ remover\ na\ árvore:\ '\%d'\ não\ pertece\ à\ árvore."{},\ value);}}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{comment}{//\ \ \}\ else\ if\ (value\ <\ (*root)-\/>value)\ \{}}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ removed\ =\ DeleteAVLAux(value,\ \&(*root)-\/>left);}}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{comment}{//\ \ \}\ else\ if\ (value\ >\ (*root)-\/>value)\ \{}}
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ removed\ =\ DeleteAVLAux(value,\ \&(*root)-\/>right);}}
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{comment}{//\ \ \}\ else\ \{}}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ Node<T>*\ aux\ =\ *root;}}
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ removed\ =\ (*root)-\/>value;}}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ if\ ((*root)-\/>left\ ==\ nullptr)\ \{}}
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ *root\ =\ (*root)-\/>right;}}
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \}\ else\ if\ ((*root)-\/>right\ ==\ nullptr)\ \{}}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ *root\ =\ (*root)-\/>left;}}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \}\ else\ \{}}
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ aux\ =\ GreatestToTheLeft(\&(*root)-\/>left,\ *root);}}
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \}}}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ free(aux);}}
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{comment}{//\ \ return\ removed;}}
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{comment}{//\ Node<T>*\ GreatestToTheLeft(Node<T>**\ root,\ Node<T>*\ parent)\ \{}}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{comment}{//\ \ Node<T>*\ removed;}}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{comment}{//\ \ if\ ((*root)-\/>right\ ==\ nullptr)\ \{}}
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ removed\ =\ *root;}}
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ parent-\/>value\ =\ (*root)-\/>value;}}
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ *root\ =\ (*root)-\/>left;}}
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{comment}{//\ \ \}\ else\ \{}}
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ removed\ =\ GreatestToTheLeft(\&(*root)-\/>right,\ parent);}}
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{comment}{//\ \ return\ removed;}}
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00220\ \ \ \ \ \mbox{\hyperlink{structNode}{Node<T>}}*\ search(\textcolor{keywordtype}{int}\ value)\ \{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ search(value,\ root);}
+\DoxyCodeLine{00222\ \ \ \ \ \}}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00225\ \ \ \ \ \mbox{\hyperlink{structNode}{Node<T>}}*\ search(\textcolor{keywordtype}{int}\ value,\ \mbox{\hyperlink{structNode}{Node<T>}}*\ node)\ \{}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (node\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ printf("{}Erro\ ao\ pesquisar\ na\ árvore:\ '\%d'\ não\ pertece\ à\ árvore."{},\ value);}}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ errx(0,\ "{}Erro\ ao\ pesquisar\ na\ árvore:\ '\%d'\ não\ pertece\ à\ árvore."{},\ value);}}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (value\ <\ node-\/>value)\ \{}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ node\ =\ search(value,\ node-\/>left);}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (value\ >\ node-\/>value)\ \{}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ node\ =\ search(value,\ node-\/>right);}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ node;}
+\DoxyCodeLine{00241\ \ \ \ \ \}}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keywordtype}{void}\ str()\ \{}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (root\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Erro\ ao\ printar\ árvore:\ Árvore\ vazia."{}});}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\{\ "{}};}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ str(root);}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)b\(\backslash\)b\ \}"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00253\ \ \ \ \ \}}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keywordtype}{void}\ str(\mbox{\hyperlink{structNode}{Node<T>}}*\ node)\ \{}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (node\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ str(node-\/>left);}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ std::format(\textcolor{stringliteral}{"{}\{\},\ "{}},\ node-\/>value);}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ str(node-\/>right);}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00262\ \ \ \ \ \}}
+\DoxyCodeLine{00263\ \};}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00265\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !AVL\_HPP}}
+
+\end{DoxyCode}

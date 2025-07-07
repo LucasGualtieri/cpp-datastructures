@@ -1,0 +1,291 @@
+\doxysection{Linear\+List\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classLinearList}{}\label{classLinearList}\index{LinearList$<$ T $>$@{LinearList$<$ T $>$}}
+
+
+Inheritance diagram for Linear\+List\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{classLinearList__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Linear\+List\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{classLinearList__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classLinearList_1_1Iterator}{Iterator}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLinearList_a5b58171d93ce7ded8748828a80e4c813}\label{classLinearList_a5b58171d93ce7ded8748828a80e4c813} 
+{\bfseries Linear\+List} (int n, \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$ list)
+\item 
+\Hypertarget{classLinearList_a09e1f3f62287b2877a6a9bc68023a611}\label{classLinearList_a09e1f3f62287b2877a6a9bc68023a611} 
+{\bfseries Linear\+List} (size\+\_\+t max\+Size=5)
+\item 
+\Hypertarget{classLinearList_af9c261bd4a0f57df3d265788580b66a6}\label{classLinearList_af9c261bd4a0f57df3d265788580b66a6} 
+{\bfseries Linear\+List} (std\+::initializer\+\_\+list$<$ T $>$ list)
+\item 
+\Hypertarget{classLinearList_ac19df42b4624e1fa998f4843f992cf35}\label{classLinearList_ac19df42b4624e1fa998f4843f992cf35} 
+{\bfseries Linear\+List} (size\+\_\+t max\+Size, const T \&constant)
+\item 
+\Hypertarget{classLinearList_ae1c2d7cba768ad7788a6bc05684ce9b2}\label{classLinearList_ae1c2d7cba768ad7788a6bc05684ce9b2} 
+{\bfseries Linear\+List} (const \mbox{\hyperlink{classLinearList}{Linear\+List}} \&other)
+\item 
+\Hypertarget{classLinearList_a22ab2231f2279434ef68a20798162e85}\label{classLinearList_a22ab2231f2279434ef68a20798162e85} 
+bool {\bfseries operator!=} (const \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$ \&other) const
+\item 
+\Hypertarget{classLinearList_a7e6d95ea40a582c4ece913017b7dd600}\label{classLinearList_a7e6d95ea40a582c4ece913017b7dd600} 
+\mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$ \& {\bfseries operator=} (const \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$ \&other)
+\item 
+bool \mbox{\hyperlink{classLinearList_a863b091c8c97a7116a0c03c0b852896d}{contains}} (const T \&value) const override
+\item 
+void \mbox{\hyperlink{classLinearList_a9a7127f1699b2b36295ff0e40dd50fba}{push\+\_\+front}} (T value) override
+\item 
+void \mbox{\hyperlink{classLinearList_aa62bbb7a87d2244a7f8faf36477d189f}{push\+\_\+back}} (T value) override
+\item 
+\Hypertarget{classLinearList_a9cd8d1182fcab73a8855758edc676910}\label{classLinearList_a9cd8d1182fcab73a8855758edc676910} 
+\mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$ \& {\bfseries operator+=} (T value)
+\item 
+\Hypertarget{classLinearList_a1ccc0e49e676ab4865640c3cd7813684}\label{classLinearList_a1ccc0e49e676ab4865640c3cd7813684} 
+\mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$ {\bfseries operator+} (T value) const
+\item 
+T \mbox{\hyperlink{classLinearList_a90a3d6fe6406f18d75104e1183acd2a1}{pop\+\_\+front}} () override
+\item 
+T \mbox{\hyperlink{classLinearList_a84a7c1b473a986aff4bb5f7a3a65dad0}{pop\+\_\+back}} () override
+\item 
+void \mbox{\hyperlink{classLinearList_a4592ed250d4de9882ad3adb287934870}{add}} (T value, unsigned int pos) override
+\item 
+T \mbox{\hyperlink{classLinearList_af6774014230e6c2d07a8d4c85d17fce4}{remove}} (unsigned int pos) override
+\item 
+\Hypertarget{classLinearList_aaa3d8158ab23226392ac753a68c54a03}\label{classLinearList_aaa3d8158ab23226392ac753a68c54a03} 
+bool {\bfseries remove} (const T \&element)
+\item 
+T \& \mbox{\hyperlink{classLinearList_adebb29261d8cbed72af1180718e7e24f}{front}} () const override
+\item 
+T \& \mbox{\hyperlink{classLinearList_a724c4a3e4c40aaa6f22f02ae20d7bc0b}{back}} () const override
+\item 
+\Hypertarget{classLinearList_a07db6e0346456261058000d093f45f7e}\label{classLinearList_a07db6e0346456261058000d093f45f7e} 
+void {\bfseries reserve} (size\+\_\+t new\+Capacity)
+\item 
+\Hypertarget{classLinearList_a88df755ca01dca95f32f80635d70fb6f}\label{classLinearList_a88df755ca01dca95f32f80635d70fb6f} 
+void {\bfseries shrink\+\_\+to\+\_\+fit} ()
+\item 
+\Hypertarget{classLinearList_ad1dfa5788554f79baa37333b07e4acd4}\label{classLinearList_ad1dfa5788554f79baa37333b07e4acd4} 
+size\+\_\+t {\bfseries capacity} () const
+\item 
+\Hypertarget{classLinearList_a7316e053323088a625d296238b10b173}\label{classLinearList_a7316e053323088a625d296238b10b173} 
+size\+\_\+t {\bfseries index\+Of} (T value) const
+\item 
+\Hypertarget{classLinearList_ae6c9e33d412da65e9be06ece9e95af77}\label{classLinearList_ae6c9e33d412da65e9be06ece9e95af77} 
+std\+::string {\bfseries str} () const
+\item 
+\Hypertarget{classLinearList_aa927916a7626a7e92c01e1bae753e1f1}\label{classLinearList_aa927916a7626a7e92c01e1bae753e1f1} 
+T \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (size\+\_\+t index) const
+\item 
+\Hypertarget{classLinearList_a525a96584216014dee132e8020747e7f}\label{classLinearList_a525a96584216014dee132e8020747e7f} 
+T \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (size\+\_\+t index)
+\item 
+\Hypertarget{classLinearList_a4ea7c20262351bdcbeaa4bbb2cf498ec}\label{classLinearList_a4ea7c20262351bdcbeaa4bbb2cf498ec} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$ other) const
+\item 
+\Hypertarget{classLinearList_ae456b61cec8be9983797063a9f7e755c}\label{classLinearList_ae456b61cec8be9983797063a9f7e755c} 
+bool {\bfseries operator==} (const std\+::initializer\+\_\+list$<$ T $>$ other) const
+\item 
+\Hypertarget{classLinearList_addf10361ed36c810d6517b4f0c3c089a}\label{classLinearList_addf10361ed36c810d6517b4f0c3c089a} 
+int {\bfseries compare\+Lists\+Lexicographically} (const \mbox{\hyperlink{classLinearList}{Linear\+List}} \&list)
+\item 
+\Hypertarget{classLinearList_acc99a7442089c65c40251b23d870a204}\label{classLinearList_acc99a7442089c65c40251b23d870a204} 
+bool {\bfseries operator$<$} (const \mbox{\hyperlink{classLinearList}{Linear\+List}} \&list)
+\item 
+\Hypertarget{classLinearList_a5d11c04c2919798e9635e0bfcd287e7e}\label{classLinearList_a5d11c04c2919798e9635e0bfcd287e7e} 
+bool {\bfseries operator$>$} (const \mbox{\hyperlink{classLinearList}{Linear\+List}} \&list)
+\item 
+\Hypertarget{classLinearList_a86017d109759db142d33d98ae539a8b6}\label{classLinearList_a86017d109759db142d33d98ae539a8b6} 
+\mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$ \& {\bfseries operator+=} (const \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$ \&list2)
+\item 
+\Hypertarget{classLinearList_a4ad5f5dae2d2b9e4d6c83ed561ea52ac}\label{classLinearList_a4ad5f5dae2d2b9e4d6c83ed561ea52ac} 
+\mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$ \& {\bfseries operator-\/=} (const \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$ \&list2)
+\item 
+\Hypertarget{classLinearList_a20e8cec1af02854a1194803d2ff76007}\label{classLinearList_a20e8cec1af02854a1194803d2ff76007} 
+\mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$ {\bfseries operator-\/} (const \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$ \&list2)
+\item 
+\Hypertarget{classLinearList_a19a7c8d8a40c0293052f9b00096c4211}\label{classLinearList_a19a7c8d8a40c0293052f9b00096c4211} 
+\mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$ {\bfseries operator-\/} (const \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$ \&list2) const
+\item 
+\Hypertarget{classLinearList_a4f445136e4c18e50b4d5d3579024ad6a}\label{classLinearList_a4f445136e4c18e50b4d5d3579024ad6a} 
+void {\bfseries quicksort} (int left, int right)
+\item 
+\Hypertarget{classLinearList_a559cf4125b89630cdc2f5a260fdd7d11}\label{classLinearList_a559cf4125b89630cdc2f5a260fdd7d11} 
+void {\bfseries quicksort} (int left, int right, const auto \&compare)
+\item 
+void \mbox{\hyperlink{classLinearList_a76f88d46087f5f25da7639896741f6a2}{sort}} () override
+\item 
+\Hypertarget{classLinearList_a90f6e42a5f6e39f1f63d59607cac5832}\label{classLinearList_a90f6e42a5f6e39f1f63d59607cac5832} 
+void {\bfseries sort} (const auto \&compare)
+\item 
+\Hypertarget{classLinearList_a4154c3779bd0ad0e3c5988a0c9c7a7df}\label{classLinearList_a4154c3779bd0ad0e3c5988a0c9c7a7df} 
+\mbox{\hyperlink{classLinearList_1_1Iterator}{Iterator}} {\bfseries begin} ()
+\item 
+\Hypertarget{classLinearList_a7a843db10efdcfe242ea194d33c48671}\label{classLinearList_a7a843db10efdcfe242ea194d33c48671} 
+\mbox{\hyperlink{classLinearList_1_1Iterator}{Iterator}} {\bfseries begin} () const
+\item 
+\Hypertarget{classLinearList_a759318fbf312ffb0d1e11aed5671a4f2}\label{classLinearList_a759318fbf312ffb0d1e11aed5671a4f2} 
+\mbox{\hyperlink{classLinearList_1_1Iterator}{Iterator}} {\bfseries end} ()
+\item 
+\Hypertarget{classLinearList_a025b83870c6f26090bd8da55082b0cb6}\label{classLinearList_a025b83870c6f26090bd8da55082b0cb6} 
+\mbox{\hyperlink{classLinearList_1_1Iterator}{Iterator}} {\bfseries end} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classList}{List$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries clear} () final
+\item 
+virtual size\+\_\+t {\bfseries size} () const final
+\item 
+virtual bool {\bfseries empty} () const final
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLinearList_a66fcba5b88a41901cc3d25fbf6063b1d}\label{classLinearList_a66fcba5b88a41901cc3d25fbf6063b1d} 
+\mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$ {\bfseries operator+} (const T value, \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$ list)
+\item 
+\Hypertarget{classLinearList_aab7d9b60b82342e935d440314c330a4c}\label{classLinearList_aab7d9b60b82342e935d440314c330a4c} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&os, const \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$ \&list)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classList}{List$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t {\bfseries \+\_\+size}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLinearList_a4592ed250d4de9882ad3adb287934870}\label{classLinearList_a4592ed250d4de9882ad3adb287934870} 
+\index{LinearList$<$ T $>$@{LinearList$<$ T $>$}!add@{add}}
+\index{add@{add}!LinearList$<$ T $>$@{LinearList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$\+::add (\begin{DoxyParamCaption}\item[{T}]{value,  }\item[{unsigned int}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classList}{List$<$ T $>$}}.
+
+\Hypertarget{classLinearList_a724c4a3e4c40aaa6f22f02ae20d7bc0b}\label{classLinearList_a724c4a3e4c40aaa6f22f02ae20d7bc0b} 
+\index{LinearList$<$ T $>$@{LinearList$<$ T $>$}!back@{back}}
+\index{back@{back}!LinearList$<$ T $>$@{LinearList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{back()}{back()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \& \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$\+::back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classList}{List$<$ T $>$}}.
+
+\Hypertarget{classLinearList_a863b091c8c97a7116a0c03c0b852896d}\label{classLinearList_a863b091c8c97a7116a0c03c0b852896d} 
+\index{LinearList$<$ T $>$@{LinearList$<$ T $>$}!contains@{contains}}
+\index{contains@{contains}!LinearList$<$ T $>$@{LinearList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$\+::contains (\begin{DoxyParamCaption}\item[{const T \&}]{value }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classList}{List$<$ T $>$}}.
+
+\Hypertarget{classLinearList_adebb29261d8cbed72af1180718e7e24f}\label{classLinearList_adebb29261d8cbed72af1180718e7e24f} 
+\index{LinearList$<$ T $>$@{LinearList$<$ T $>$}!front@{front}}
+\index{front@{front}!LinearList$<$ T $>$@{LinearList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{front()}{front()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \& \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$\+::front (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classList}{List$<$ T $>$}}.
+
+\Hypertarget{classLinearList_a84a7c1b473a986aff4bb5f7a3a65dad0}\label{classLinearList_a84a7c1b473a986aff4bb5f7a3a65dad0} 
+\index{LinearList$<$ T $>$@{LinearList$<$ T $>$}!pop\_back@{pop\_back}}
+\index{pop\_back@{pop\_back}!LinearList$<$ T $>$@{LinearList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{pop\_back()}{pop\_back()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$\+::pop\+\_\+back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classList}{List$<$ T $>$}}.
+
+\Hypertarget{classLinearList_a90a3d6fe6406f18d75104e1183acd2a1}\label{classLinearList_a90a3d6fe6406f18d75104e1183acd2a1} 
+\index{LinearList$<$ T $>$@{LinearList$<$ T $>$}!pop\_front@{pop\_front}}
+\index{pop\_front@{pop\_front}!LinearList$<$ T $>$@{LinearList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{pop\_front()}{pop\_front()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$\+::pop\+\_\+front (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classList}{List$<$ T $>$}}.
+
+\Hypertarget{classLinearList_aa62bbb7a87d2244a7f8faf36477d189f}\label{classLinearList_aa62bbb7a87d2244a7f8faf36477d189f} 
+\index{LinearList$<$ T $>$@{LinearList$<$ T $>$}!push\_back@{push\_back}}
+\index{push\_back@{push\_back}!LinearList$<$ T $>$@{LinearList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{push\_back()}{push\_back()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$\+::push\+\_\+back (\begin{DoxyParamCaption}\item[{T}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classList}{List$<$ T $>$}}.
+
+\Hypertarget{classLinearList_a9a7127f1699b2b36295ff0e40dd50fba}\label{classLinearList_a9a7127f1699b2b36295ff0e40dd50fba} 
+\index{LinearList$<$ T $>$@{LinearList$<$ T $>$}!push\_front@{push\_front}}
+\index{push\_front@{push\_front}!LinearList$<$ T $>$@{LinearList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{push\_front()}{push\_front()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$\+::push\+\_\+front (\begin{DoxyParamCaption}\item[{T}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classList}{List$<$ T $>$}}.
+
+\Hypertarget{classLinearList_af6774014230e6c2d07a8d4c85d17fce4}\label{classLinearList_af6774014230e6c2d07a8d4c85d17fce4} 
+\index{LinearList$<$ T $>$@{LinearList$<$ T $>$}!remove@{remove}}
+\index{remove@{remove}!LinearList$<$ T $>$@{LinearList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$\+::remove (\begin{DoxyParamCaption}\item[{unsigned int}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classList}{List$<$ T $>$}}.
+
+\Hypertarget{classLinearList_a76f88d46087f5f25da7639896741f6a2}\label{classLinearList_a76f88d46087f5f25da7639896741f6a2} 
+\index{LinearList$<$ T $>$@{LinearList$<$ T $>$}!sort@{sort}}
+\index{sort@{sort}!LinearList$<$ T $>$@{LinearList$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{sort()}{sort()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ T $>$\+::sort (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classList}{List$<$ T $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+list/linear\+\_\+list.\+hpp\end{DoxyCompactItemize}
