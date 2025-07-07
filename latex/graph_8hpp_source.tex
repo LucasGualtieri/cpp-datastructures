@@ -1,0 +1,552 @@
+\doxysection{graph.\+hpp}
+\hypertarget{graph_8hpp_source}{}\label{graph_8hpp_source}\index{graph/graph.hpp@{graph/graph.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <format>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <ostream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}../utils/pair.hpp"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}../list/linear\_list.hpp"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}edge.hpp"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}data\_structure.hpp"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}implementations/adjacency\_list.hpp"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}implementations/adjacency\_matrix.hpp"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}implementations/fast\_adjacency\_list.hpp"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}implementations/fast\_adjacency\_list.hpp"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}implementations/adjacency\_matrix\_pointers.hpp"{}}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ Custom\ hash\ specialization\ for\ std::pair}}
+\DoxyCodeLine{00025\ \textcolor{keyword}{namespace\ }std\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{struct\ }hash<\mbox{\hyperlink{classPair}{Pair}}<Vertex,\ Vertex>>\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ operator()(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPair}{Pair<Vertex,\ Vertex>}}\&\ p)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ hash<int>()(p.first)\ \string^\ (hash<int>()(p.second)\ <<\ 1);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00031\ \ \ \ \ \};}
+\DoxyCodeLine{00032\ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGraph}{Graph}}\ \{}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{enum}\ DataStructures\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAdjacencyMatrix}{AdjacencyMatrix}},\ \mbox{\hyperlink{classAdjacencyMatrixPointers}{AdjacencyMatrixPointers}},}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAdjacencyList}{AdjacencyList}},\ \mbox{\hyperlink{classFastAdjacencyList}{FastAdjacencyList}}}
+\DoxyCodeLine{00050\ \ \ \ \ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classPair}{Prop}}\ =\ \mbox{\hyperlink{classPair}{Pair<std::string,\ std::string>}};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{classPair}{Pair<std::string,\ std::string>}}\ base\ =\ \{\textcolor{stringliteral}{"{}"{}},\ \textcolor{stringliteral}{"{}"{}}\};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{class\ }EdgeMap\ :\ \textcolor{keyword}{public}\ std::unordered\_map<Pair<Vertex,\ Vertex>,\ Pair<std::string,\ std::string>>\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPair}{Pair<std::string,\ std::string>}}\ base\ =\ \{\textcolor{stringliteral}{"{}"{}},\ \textcolor{stringliteral}{"{}"{}}\};}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPair}{Pair<std::string,\ std::string>}}\ Find(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPair}{Pair<Vertex,\ Vertex>}}\&\ edge)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ find(edge);}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it\ !=\ end()\ ?\ it-\/>second\ :\ base;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{class\ }VertexMap\ :\ \textcolor{keyword}{public}\ std::unordered\_map<Vertex,\ Pair<std::string,\ std::string>>\ \{}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPair}{Pair<std::string,\ std::string>}}\ base\ =\ \{\textcolor{stringliteral}{"{}"{}},\ \textcolor{stringliteral}{"{}"{}}\};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPair}{Pair<std::string,\ std::string>}}\ Find(\textcolor{keyword}{const}\ Vertex\&\ v)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ find(v);}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it\ !=\ end()\ ?\ it-\/>second\ :\ base;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{class\ }VertexLabel\ :\ \textcolor{keyword}{public}\ std::unordered\_map<Vertex,\ std::string>\ \{}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ std::string\ base\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ std::string\ Find(\textcolor{keyword}{const}\ Vertex\&\ v)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ find(v);}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it\ !=\ end()\ ?\ it-\/>second\ :\ base;}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00089\ \ \ \ \ \};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{classDataStructure}{DataStructure}}*\ dataStructure;}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{bool}\ directed,\ weighted;}
+\DoxyCodeLine{00093\ \ \ \ \ DataStructures\ choice;}
+\DoxyCodeLine{00094\ \ \ \ \ EdgeMap\ edgeMap;}
+\DoxyCodeLine{00095\ \ \ \ \ VertexMap\ vertexMap;}
+\DoxyCodeLine{00096\ \ \ \ \ VertexLabel\ vertexLabel;}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \mbox{\hyperlink{classGraph}{Graph}}(\mbox{\hyperlink{classDataStructure}{DataStructure}}*\ dataStructure,\ \textcolor{keywordtype}{size\_t}\ n,\ \textcolor{keywordtype}{bool}\ directed,\ \textcolor{keywordtype}{bool}\ weighted)\ \{}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ this-\/>directed\ =\ directed;}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ this-\/>weighted\ =\ weighted;}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ this-\/>n\ =\ n;}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ this-\/>dataStructure\ =\ dataStructure;}
+\DoxyCodeLine{00104\ \ \ \ \ \}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \mbox{\hyperlink{classDataStructure}{DataStructure}}*\ dataStructureChoice(DataStructures\ choice)\ \{}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (choice)\ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classAdjacencyMatrix}{AdjacencyMatrix}}:}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \textcolor{keyword}{class\ }AdjacencyMatrix(n);}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classAdjacencyMatrixPointers}{AdjacencyMatrixPointers}}:}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \textcolor{keyword}{class\ }AdjacencyMatrixPointers(n);}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classAdjacencyList}{AdjacencyList}}:}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classAdjacencyList}{AdjacencyList}};}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classFastAdjacencyList}{FastAdjacencyList}}:}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classFastAdjacencyList}{FastAdjacencyList}};}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00121\ \ \ \ \ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ n,\ m;}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \mbox{\hyperlink{classGraph}{Graph}}(DataStructures\ choice,\ \textcolor{keywordtype}{size\_t}\ n,\ \textcolor{keywordtype}{size\_t}\ m,\ \textcolor{keywordtype}{bool}\ directed,\ \textcolor{keywordtype}{bool}\ weighted)\ \{}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ this-\/>directed\ =\ directed;}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ this-\/>weighted\ =\ weighted;}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ this-\/>choice\ =\ choice;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ this-\/>n\ =\ n;}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ this-\/>m\ =\ m;}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ dataStructure\ =\ dataStructureChoice(choice);}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ this-\/>dataStructure-\/>directed(directed);}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ this-\/>dataStructure-\/>weighted(weighted);}
+\DoxyCodeLine{00139\ \ \ \ \ \}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00146\ \ \ \ \ \mbox{\hyperlink{classGraph_ac14ccdebe4c689652159a74bba1c08b5}{Graph}}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{classGraph}{Graph}}\&\ clone)\ \{}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ NOTE:\ This\ is\ the\ function\ called\ by\ the\ "{}return\ graph;"{}\ "{}context"{}.}}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ directed\ =\ clone.directed;}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ weighted\ =\ clone.weighted;}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ choice\ =\ clone.choice;}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ n\ =\ 0;}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ m\ =\ 0;}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ dataStructure\ =\ dataStructureChoice(choice);}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ this-\/>dataStructure-\/>directed(directed);}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ this-\/>dataStructure-\/>weighted(weighted);}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ Vertex\&\ v\ :\ clone.\mbox{\hyperlink{classGraph_a419d3b03df870300cb07d3b53d00d3c6}{vertices}}())\ \{}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGraph_a0428ccbebfd061c6f1f4853aeecf0ad2}{addVertex}}(v);}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{classEdge}{Edge}}\&\ e\ :\ clone.\mbox{\hyperlink{classGraph_a85ecacb3194ad500b180478fc9979e8a}{edges}}())\ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGraph_a7e73f7faf18c4ee073ed7fef26dfec9d}{addEdge}}(e);}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00168\ \ \ \ \ \}}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00176\ \ \ \ \ \mbox{\hyperlink{classGraph}{Graph}}\&\ \mbox{\hyperlink{classGraph_acbff1f6b9e52c55390a0ab1325b423b3}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classGraph}{Graph}}\&\ G)\ \{}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ !=\ \&G)\ \{}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ directed\ =\ G.directed;}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ weighted\ =\ G.weighted;}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ choice\ =\ G.choice;}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ n\ =\ G.n;}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ m\ =\ G.m;}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ dataStructure;}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ dataStructure\ =\ dataStructureChoice(choice);}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ dataStructure-\/>directed(directed);}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ dataStructure-\/>weighted(weighted);}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ Vertex\&\ v\ :\ G.\mbox{\hyperlink{classGraph_a419d3b03df870300cb07d3b53d00d3c6}{vertices}}())\ \{}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGraph_a0428ccbebfd061c6f1f4853aeecf0ad2}{addVertex}}(v);}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{classEdge}{Edge}}\&\ e\ :\ G.\mbox{\hyperlink{classGraph_a85ecacb3194ad500b180478fc9979e8a}{edges}}())\ \{}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGraph_a7e73f7faf18c4ee073ed7fef26dfec9d}{addEdge}}(e);}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00203\ \ \ \ \ \}}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00211\ \ \ \ \ \mbox{\hyperlink{classGraph}{Graph}}\ \mbox{\hyperlink{classGraph_a4b6c7378308d46c16af4fc44e74e4779}{cloneDataStructure}}(\textcolor{keywordtype}{size\_t}\ n\ =\ 0)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ choice,\ n,\ m,\ directed,\ weighted\ \};}
+\DoxyCodeLine{00213\ \ \ \ \ \}}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00218\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraph_a0981bbe7c5010948ce2695d2dd9f9ce6}{printDataStructure}}()\ \{\ dataStructure-\/>print();\ \}}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00223\ \ \ \ \ \mbox{\hyperlink{classGraph_a902c5b3eacb66d60752525ab23297a95}{\string~Graph}}()\ \{\ \textcolor{keyword}{delete}\ dataStructure;\ \}}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00231\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraph_a0428ccbebfd061c6f1f4853aeecf0ad2}{addVertex}}(\textcolor{keyword}{const}\ Vertex\&\ v)\ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ dataStructure-\/>addVertex(v);}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ n++;}
+\DoxyCodeLine{00234\ \ \ \ \ \}}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraph_adbc630ef09c293f7f3b942f18c1c36ec}{addVertex}}(\textcolor{keyword}{const}\ Vertex\&\ v,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPair}{Pair<std::string,\ std::string>}}\&\ props)\ \{}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGraph_a0428ccbebfd061c6f1f4853aeecf0ad2}{addVertex}}(v);}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ vertexMap.insert(\{v,\ props\});}
+\DoxyCodeLine{00245\ \ \ \ \ \}}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00253\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraph_ac30fca94655eb8b393040eff8a5418da}{addVertex}}(\textcolor{keyword}{const}\ Vertex\&\ v,\ std::string\&\ label)\ \{}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGraph_a0428ccbebfd061c6f1f4853aeecf0ad2}{addVertex}}(v);}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ vertexLabel.insert(\{v,\ label\});}
+\DoxyCodeLine{00256\ \ \ \ \ \}}
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00265\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraph_a493909b4e19875afca676ca62dcc2c9d}{addVertex}}(\textcolor{keyword}{const}\ Vertex\&\ v,\ \textcolor{keyword}{const}\ std::string\&\ label,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPair}{Pair<std::string,\ std::string>}}\&\ props)\ \{}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGraph_a0428ccbebfd061c6f1f4853aeecf0ad2}{addVertex}}(v);}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ vertexMap.insert(\{v,\ props\});}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ vertexLabel.insert(\{v,\ label\});}
+\DoxyCodeLine{00269\ \ \ \ \ \}}
+\DoxyCodeLine{00270\ }
+\DoxyCodeLine{00277\ \ \ \ \ std::string\ \mbox{\hyperlink{classGraph_a2a7dd03fa59df7d59ea44431e54850e3}{getLabel}}(\textcolor{keyword}{const}\ Vertex\&\ v)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ vertexLabel.Find(v);}
+\DoxyCodeLine{00279\ \ \ \ \ \}}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00288\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraph_a7e73f7faf18c4ee073ed7fef26dfec9d}{addEdge}}(\textcolor{keyword}{const}\ Vertex\&\ u,\ \textcolor{keyword}{const}\ Vertex\&\ v,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\&\ weight)\ \{}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGraph_a59075e763916916e59a90151c197aca3}{hasEdge}}(\{u,\ v\}))\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!weighted)\ \{}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}You\ should\ not\ pass\ the\ weight\ of\ the\ edge"{}});}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00295\ }
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!dataStructure-\/>hasVertex(u))\ \mbox{\hyperlink{classGraph_a0428ccbebfd061c6f1f4853aeecf0ad2}{addVertex}}(u);}
+\DoxyCodeLine{00297\ }
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!dataStructure-\/>hasVertex(v))\ \mbox{\hyperlink{classGraph_a0428ccbebfd061c6f1f4853aeecf0ad2}{addVertex}}(v);}
+\DoxyCodeLine{00299\ }
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ dataStructure-\/>addEdge(u,\ v,\ weight);}
+\DoxyCodeLine{00301\ }
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!directed)\ dataStructure-\/>addEdge(v,\ u,\ weight);}
+\DoxyCodeLine{00303\ }
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ m++;}
+\DoxyCodeLine{00305\ \ \ \ \ \}}
+\DoxyCodeLine{00306\ }
+\DoxyCodeLine{00313\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraph_a65cf5dd5d92fd23d0bbd3473bc6bb5aa}{addEdge}}(\textcolor{keyword}{const}\ Vertex\&\ u,\ \textcolor{keyword}{const}\ Vertex\&\ v)\ \{}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (weighted)\ \{}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}You\ must\ pass\ the\ weight\ of\ the\ edge"{}});}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00318\ }
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!dataStructure-\/>hasVertex(u))\ \mbox{\hyperlink{classGraph_a0428ccbebfd061c6f1f4853aeecf0ad2}{addVertex}}(u);}
+\DoxyCodeLine{00320\ }
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!dataStructure-\/>hasVertex(v))\ \mbox{\hyperlink{classGraph_a0428ccbebfd061c6f1f4853aeecf0ad2}{addVertex}}(v);}
+\DoxyCodeLine{00322\ }
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ dataStructure-\/>addEdge(u,\ v);}
+\DoxyCodeLine{00324\ }
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!directed)\ dataStructure-\/>addEdge(v,\ u);}
+\DoxyCodeLine{00326\ }
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ m++;}
+\DoxyCodeLine{00328\ \ \ \ \ \}}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00337\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraph_acfa905e187be89842f7b89420ca30238}{addEdge}}(\textcolor{keyword}{const}\ Vertex\&\ u,\ \textcolor{keyword}{const}\ Vertex\&\ v,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPair}{Pair<std::string,\ std::string>}}\&\ props)\ \{}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGraph_a59075e763916916e59a90151c197aca3}{hasEdge}}(\{u,\ v\}))\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGraph_a7e73f7faf18c4ee073ed7fef26dfec9d}{addEdge}}(u,\ v);}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ edgeMap.insert(\{\{u,\ v\},\ props\});}
+\DoxyCodeLine{00341\ \ \ \ \ \}}
+\DoxyCodeLine{00342\ }
+\DoxyCodeLine{00343\ }
+\DoxyCodeLine{00349\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraph_addf2061e39580ac678115a40a2da278a}{addEdge}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classEdge}{Edge}}\&\ e)\ \{}
+\DoxyCodeLine{00350\ }
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGraph_a59075e763916916e59a90151c197aca3}{hasEdge}}(e))\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00352\ }
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!dataStructure-\/>hasVertex(e.u))\ \mbox{\hyperlink{classGraph_a0428ccbebfd061c6f1f4853aeecf0ad2}{addVertex}}(e.u);}
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!dataStructure-\/>hasVertex(e.v))\ \mbox{\hyperlink{classGraph_a0428ccbebfd061c6f1f4853aeecf0ad2}{addVertex}}(e.v);}
+\DoxyCodeLine{00356\ }
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (weighted)\ \{}
+\DoxyCodeLine{00358\ }
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ dataStructure-\/>addEdge(e.u,\ e.v,\ e.weight);}
+\DoxyCodeLine{00360\ }
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!directed)\ dataStructure-\/>addEdge(e.v,\ e.u,\ e.weight);}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00363\ }
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00365\ }
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \ \ \ \ dataStructure-\/>addEdge(e.u,\ e.v);}
+\DoxyCodeLine{00367\ }
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!directed)\ dataStructure-\/>addEdge(e.v,\ e.u);}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00370\ }
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ m++;}
+\DoxyCodeLine{00372\ \ \ \ \ \}}
+\DoxyCodeLine{00373\ }
+\DoxyCodeLine{00380\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraph_a4fb36470bf5373edc876426805d98f40}{addEdge}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classEdge}{Edge}}\&\ e,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPair}{Pair<std::string,\ std::string>}}\&\ props)\ \{}
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGraph_a59075e763916916e59a90151c197aca3}{hasEdge}}(e))\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGraph_a7e73f7faf18c4ee073ed7fef26dfec9d}{addEdge}}(e);}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ edgeMap.insert(\{\{e.u,\ e.v\},\ props\});}
+\DoxyCodeLine{00384\ \ \ \ \ \}}
+\DoxyCodeLine{00385\ }
+\DoxyCodeLine{00391\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraph_a91523d50762d29eaf7f7c87872c6f1db}{removeEdge}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classEdge}{Edge}}\&\ e)\ \{}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ dataStructure-\/>removeEdge(e.u,\ e.v);}
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ m-\/-\/;}
+\DoxyCodeLine{00394\ \ \ \ \ \}}
+\DoxyCodeLine{00395\ }
+\DoxyCodeLine{00403\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraph_aaee6c960f3894d1a699e30f972741ab2}{changeEdgeProps}}(\textcolor{keyword}{const}\ Vertex\&\ u,\ \textcolor{keyword}{const}\ Vertex\&\ v,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPair}{Prop}}\ prop)\ \{}
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGraph_a59075e763916916e59a90151c197aca3}{hasEdge}}(u,\ v))\ \{}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \ \ \ \ edgeMap[\{u,\ v\}]\ =\ prop;}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00407\ \ \ \ \ \}}
+\DoxyCodeLine{00408\ }
+\DoxyCodeLine{00415\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraph_accdfbef1b7603695091bdefbd6250aaa}{changeEdgeProps}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classEdge}{Edge}}\&\ e,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPair}{Prop}}\ prop)\ \{}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGraph_a59075e763916916e59a90151c197aca3}{hasEdge}}(e.u,\ e.v))\ \{}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \ \ \ \ edgeMap[\{e.u,\ e.v\}]\ =\ prop;}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00419\ \ \ \ \ \}}
+\DoxyCodeLine{00420\ }
+\DoxyCodeLine{00427\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraph_aa341e4152a85a801d99de4b4b6707fde}{changeVertexProps}}(\textcolor{keyword}{const}\ Vertex\&\ v,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPair}{Prop}}\&\ prop)\ \{}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ NOTE:\ There\ probably\ should\ be\ a\ check\ if\ there\ is\ the\ vertex}}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ vertexMap[v]\ =\ prop;}
+\DoxyCodeLine{00430\ \ \ \ \ \}}
+\DoxyCodeLine{00431\ }
+\DoxyCodeLine{00438\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraph_a86548b1227d0074545f71b5154f4aefe}{changeVertexLabel}}(\textcolor{keyword}{const}\ Vertex\&\ v,\ \textcolor{keyword}{const}\ std::string\&\ label)\ \{}
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ vertexLabel[v]\ =\ label;}
+\DoxyCodeLine{00440\ \ \ \ \ \}}
+\DoxyCodeLine{00441\ }
+\DoxyCodeLine{00448\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraph_a4963bfde0e06398be0df3a163468547b}{changeEdgeWeight}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classEdge}{Edge}}\&\ e,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\&\ weight)\ \{}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ dataStructure-\/>changeEdgeWeight(e,\ weight);}
+\DoxyCodeLine{00450\ \ \ \ \ \}}
+\DoxyCodeLine{00451\ }
+\DoxyCodeLine{00459\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraph_aba351e5ae49f486e102b1d74b79810f0}{changeEdgeWeight}}(\textcolor{keyword}{const}\ Vertex\&\ u,\ \textcolor{keyword}{const}\ Vertex\&\ v,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\&\ weight)\ \{}
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \ \ dataStructure-\/>changeEdgeWeight(\{\ u,\ v\ \},\ weight);}
+\DoxyCodeLine{00461\ \ \ \ \ \}}
+\DoxyCodeLine{00462\ }
+\DoxyCodeLine{00469\ \ \ \ \ \mbox{\hyperlink{classEdge}{Edge}}\ \mbox{\hyperlink{classGraph_a09e6d310eb4afff440b2149d910db897}{getEdge}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classEdge}{Edge}}\&\ e)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dataStructure-\/>getEdge(e);}
+\DoxyCodeLine{00471\ \ \ \ \ \}}
+\DoxyCodeLine{00472\ }
+\DoxyCodeLine{00480\ \ \ \ \ \mbox{\hyperlink{classEdge}{Edge}}\ \mbox{\hyperlink{classGraph_af92ccf6b334c4c10ba0b6821a286a6c5}{getEdge}}(\textcolor{keyword}{const}\ Vertex\&\ u,\ \textcolor{keyword}{const}\ Vertex\&\ v)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dataStructure-\/>getEdge(\{u,\ v\});}
+\DoxyCodeLine{00482\ \ \ \ \ \}}
+\DoxyCodeLine{00483\ }
+\DoxyCodeLine{00490\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGraph_a59075e763916916e59a90151c197aca3}{hasEdge}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classEdge}{Edge}}\&\ e)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dataStructure-\/>hasEdge(e.u,\ e.v);}
+\DoxyCodeLine{00492\ \ \ \ \ \}}
+\DoxyCodeLine{00493\ }
+\DoxyCodeLine{00501\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGraph_a9957fec55738b8fa0b91cdfc862ccbf8}{hasEdge}}(\textcolor{keyword}{const}\ Vertex\&\ u,\ \textcolor{keyword}{const}\ Vertex\&\ v)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00502\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dataStructure-\/>hasEdge(u,\ v);}
+\DoxyCodeLine{00503\ \ \ \ \ \}}
+\DoxyCodeLine{00504\ }
+\DoxyCodeLine{00511\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classGraph_a6339488418418fd07d2438b6e0ae399b}{degree}}(\textcolor{keyword}{const}\ Vertex\&\ v)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dataStructure-\/>degree(v);}
+\DoxyCodeLine{00513\ \ \ \ \ \}}
+\DoxyCodeLine{00514\ }
+\DoxyCodeLine{00520\ \ \ \ \ \mbox{\hyperlink{classLinearList}{LinearList<Edge>}}\ \mbox{\hyperlink{classGraph_a85ecacb3194ad500b180478fc9979e8a}{edges}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ dataStructure-\/>edges();\ \}}
+\DoxyCodeLine{00521\ }
+\DoxyCodeLine{00522\ }
+\DoxyCodeLine{00528\ \ \ \ \ \mbox{\hyperlink{classLinearList}{LinearList<Vertex>}}\ \mbox{\hyperlink{classGraph_a419d3b03df870300cb07d3b53d00d3c6}{vertices}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00529\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dataStructure-\/>vertices();}
+\DoxyCodeLine{00530\ \ \ \ \ \}}
+\DoxyCodeLine{00531\ }
+\DoxyCodeLine{00538\ \ \ \ \ \mbox{\hyperlink{classLinearList}{LinearList<Pair<Vertex,\ float>}}>\ \mbox{\hyperlink{classGraph_ac2ddd1ccf8a8446362d5887dcac08d60}{edgesOf}}(\textcolor{keyword}{const}\ Vertex\&\ u)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00539\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dataStructure-\/>neighbors(u);}
+\DoxyCodeLine{00540\ \ \ \ \ \}}
+\DoxyCodeLine{00541\ }
+\DoxyCodeLine{00548\ \ \ \ \ \mbox{\hyperlink{classLinearList}{LinearList<Vertex>}}\ \mbox{\hyperlink{classGraph_abdf38fd394b249d7925ef2cf07a6d4a8}{neighbors}}(\textcolor{keyword}{const}\ Vertex\&\ u)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00549\ }
+\DoxyCodeLine{00550\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLinearList}{LinearList<Vertex>}}\ \_neighbors;}
+\DoxyCodeLine{00551\ }
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classPair}{Pair<Vertex,\ float>}}\ p\ :\ dataStructure-\/>neighbors(u))\ \{}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ \ \ \ \ \_neighbors.push\_back(p.first);}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00555\ }
+\DoxyCodeLine{00556\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_neighbors;}
+\DoxyCodeLine{00557\ \ \ \ \ \}}
+\DoxyCodeLine{00558\ }
+\DoxyCodeLine{00565\ \ \ \ \ \mbox{\hyperlink{classLinearList}{LinearList<Pair<Vertex,\ float>}}>\ \mbox{\hyperlink{classGraph_a12266dde664bfa99c1000f05ceb3671c}{operator[]}}(\textcolor{keyword}{const}\ Vertex\&\ u)\ \{}
+\DoxyCodeLine{00566\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dataStructure-\/>neighbors(u);}
+\DoxyCodeLine{00567\ \ \ \ \ \}}
+\DoxyCodeLine{00568\ }
+\DoxyCodeLine{00576\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraph_ad049c1a04701f756454286b754846852}{export\_to\_png}}(\textcolor{keyword}{const}\ std::string\&\ filename,\ \textcolor{keyword}{const}\ std::string\&\ engine\ =\ \textcolor{stringliteral}{"{}dot"{}},\ \textcolor{keywordtype}{size\_t}\ dpi\ =\ 300)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00577\ }
+\DoxyCodeLine{00578\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ NOTE:\ This\ is\ possible\ to\ define\ all\ nodes\ and\ edges\ at\ once}}
+\DoxyCodeLine{00579\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ node\ [shape=ellipse,\ style=filled,\ fillcolor=lightblue];}}
+\DoxyCodeLine{00580\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ edge\ [color=gray,\ style=dotted];}}
+\DoxyCodeLine{00581\ }
+\DoxyCodeLine{00582\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 1.\ Create\ a\ DOT\ file\ representing\ the\ graph}}
+\DoxyCodeLine{00583\ \ \ \ \ \ \ \ \ std::string\ dotFilename\ =\ filename\ +\ \textcolor{stringliteral}{"{}.dot"{}};}
+\DoxyCodeLine{00584\ \ \ \ \ \ \ \ \ std::ofstream\ dotFile(dotFilename);}
+\DoxyCodeLine{00585\ }
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!dotFile)\ \{}
+\DoxyCodeLine{00587\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Could\ not\ create\ the\ DOT\ file."{}});}
+\DoxyCodeLine{00588\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00589\ }
+\DoxyCodeLine{00590\ \ \ \ \ \ \ \ \ dotFile\ <<\ (directed\ ?\ \textcolor{stringliteral}{"{}digraph"{}}\ :\ \textcolor{stringliteral}{"{}graph"{}})\ <<\ \textcolor{stringliteral}{"{}\ G\ \{\(\backslash\)n"{}};}
+\DoxyCodeLine{00591\ }
+\DoxyCodeLine{00592\ \ \ \ \ \ \ \ \ dotFile\ <<\ std::format(\textcolor{stringliteral}{"{}\ \ \ \ dpi\ =\ \{\};"{}},\ dpi)\ <<\ std::endl;}
+\DoxyCodeLine{00593\ }
+\DoxyCodeLine{00594\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ for\ (const\ auto\&\ [v,\ propsObject]\ :\ vertexMap)\ \{}}
+\DoxyCodeLine{00595\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ Vertex\&\ v\ :\ \mbox{\hyperlink{classGraph_a419d3b03df870300cb07d3b53d00d3c6}{vertices}}())\ \{}
+\DoxyCodeLine{00596\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ auto\ [color,\ line]\ =\ propsObject;}}
+\DoxyCodeLine{00597\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ [color,\ line]\ =\ vertexMap.Find(v);}
+\DoxyCodeLine{00598\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ label\ =\ vertexLabel.Find(v)\ ==\ \textcolor{stringliteral}{"{}"{}}\ ?\ std::format(\textcolor{stringliteral}{"{}\{\}"{}},\ v)\ :\ vertexLabel.Find(v);}
+\DoxyCodeLine{00599\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ props\ =\ \textcolor{stringliteral}{"{}color\ =\ \(\backslash\)"{}"{}}\ +\ color\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{},\ style\ =\ \(\backslash\)"{}"{}}\ +\ line;}
+\DoxyCodeLine{00600\ \ \ \ \ \ \ \ \ \ \ \ \ dotFile\ <<\ \textcolor{stringliteral}{"{}\ \ \ \ "{}}\ <<\ v\ <<\ \textcolor{stringliteral}{"{}\ [\ "{}}\ <<\ props\ <<\ format(\textcolor{stringliteral}{"{}\(\backslash\)"{},\ label=\(\backslash\)"{}\{\}\(\backslash\)"{}]"{}},\ label)\ <<\ \textcolor{stringliteral}{"{};\(\backslash\)n"{}};}
+\DoxyCodeLine{00601\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00602\ }
+\DoxyCodeLine{00603\ \ \ \ \ \ \ \ \ dotFile\ <<\ std::endl;}
+\DoxyCodeLine{00604\ }
+\DoxyCodeLine{00605\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{classEdge}{Edge}}\&\ e\ :\ \mbox{\hyperlink{classGraph_a85ecacb3194ad500b180478fc9979e8a}{edges}}())\ \{}
+\DoxyCodeLine{00606\ }
+\DoxyCodeLine{00607\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!directed\ \&\&\ e.u\ >\ e.v)\ \textcolor{keywordflow}{continue};\ \ \textcolor{comment}{//\ Avoid\ duplicate\ edges\ for\ undirected\ graphs}}
+\DoxyCodeLine{00608\ }
+\DoxyCodeLine{00609\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPair}{Prop}}\ prop\ =\ edgeMap.Find(\{e.u,\ e.v\});}
+\DoxyCodeLine{00610\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ [color,\ line]\ =\ prop\ ==\ base\ \&\&\ !directed\ ?\ edgeMap.Find(\{e.v,\ e.u\})\ :\ prop;}
+\DoxyCodeLine{00611\ }
+\DoxyCodeLine{00612\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ props\ =\ \textcolor{stringliteral}{"{}color\ =\ \(\backslash\)"{}"{}}\ +\ color\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{},\ style\ =\ \(\backslash\)"{}"{}}\ +\ line;}
+\DoxyCodeLine{00613\ }
+\DoxyCodeLine{00614\ \ \ \ \ \ \ \ \ \ \ \ \ dotFile\ <<\ \textcolor{stringliteral}{"{}\ \ \ \ "{}}\ <<\ e.u\ <<\ (directed\ ?\ \textcolor{stringliteral}{"{}\ -\/>\ "{}}\ :\ \textcolor{stringliteral}{"{}\ -\/-\/\ "{}})\ <<\ e.v\ <<\ \textcolor{stringliteral}{"{}\ [label=\(\backslash\)"{}"{}}\ <<\ (weighted\ ?\ std::format(\textcolor{stringliteral}{"{}\{:.6g\}"{}},\ e.weight)\ :\ \textcolor{stringliteral}{"{}"{}})\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)"{},\ "{}}\ <<\ props\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)"{}];\(\backslash\)n"{}};}
+\DoxyCodeLine{00615\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00616\ }
+\DoxyCodeLine{00617\ \ \ \ \ \ \ \ \ dotFile\ <<\ \textcolor{stringliteral}{"{}\}\(\backslash\)n"{}};}
+\DoxyCodeLine{00618\ \ \ \ \ \ \ \ \ dotFile.close();}
+\DoxyCodeLine{00619\ }
+\DoxyCodeLine{00620\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 2.\ Use\ the\ system()\ function\ to\ run\ the\ Graphviz\ command}}
+\DoxyCodeLine{00621\ \ \ \ \ \ \ \ \ std::string\ command\ =\ engine\ +\ \textcolor{stringliteral}{"{}\ -\/Tpng\ "{}}\ +\ dotFilename\ +\ \textcolor{stringliteral}{"{}\ -\/o\ "{}}\ +\ filename\ +\ \textcolor{stringliteral}{"{}.png"{}};}
+\DoxyCodeLine{00622\ }
+\DoxyCodeLine{00623\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (system(command.c\_str())\ !=\ 0)\ \{}
+\DoxyCodeLine{00624\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Failed\ to\ execute\ Graphviz\ command."{}});}
+\DoxyCodeLine{00625\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00626\ }
+\DoxyCodeLine{00627\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Graph\ exported\ successfully\ to\ "{}}\ <<\ filename\ <<\ \textcolor{stringliteral}{"{}.png\(\backslash\)n"{}};}
+\DoxyCodeLine{00628\ \ \ \ \ \}}
+\DoxyCodeLine{00629\ }
+\DoxyCodeLine{00635\ \ \ \ \ std::string\ \mbox{\hyperlink{classGraph_a3af3aa89b009de362eb1decd7b7fc20d}{str}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00636\ }
+\DoxyCodeLine{00637\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ Separar\ as\ arestas\ por\ virgulas}}
+\DoxyCodeLine{00638\ \ \ \ \ \ \ \ \ std::stringstream\ os;}
+\DoxyCodeLine{00639\ }
+\DoxyCodeLine{00640\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (Vertex\&\ u\ :\ \mbox{\hyperlink{classGraph_a419d3b03df870300cb07d3b53d00d3c6}{vertices}}())\ \{}
+\DoxyCodeLine{00641\ }
+\DoxyCodeLine{00642\ \ \ \ \ \ \ \ \ \ \ \ \ os\ <<\ u\ <<\ \textcolor{stringliteral}{"{}:\ \{\ "{}};}
+\DoxyCodeLine{00643\ }
+\DoxyCodeLine{00644\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ [v,\ w]\ :\ \mbox{\hyperlink{classGraph_ac2ddd1ccf8a8446362d5887dcac08d60}{edgesOf}}(u))\ \{}
+\DoxyCodeLine{00645\ }
+\DoxyCodeLine{00646\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (weighted)\ \{}
+\DoxyCodeLine{00647\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}("{}}\ <<\ v\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ w\ <<\ \textcolor{stringliteral}{"{})\ "{}};}
+\DoxyCodeLine{00648\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00649\ }
+\DoxyCodeLine{00650\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ os\ <<\ v\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00651\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00652\ }
+\DoxyCodeLine{00653\ \ \ \ \ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}\}"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00654\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00655\ }
+\DoxyCodeLine{00656\ \ \ \ \ \ \ \ \ std::string\ result\ =\ os.str();}
+\DoxyCodeLine{00657\ }
+\DoxyCodeLine{00658\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result.empty()\ ?\ result\ :\ result.substr(0,\ result.size()\ -\/\ 1);}
+\DoxyCodeLine{00659\ \ \ \ \ \}}
+\DoxyCodeLine{00660\ }
+\DoxyCodeLine{00661\ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ operator<<(std::ostream\&\ os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classGraph}{Graph}}\&\ g)\ \{}
+\DoxyCodeLine{00662\ \ \ \ \ \ \ \ \ os\ <<\ g.\mbox{\hyperlink{classGraph_a3af3aa89b009de362eb1decd7b7fc20d}{str}}();}
+\DoxyCodeLine{00663\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00664\ \ \ \ \ \}}
+\DoxyCodeLine{00665\ }
+\DoxyCodeLine{00672\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classGraph_ab3940f9da6df6682cbce1278a77e53c7}{density}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ precision\ =\ 3)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00673\ }
+\DoxyCodeLine{00674\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ n\ =\ this-\/>n;}
+\DoxyCodeLine{00675\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ m\ =\ this-\/>m;}
+\DoxyCodeLine{00676\ }
+\DoxyCodeLine{00677\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classGraph_ab3940f9da6df6682cbce1278a77e53c7}{density}}\ =\ m\ /\ ((n\ *\ n\ -\/\ n)\ /\ (directed\ ?\ 1\ :\ 2));}
+\DoxyCodeLine{00678\ }
+\DoxyCodeLine{00679\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ factor\ =\ std::pow(10,\ precision);}
+\DoxyCodeLine{00680\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::round(\mbox{\hyperlink{classGraph_ab3940f9da6df6682cbce1278a77e53c7}{density}}\ *\ factor)\ /\ factor;}
+\DoxyCodeLine{00681\ \ \ \ \ \}}
+\DoxyCodeLine{00682\ }
+\DoxyCodeLine{00688\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classGraph_a89699d89839c97c79e33d429d63d83f7}{sparsness}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ precision\ =\ 3)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ 1\ -\/\ \mbox{\hyperlink{classGraph_ab3940f9da6df6682cbce1278a77e53c7}{density}}(precision);\ \}}
+\DoxyCodeLine{00689\ }
+\DoxyCodeLine{00695\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraph_a65f00930e89e32d2d850fced34d469c7}{export\_to\_binary}}(\textcolor{keyword}{const}\ std::string\&\ filename)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00696\ }
+\DoxyCodeLine{00697\ \ \ \ \ \ \ \ \ std::ofstream\ file(filename,\ std::ios::binary);}
+\DoxyCodeLine{00698\ }
+\DoxyCodeLine{00699\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!file)\ \{}
+\DoxyCodeLine{00700\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Não\ foi\ possível\ abrir\ o\ arquivo\ para\ escrita."{}});}
+\DoxyCodeLine{00701\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00702\ }
+\DoxyCodeLine{00703\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Salva\ configurações\ do\ grafo}}
+\DoxyCodeLine{00704\ \ \ \ \ \ \ \ \ uint8\_t\ ds\_type\ =\ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(this-\/>choice);\ \textcolor{comment}{//\ Supondo\ que\ você\ armazene\ essa\ informação\ em\ um\ membro}}
+\DoxyCodeLine{00705\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_directed\ =\ this-\/>directed;}
+\DoxyCodeLine{00706\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_weighted\ =\ this-\/>weighted;}
+\DoxyCodeLine{00707\ }
+\DoxyCodeLine{00708\ \ \ \ \ \ \ \ \ file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&ds\_type),\ \textcolor{keyword}{sizeof}(uint8\_t));}
+\DoxyCodeLine{00709\ \ \ \ \ \ \ \ \ file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&is\_directed),\ \textcolor{keyword}{sizeof}(bool));}
+\DoxyCodeLine{00710\ \ \ \ \ \ \ \ \ file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&is\_weighted),\ \textcolor{keyword}{sizeof}(bool));}
+\DoxyCodeLine{00711\ }
+\DoxyCodeLine{00712\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Salva\ número\ de\ vértices\ e\ arestas}}
+\DoxyCodeLine{00713\ \ \ \ \ \ \ \ \ uint32\_t\ vertex\_count\ =\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(n);}
+\DoxyCodeLine{00714\ \ \ \ \ \ \ \ \ uint32\_t\ edge\_count\ =\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(m);}
+\DoxyCodeLine{00715\ }
+\DoxyCodeLine{00716\ \ \ \ \ \ \ \ \ file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&vertex\_count),\ \textcolor{keyword}{sizeof}(uint32\_t));}
+\DoxyCodeLine{00717\ \ \ \ \ \ \ \ \ file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&edge\_count),\ \textcolor{keyword}{sizeof}(uint32\_t));}
+\DoxyCodeLine{00718\ }
+\DoxyCodeLine{00719\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Salva\ arestas}}
+\DoxyCodeLine{00720\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{classEdge}{Edge}}\&\ e\ :\ \mbox{\hyperlink{classGraph_a85ecacb3194ad500b180478fc9979e8a}{edges}}())\ \{}
+\DoxyCodeLine{00721\ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ u\ =\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(e.u);}
+\DoxyCodeLine{00722\ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ v\ =\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(e.v);}
+\DoxyCodeLine{00723\ \ \ \ \ \ \ \ \ \ \ \ \ file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&u),\ \textcolor{keyword}{sizeof}(uint32\_t));}
+\DoxyCodeLine{00724\ \ \ \ \ \ \ \ \ \ \ \ \ file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&v),\ \textcolor{keyword}{sizeof}(uint32\_t));}
+\DoxyCodeLine{00725\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00726\ }
+\DoxyCodeLine{00727\ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{00728\ \ \ \ \ \}}
+\DoxyCodeLine{00729\ }
+\DoxyCodeLine{00736\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classGraph}{Graph}}\ \mbox{\hyperlink{classGraph_a80b88807ba2afa5e7e8e54034cbfad74}{import\_from\_binary}}(\textcolor{keyword}{const}\ std::string\&\ filename)\ \{}
+\DoxyCodeLine{00737\ }
+\DoxyCodeLine{00738\ \ \ \ \ \ \ \ \ std::ifstream\ file(filename,\ std::ios::binary);}
+\DoxyCodeLine{00739\ }
+\DoxyCodeLine{00740\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!file)\ \{}
+\DoxyCodeLine{00741\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Não\ foi\ possível\ abrir\ o\ arquivo\ para\ leitura."{}});}
+\DoxyCodeLine{00742\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00743\ }
+\DoxyCodeLine{00744\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Lê\ configurações\ do\ grafo}}
+\DoxyCodeLine{00745\ \ \ \ \ \ \ \ \ uint8\_t\ ds\_type\_raw;}
+\DoxyCodeLine{00746\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ directed,\ weighted;}
+\DoxyCodeLine{00747\ }
+\DoxyCodeLine{00748\ \ \ \ \ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&ds\_type\_raw),\ \textcolor{keyword}{sizeof}(uint8\_t));}
+\DoxyCodeLine{00749\ \ \ \ \ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&directed),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{bool}));}
+\DoxyCodeLine{00750\ \ \ \ \ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&weighted),\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{bool}));}
+\DoxyCodeLine{00751\ }
+\DoxyCodeLine{00752\ \ \ \ \ \ \ \ \ Graph::DataStructures\ ds\_type\ =\ \textcolor{keyword}{static\_cast<}Graph::DataStructures\textcolor{keyword}{>}(ds\_type\_raw);}
+\DoxyCodeLine{00753\ }
+\DoxyCodeLine{00754\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Lê\ número\ de\ vértices\ e\ arestas}}
+\DoxyCodeLine{00755\ \ \ \ \ \ \ \ \ uint32\_t\ vertex\_count,\ edge\_count;}
+\DoxyCodeLine{00756\ \ \ \ \ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&vertex\_count),\ \textcolor{keyword}{sizeof}(uint32\_t));}
+\DoxyCodeLine{00757\ \ \ \ \ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&edge\_count),\ \textcolor{keyword}{sizeof}(uint32\_t));}
+\DoxyCodeLine{00758\ }
+\DoxyCodeLine{00759\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGraph}{Graph}}\ G(ds\_type,\ 0,\ 0,\ directed,\ weighted);}
+\DoxyCodeLine{00760\ }
+\DoxyCodeLine{00761\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ vertex\_count;\ i++)\ \{}
+\DoxyCodeLine{00762\ \ \ \ \ \ \ \ \ \ \ \ \ G.\mbox{\hyperlink{classGraph_a0428ccbebfd061c6f1f4853aeecf0ad2}{addVertex}}(i);}
+\DoxyCodeLine{00763\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00764\ }
+\DoxyCodeLine{00765\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Lê\ arestas}}
+\DoxyCodeLine{00766\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint32\_t\ i\ =\ 0;\ i\ <\ edge\_count;\ i++)\ \{}
+\DoxyCodeLine{00767\ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ u,\ v;}
+\DoxyCodeLine{00768\ \ \ \ \ \ \ \ \ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&u),\ \textcolor{keyword}{sizeof}(uint32\_t));}
+\DoxyCodeLine{00769\ \ \ \ \ \ \ \ \ \ \ \ \ file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&v),\ \textcolor{keyword}{sizeof}(uint32\_t));}
+\DoxyCodeLine{00770\ \ \ \ \ \ \ \ \ \ \ \ \ G.\mbox{\hyperlink{classGraph_a7e73f7faf18c4ee073ed7fef26dfec9d}{addEdge}}(u,\ v);}
+\DoxyCodeLine{00771\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00772\ }
+\DoxyCodeLine{00773\ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{00774\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ G;}
+\DoxyCodeLine{00775\ \ \ \ \ \}}
+\DoxyCodeLine{00776\ \};}
+
+\end{DoxyCode}

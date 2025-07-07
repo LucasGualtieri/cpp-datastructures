@@ -1,0 +1,146 @@
+\doxysection{Linear\+Stack\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classLinearStack}{}\label{classLinearStack}\index{LinearStack$<$ T $>$@{LinearStack$<$ T $>$}}
+
+
+Inheritance diagram for Linear\+Stack\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{classLinearStack__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Linear\+Stack\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{classLinearStack__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLinearStack_ad994ec390f98fb64bc673b9e4f558101}\label{classLinearStack_ad994ec390f98fb64bc673b9e4f558101} 
+{\bfseries Linear\+Stack} (size\+\_\+t max\+Size=5)
+\item 
+bool \mbox{\hyperlink{classLinearStack_ad7ed49d62fc07d1b013e1a3af9a9db63}{contains}} (const T \&value) const override
+\item 
+void \mbox{\hyperlink{classLinearStack_a3c3bdd1e6aab2a83cf3dde22b76b430c}{push}} (T value) override
+\item 
+T \mbox{\hyperlink{classLinearStack_a3a69593ff2e59d73c6a5872c5d0be0cf}{pop}} () override
+\item 
+T \& \mbox{\hyperlink{classLinearStack_af0d32c00d47315130d6148f9cefd88f8}{peek}} () const override
+\item 
+\Hypertarget{classLinearStack_a85691f6c15509fe7d49000866d16ec33}\label{classLinearStack_a85691f6c15509fe7d49000866d16ec33} 
+void {\bfseries reserve} (size\+\_\+t new\+Capacity)
+\item 
+\Hypertarget{classLinearStack_ac2fcf9e2e3ac8aa2ba71025ecc26c1cb}\label{classLinearStack_ac2fcf9e2e3ac8aa2ba71025ecc26c1cb} 
+void {\bfseries shrink\+\_\+to\+\_\+fit} ()
+\item 
+void \mbox{\hyperlink{classLinearStack_a5ff72cc4bdb0e24a6a35000d78f1c4e2}{clear}} () override
+\item 
+\Hypertarget{classLinearStack_a194ebac3419ab25a763cfe531978eceb}\label{classLinearStack_a194ebac3419ab25a763cfe531978eceb} 
+size\+\_\+t {\bfseries capacity} ()
+\item 
+std\+::string \mbox{\hyperlink{classLinearStack_abcf353e731d3fe2208bab330dfb8b3a0}{str}} () const override
+\item 
+\Hypertarget{classLinearStack_a3dcbd16517f8f71e5dcb8056c253484c}\label{classLinearStack_a3dcbd16517f8f71e5dcb8056c253484c} 
+T \texorpdfstring{$\ast$}{*} {\bfseries begin} () const
+\item 
+\Hypertarget{classLinearStack_af07c2b42958f4f25017f775599bdfb2b}\label{classLinearStack_af07c2b42958f4f25017f775599bdfb2b} 
+T \texorpdfstring{$\ast$}{*} {\bfseries end} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classStack}{Stack$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual size\+\_\+t {\bfseries size} () const final
+\item 
+virtual bool {\bfseries empty} () const final
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLinearStack_a2d1a94b0bebe7f2ea1fe754432a6bed8}\label{classLinearStack_a2d1a94b0bebe7f2ea1fe754432a6bed8} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&os, const \mbox{\hyperlink{classLinearStack}{Linear\+Stack}} \&list)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classStack}{Stack$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t {\bfseries \+\_\+size}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLinearStack_a5ff72cc4bdb0e24a6a35000d78f1c4e2}\label{classLinearStack_a5ff72cc4bdb0e24a6a35000d78f1c4e2} 
+\index{LinearStack$<$ T $>$@{LinearStack$<$ T $>$}!clear@{clear}}
+\index{clear@{clear}!LinearStack$<$ T $>$@{LinearStack$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classLinearStack}{Linear\+Stack}}$<$ T $>$\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classStack}{Stack$<$ T $>$}}.
+
+\Hypertarget{classLinearStack_ad7ed49d62fc07d1b013e1a3af9a9db63}\label{classLinearStack_ad7ed49d62fc07d1b013e1a3af9a9db63} 
+\index{LinearStack$<$ T $>$@{LinearStack$<$ T $>$}!contains@{contains}}
+\index{contains@{contains}!LinearStack$<$ T $>$@{LinearStack$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classLinearStack}{Linear\+Stack}}$<$ T $>$\+::contains (\begin{DoxyParamCaption}\item[{const T \&}]{value }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classStack}{Stack$<$ T $>$}}.
+
+\Hypertarget{classLinearStack_af0d32c00d47315130d6148f9cefd88f8}\label{classLinearStack_af0d32c00d47315130d6148f9cefd88f8} 
+\index{LinearStack$<$ T $>$@{LinearStack$<$ T $>$}!peek@{peek}}
+\index{peek@{peek}!LinearStack$<$ T $>$@{LinearStack$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{peek()}{peek()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \& \mbox{\hyperlink{classLinearStack}{Linear\+Stack}}$<$ T $>$\+::peek (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classStack}{Stack$<$ T $>$}}.
+
+\Hypertarget{classLinearStack_a3a69593ff2e59d73c6a5872c5d0be0cf}\label{classLinearStack_a3a69593ff2e59d73c6a5872c5d0be0cf} 
+\index{LinearStack$<$ T $>$@{LinearStack$<$ T $>$}!pop@{pop}}
+\index{pop@{pop}!LinearStack$<$ T $>$@{LinearStack$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{pop()}{pop()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{classLinearStack}{Linear\+Stack}}$<$ T $>$\+::pop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classStack}{Stack$<$ T $>$}}.
+
+\Hypertarget{classLinearStack_a3c3bdd1e6aab2a83cf3dde22b76b430c}\label{classLinearStack_a3c3bdd1e6aab2a83cf3dde22b76b430c} 
+\index{LinearStack$<$ T $>$@{LinearStack$<$ T $>$}!push@{push}}
+\index{push@{push}!LinearStack$<$ T $>$@{LinearStack$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{push()}{push()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classLinearStack}{Linear\+Stack}}$<$ T $>$\+::push (\begin{DoxyParamCaption}\item[{T}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classStack}{Stack$<$ T $>$}}.
+
+\Hypertarget{classLinearStack_abcf353e731d3fe2208bab330dfb8b3a0}\label{classLinearStack_abcf353e731d3fe2208bab330dfb8b3a0} 
+\index{LinearStack$<$ T $>$@{LinearStack$<$ T $>$}!str@{str}}
+\index{str@{str}!LinearStack$<$ T $>$@{LinearStack$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{str()}{str()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::string \mbox{\hyperlink{classLinearStack}{Linear\+Stack}}$<$ T $>$\+::str (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classStack}{Stack$<$ T $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+stack/linear\+\_\+stack.\+hpp\end{DoxyCompactItemize}

@@ -31,9 +31,18 @@ namespace std {
 	};
 }
 
+/**
+ * @brief Constructs a graph with the specified structure, size, and properties.
+ *
+ * @param choice The data structure to be used for graph representation.
+ * @param n Number of vertices.
+ * @param m Number of edges.
+ * @param directed Whether the graph is directed.
+ * @param weighted Whether the graph is weighted.
+ */
 class Graph {
 
-public:
+    public:
 
 	enum DataStructures {
 		AdjacencyMatrix, AdjacencyMatrixPointers,
@@ -42,7 +51,7 @@ public:
 
 	using Prop = Pair<std::string, std::string>;
 
-private:
+	private:
 
 	Pair<std::string, std::string> base = {"", ""};
 
@@ -59,7 +68,7 @@ private:
 
 		Pair<std::string, std::string> base = {"", ""};
 
-	  public:
+		public:
 
 		Pair<std::string, std::string> Find(const Vertex& v) const {
 			auto it = find(v);
@@ -71,7 +80,7 @@ private:
 
 		std::string base = "";
 
-	  public:
+		public:
 
 		std::string Find(const Vertex& v) const {
 			auto it = find(v);
@@ -111,7 +120,7 @@ private:
 		return nullptr;
 	}
 
-public:
+	public:
 
 	size_t n, m;
 
@@ -129,6 +138,11 @@ public:
 		this->dataStructure->weighted(weighted);
 	}
 
+	/**
+	 * @brief Copy constructor for the Graph.
+	 *
+	 * @param clone Graph to be copied.
+	 */
 	Graph (const Graph& clone) {
 
 		// NOTE: This is the function called by the "return graph;" "context".
@@ -153,6 +167,12 @@ public:
 		}
 	}
 
+	/**
+	 * @brief Assignment operator for the Graph.
+	 *
+	 * @param G Graph to be assigned.
+	 * @return Reference to this graph after assignment.
+	 */
 	Graph& operator=(const Graph& G) {
 
 		if (this != &G) {
@@ -182,39 +202,89 @@ public:
 		return *this;
 	}
 
+	/**
+	 * @brief Clones the current graph's structure without its data.
+	 *
+	 * @param n Optional new vertex count for the clone.
+	 * @return A new Graph with the same structure type and properties.
+	 */
 	Graph cloneDataStructure(size_t n = 0) const {
 		return { choice, n, m, directed, weighted };
 	}
 
+	/**
+	 * @brief Prints the current underlying data structure.
+	 */
 	void printDataStructure() { dataStructure->print(); }
 
+	/**
+	 * @brief Destructor that deallocates the data structure.
+	 */
 	~Graph() { delete dataStructure; }
 
+
+	/**
+	 * @brief Adds a vertex to the graph.
+	 *
+	 * @param v Vertex identifier.
+	 */
 	void addVertex(const Vertex& v) {
 		dataStructure->addVertex(v);
 		n++;
 	}
 
+	/**
+	 * @brief Adds a vertex with associated properties.
+	 *
+	 * @param v Vertex identifier.
+	 * @param props Pair of string properties associated with the vertex.
+	 */
 	void addVertex(const Vertex& v, const Pair<std::string, std::string>& props) {
 		addVertex(v);
 		vertexMap.insert({v, props});
 	}
 
+	/**
+	 * @brief Adds a vertex with a label.
+	 *
+	 * @param v Vertex identifier.
+	 * @param label Label associated with the vertex.
+	 */
 	void addVertex(const Vertex& v, std::string& label) {
 		addVertex(v);
 		vertexLabel.insert({v, label});
 	}
 
+	/**
+	 * @brief Adds a vertex with both label and properties.
+	 *
+	 * @param v Vertex identifier.
+	 * @param label Label for the vertex.
+	 * @param props Properties associated with the vertex.
+	 */
 	void addVertex(const Vertex& v, const std::string& label, const Pair<std::string, std::string>& props) {
 		addVertex(v);
 		vertexMap.insert({v, props});
 		vertexLabel.insert({v, label});
 	}
 
+	/**
+	 * @brief Retrieves the label of a given vertex.
+	 *
+	 * @param v Vertex identifier.
+	 * @return Label as a string.
+	 */
 	std::string getLabel(const Vertex& v) const {
 		return vertexLabel.Find(v);
 	}
 
+	/**
+	 * @brief Adds a weighted edge between two vertices.
+	 *
+	 * @param u Source vertex.
+	 * @param v Destination vertex.
+	 * @param weight Weight of the edge.
+	 */
 	void addEdge(const Vertex& u, const Vertex& v, const float& weight) {
 
 		if (hasEdge({u, v})) return;
@@ -234,6 +304,12 @@ public:
 		m++;
 	}
 
+	/**
+	 * @brief Adds an unweighted edge between two vertices.
+	 *
+	 * @param u Source vertex.
+	 * @param v Destination vertex.
+	 */
 	void addEdge(const Vertex& u, const Vertex& v) {
 
 		if (weighted) {
@@ -251,12 +327,25 @@ public:
 		m++;
 	}
 
+	/**
+	 * @brief Adds an edge with associated properties.
+	 *
+	 * @param u Source vertex.
+	 * @param v Destination vertex.
+	 * @param props Pair of string properties.
+	 */
 	void addEdge(const Vertex& u, const Vertex& v, const Pair<std::string, std::string>& props) {
 		if (hasEdge({u, v})) return;
 		addEdge(u, v);
 		edgeMap.insert({{u, v}, props});
 	}
 
+
+	/**
+	 * @brief Adds an edge to the graph.
+	 *
+	 * @param e Edge object.
+	 */
 	void addEdge(const Edge& e) {
 
 		if (hasEdge(e)) return;
@@ -282,76 +371,180 @@ public:
 		m++;
 	}
 
+	/**
+	 * @brief Adds an edge with properties.
+	 *
+	 * @param e Edge object.
+	 * @param props Properties associated with the edge.
+	 */
 	void addEdge(const Edge& e, const Pair<std::string, std::string>& props) {
 		if (hasEdge(e)) return;
 		addEdge(e);
 		edgeMap.insert({{e.u, e.v}, props});
 	}
 
+	/**
+	 * @brief Removes an edge from the graph.
+	 *
+	 * @param e Edge to be removed.
+	 */
 	void removeEdge(const Edge& e) {
 		dataStructure->removeEdge(e.u, e.v);
 		m--;
 	}
 
+	/**
+	 * @brief Updates the properties of an edge.
+	 *
+	 * @param u Source vertex.
+	 * @param v Destination vertex.
+	 * @param prop New properties.
+	 */
 	void changeEdgeProps(const Vertex& u, const Vertex& v, const Prop prop) {
 		if (hasEdge(u, v)) {
 			edgeMap[{u, v}] = prop;
 		}
 	}
 
+	/**
+	 * @brief Updates the properties of an edge.
+	 *
+	 * @param e Edge to be updated.
+	 * @param prop New properties.
+	 */
 	void changeEdgeProps(const Edge& e, const Prop prop) {
 		if (hasEdge(e.u, e.v)) {
 			edgeMap[{e.u, e.v}] = prop;
 		}
 	}
 
-	// NOTE: There probably should be a check if there is the vertex
+	/**
+	 * @brief Updates the properties of a vertex.
+	 *
+	 * @param v Vertex to be updated.
+	 * @param prop New properties.
+	 */
 	void changeVertexProps(const Vertex& v, const Prop& prop) {
+		// NOTE: There probably should be a check if there is the vertex
 		vertexMap[v] = prop;
 	}
 
+	/**
+	 * @brief Updates the label of a vertex.
+	 *
+	 * @param v Vertex to be updated.
+	 * @param label New label.
+	 */
 	void changeVertexLabel(const Vertex& v, const std::string& label) {
 		vertexLabel[v] = label;
 	}
 
+	/**
+	 * @brief Updates the weight of an edge.
+	 *
+	 * @param e Edge to update.
+	 * @param weight New weight.
+	 */
 	void changeEdgeWeight(const Edge& e, const float& weight) {
 		dataStructure->changeEdgeWeight(e, weight);
 	}
 
+	/**
+	 * @brief Updates the weight of an edge.
+	 *
+	 * @param u Source vertex.
+	 * @param v Destination vertex.
+	 * @param weight New weight.
+	 */
 	void changeEdgeWeight(const Vertex& u, const Vertex& v, const float& weight) {
 		dataStructure->changeEdgeWeight({ u, v }, weight);
 	}
 
+	/**
+	 * @brief Retrieves an edge object.
+	 *
+	 * @param e Edge to retrieve.
+	 * @return The edge object from the structure.
+	 */
 	Edge getEdge(const Edge& e) const {
 		return dataStructure->getEdge(e);
 	}
 
+	/**
+	 * @brief Retrieves an edge object.
+	 *
+	 * @param u Source vertex.
+	 * @param v Destination vertex.
+	 * @return The edge object from the structure.
+	 */
 	Edge getEdge(const Vertex& u, const Vertex& v) const {
 		return dataStructure->getEdge({u, v});
 	}
 
+	/**
+	 * @brief Checks if an edge exists in the graph.
+	 *
+	 * @param e Edge to check.
+	 * @return True if exists, false otherwise.
+	 */
 	bool hasEdge(const Edge& e) const {
 		return dataStructure->hasEdge(e.u, e.v);
 	}
 
+	/**
+	 * @brief Checks if an edge exists in the graph.
+	 *
+	 * @param u Source vertex.
+	 * @param v Destination vertex.
+	 * @return True if exists, false otherwise.
+	 */
 	bool hasEdge(const Vertex& u, const Vertex& v) const {
 		return dataStructure->hasEdge(u, v);
 	}
 
+	/**
+	 * @brief Returns the degree of a vertex.
+	 *
+	 * @param v Vertex identifier.
+	 * @return Number of neighbors.
+	 */
 	size_t degree(const Vertex& v) const {
 		return dataStructure->degree(v);
 	}
 
+	/**
+	 * @brief Retrieves a list of all edges.
+	 *
+	 * @return List of edges.
+	 */
 	LinearList<Edge> edges() const { return dataStructure->edges(); }
 
+
+	/**
+	 * @brief Retrieves a list of all vertices.
+	 *
+	 * @return List of vertices.
+	 */
 	LinearList<Vertex> vertices() const {
 		return dataStructure->vertices();
 	}
 
+	/**
+	 * @brief Retrieves a list of neighboring vertices and weights.
+	 *
+	 * @param u Vertex identifier.
+	 * @return List of pairs (neighbor, weight).
+	 */
 	LinearList<Pair<Vertex, float>> edgesOf(const Vertex& u) const {
 		return dataStructure->neighbors(u);
 	}
 
+	/**
+	 * @brief Retrieves a list of neighboring vertices.
+	 *
+	 * @param u Vertex identifier.
+	 * @return List of neighbors.
+	 */
 	LinearList<Vertex> neighbors(const Vertex& u) const {
 
 		LinearList<Vertex> _neighbors;
@@ -363,11 +556,23 @@ public:
 		return _neighbors;
 	}
 
+	/**
+	 * @brief Returns the list of neighbors of a vertex.
+	 *
+	 * @param u Vertex identifier.
+	 * @return List of neighbor pairs (vertex, weight).
+	 */
 	LinearList<Pair<Vertex, float>> operator[](const Vertex& u) {
 		return dataStructure->neighbors(u);
 	}
 
-	// Function to export the graph to a PNG image using Graphviz
+	/**
+	 * @brief Exports the graph to a PNG file using Graphviz.
+	 *
+	 * @param filename Output file name (without extension).
+	 * @param engine Layout engine (e.g., "dot", "neato").
+	 * @param dpi Resolution in dots per inch.
+	 */
 	void export_to_png(const std::string& filename, const std::string& engine = "dot", size_t dpi = 300) const {
 
 		// NOTE: This is possible to define all nodes and edges at once
@@ -422,9 +627,14 @@ public:
 		std::cout << "Graph exported successfully to " << filename << ".png\n";
 	}
 
-	// TODO: Separar as arestas por virgulas
+	/**
+	 * @brief Converts the graph to a string representation.
+	 *
+	 * @return Stringified version of the graph.
+	 */
 	std::string str() const {
 
+		// TODO: Separar as arestas por virgulas
 		std::stringstream os;
 
 		for (Vertex& u : vertices()) {
@@ -453,6 +663,12 @@ public:
 		return os;
 	}
 
+	/**
+	 * @brief Computes the graph's density.
+	 *
+	 * @param precision Number of decimal places in the result.
+	 * @return Density of the graph.
+	 */
 	double density(const int& precision = 3) const {
 
 		double n = this->n;
@@ -464,8 +680,18 @@ public:
 		return std::round(density * factor) / factor;
 	}
 
-	float sparsness() const { return 1 - density(); }
+	/**
+	 * @brief Computes the sparsness of the graph.
+	 *
+	 * @return Sparsness value between 0 and 1.
+	 */
+	float sparsness(const int& precision = 3) const { return 1 - density(precision); }
 
+	/**
+	 * @brief Exports the graph to a binary file.
+	 *
+	 * @param filename Output file name.
+	 */
 	void export_to_binary(const std::string& filename) const {
 
 		std::ofstream file(filename, std::ios::binary);
@@ -501,6 +727,12 @@ public:
 		file.close();
 	}
 
+	/**
+	 * @brief Imports a graph from a binary file.
+	 *
+	 * @param filename Input file name.
+	 * @return Loaded Graph object.
+	 */
 	static Graph import_from_binary(const std::string& filename) {
 
 		std::ifstream file(filename, std::ios::binary);
@@ -541,5 +773,4 @@ public:
 		file.close();
 		return G;
 	}
-
 };

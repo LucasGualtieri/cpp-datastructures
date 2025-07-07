@@ -1,0 +1,211 @@
+\doxysection{Fast\+Adjacency\+List Class Reference}
+\hypertarget{classFastAdjacencyList}{}\label{classFastAdjacencyList}\index{FastAdjacencyList@{FastAdjacencyList}}
+
+
+Inheritance diagram for Fast\+Adjacency\+List\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{classFastAdjacencyList__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Fast\+Adjacency\+List\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{classFastAdjacencyList__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classFastAdjacencyList_a89cb98adc9ae252c6ee2d9bd99935714}{add\+Edge}} (const Vertex \&u, const Vertex \&v, float weight=1.\+0) override
+\item 
+void \mbox{\hyperlink{classFastAdjacencyList_ab084c6eb02bf0cf3f3e201ec822e5e3e}{remove\+Edge}} (const Vertex \&u, const Vertex \&v) override
+\item 
+void \mbox{\hyperlink{classFastAdjacencyList_a4e6e314fb4e754fc29af7f263c4530e6}{change\+Edge\+Weight}} (const \mbox{\hyperlink{classEdge}{Edge}} \&e, const float \&weight) override
+\item 
+\mbox{\hyperlink{classEdge}{Edge}} \mbox{\hyperlink{classFastAdjacencyList_a08807f6a982bd8f95fb5a28af34ddcd5}{get\+Edge}} (const \mbox{\hyperlink{classEdge}{Edge}} \&e) const override
+\item 
+void \mbox{\hyperlink{classFastAdjacencyList_ab896448a699334b49fa97c786a352e9e}{add\+Vertex}} (const Vertex \&v) override
+\item 
+size\+\_\+t \mbox{\hyperlink{classFastAdjacencyList_a2abc28cd2648aadd59b6c7fca3fe168d}{degree}} (const Vertex \&v) const override
+\item 
+bool \mbox{\hyperlink{classFastAdjacencyList_a6199d17e2c65c541260b18077762cc37}{has\+Edge}} (const Vertex \&u, const Vertex \&v, const float \&weight) const override
+\item 
+bool \mbox{\hyperlink{classFastAdjacencyList_ab3b0b112019d77f26c138f0f5871fe06}{has\+Edge}} (const Vertex \&u, const Vertex \&v) const override
+\item 
+bool \mbox{\hyperlink{classFastAdjacencyList_acbcb232ed89e5060bf6d5cd119bed268}{has\+Vertex}} (const Vertex \&v) const override
+\item 
+void \mbox{\hyperlink{classFastAdjacencyList_ae3fd70e4eddb530d70b3c6efcfe84b45}{weighted}} (bool \+\_\+weighted) override
+\item 
+void \mbox{\hyperlink{classFastAdjacencyList_a5b039817fcdf26f4f2c2a810e838305f}{directed}} (bool \+\_\+directed) override
+\item 
+\mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ \mbox{\hyperlink{classEdge}{Edge}} $>$ \mbox{\hyperlink{classFastAdjacencyList_aa49ab3daaf54c1121d373e7e7e0f5b5e}{edges}} () const override
+\item 
+\mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ Vertex $>$ \mbox{\hyperlink{classFastAdjacencyList_aff8bfffef27baa546f515cdbbe43e72f}{vertices}} () const override
+\item 
+\mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ \mbox{\hyperlink{classPair}{Pair}}$<$ Vertex, float $>$ $>$ \mbox{\hyperlink{classFastAdjacencyList_a35dba304e6d72080017905b89506c4be}{neighbors}} (const Vertex \&u) const override
+\item 
+void \mbox{\hyperlink{classFastAdjacencyList_a4de9025ba673fe791e688b421bcb1843}{print}} () override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classFastAdjacencyList_a89cb98adc9ae252c6ee2d9bd99935714}\label{classFastAdjacencyList_a89cb98adc9ae252c6ee2d9bd99935714} 
+\index{FastAdjacencyList@{FastAdjacencyList}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!FastAdjacencyList@{FastAdjacencyList}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily void Fast\+Adjacency\+List\+::add\+Edge (\begin{DoxyParamCaption}\item[{const Vertex \&}]{u,  }\item[{const Vertex \&}]{v,  }\item[{float}]{weight = {\ttfamily 1.0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classFastAdjacencyList_ab896448a699334b49fa97c786a352e9e}\label{classFastAdjacencyList_ab896448a699334b49fa97c786a352e9e} 
+\index{FastAdjacencyList@{FastAdjacencyList}!addVertex@{addVertex}}
+\index{addVertex@{addVertex}!FastAdjacencyList@{FastAdjacencyList}}
+\doxysubsubsection{\texorpdfstring{addVertex()}{addVertex()}}
+{\footnotesize\ttfamily void Fast\+Adjacency\+List\+::add\+Vertex (\begin{DoxyParamCaption}\item[{const Vertex \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classFastAdjacencyList_a4e6e314fb4e754fc29af7f263c4530e6}\label{classFastAdjacencyList_a4e6e314fb4e754fc29af7f263c4530e6} 
+\index{FastAdjacencyList@{FastAdjacencyList}!changeEdgeWeight@{changeEdgeWeight}}
+\index{changeEdgeWeight@{changeEdgeWeight}!FastAdjacencyList@{FastAdjacencyList}}
+\doxysubsubsection{\texorpdfstring{changeEdgeWeight()}{changeEdgeWeight()}}
+{\footnotesize\ttfamily void Fast\+Adjacency\+List\+::change\+Edge\+Weight (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEdge}{Edge}} \&}]{e,  }\item[{const float \&}]{weight }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classFastAdjacencyList_a2abc28cd2648aadd59b6c7fca3fe168d}\label{classFastAdjacencyList_a2abc28cd2648aadd59b6c7fca3fe168d} 
+\index{FastAdjacencyList@{FastAdjacencyList}!degree@{degree}}
+\index{degree@{degree}!FastAdjacencyList@{FastAdjacencyList}}
+\doxysubsubsection{\texorpdfstring{degree()}{degree()}}
+{\footnotesize\ttfamily size\+\_\+t Fast\+Adjacency\+List\+::degree (\begin{DoxyParamCaption}\item[{const Vertex \&}]{v }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classFastAdjacencyList_a5b039817fcdf26f4f2c2a810e838305f}\label{classFastAdjacencyList_a5b039817fcdf26f4f2c2a810e838305f} 
+\index{FastAdjacencyList@{FastAdjacencyList}!directed@{directed}}
+\index{directed@{directed}!FastAdjacencyList@{FastAdjacencyList}}
+\doxysubsubsection{\texorpdfstring{directed()}{directed()}}
+{\footnotesize\ttfamily void Fast\+Adjacency\+List\+::directed (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+directed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classFastAdjacencyList_aa49ab3daaf54c1121d373e7e7e0f5b5e}\label{classFastAdjacencyList_aa49ab3daaf54c1121d373e7e7e0f5b5e} 
+\index{FastAdjacencyList@{FastAdjacencyList}!edges@{edges}}
+\index{edges@{edges}!FastAdjacencyList@{FastAdjacencyList}}
+\doxysubsubsection{\texorpdfstring{edges()}{edges()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ \mbox{\hyperlink{classEdge}{Edge}} $>$ Fast\+Adjacency\+List\+::edges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classFastAdjacencyList_a08807f6a982bd8f95fb5a28af34ddcd5}\label{classFastAdjacencyList_a08807f6a982bd8f95fb5a28af34ddcd5} 
+\index{FastAdjacencyList@{FastAdjacencyList}!getEdge@{getEdge}}
+\index{getEdge@{getEdge}!FastAdjacencyList@{FastAdjacencyList}}
+\doxysubsubsection{\texorpdfstring{getEdge()}{getEdge()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{Edge}} Fast\+Adjacency\+List\+::get\+Edge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEdge}{Edge}} \&}]{e }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classFastAdjacencyList_ab3b0b112019d77f26c138f0f5871fe06}\label{classFastAdjacencyList_ab3b0b112019d77f26c138f0f5871fe06} 
+\index{FastAdjacencyList@{FastAdjacencyList}!hasEdge@{hasEdge}}
+\index{hasEdge@{hasEdge}!FastAdjacencyList@{FastAdjacencyList}}
+\doxysubsubsection{\texorpdfstring{hasEdge()}{hasEdge()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Fast\+Adjacency\+List\+::has\+Edge (\begin{DoxyParamCaption}\item[{const Vertex \&}]{u,  }\item[{const Vertex \&}]{v }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classFastAdjacencyList_a6199d17e2c65c541260b18077762cc37}\label{classFastAdjacencyList_a6199d17e2c65c541260b18077762cc37} 
+\index{FastAdjacencyList@{FastAdjacencyList}!hasEdge@{hasEdge}}
+\index{hasEdge@{hasEdge}!FastAdjacencyList@{FastAdjacencyList}}
+\doxysubsubsection{\texorpdfstring{hasEdge()}{hasEdge()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Fast\+Adjacency\+List\+::has\+Edge (\begin{DoxyParamCaption}\item[{const Vertex \&}]{u,  }\item[{const Vertex \&}]{v,  }\item[{const float \&}]{weight }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classFastAdjacencyList_acbcb232ed89e5060bf6d5cd119bed268}\label{classFastAdjacencyList_acbcb232ed89e5060bf6d5cd119bed268} 
+\index{FastAdjacencyList@{FastAdjacencyList}!hasVertex@{hasVertex}}
+\index{hasVertex@{hasVertex}!FastAdjacencyList@{FastAdjacencyList}}
+\doxysubsubsection{\texorpdfstring{hasVertex()}{hasVertex()}}
+{\footnotesize\ttfamily bool Fast\+Adjacency\+List\+::has\+Vertex (\begin{DoxyParamCaption}\item[{const Vertex \&}]{v }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classFastAdjacencyList_a35dba304e6d72080017905b89506c4be}\label{classFastAdjacencyList_a35dba304e6d72080017905b89506c4be} 
+\index{FastAdjacencyList@{FastAdjacencyList}!neighbors@{neighbors}}
+\index{neighbors@{neighbors}!FastAdjacencyList@{FastAdjacencyList}}
+\doxysubsubsection{\texorpdfstring{neighbors()}{neighbors()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ \mbox{\hyperlink{classPair}{Pair}}$<$ Vertex, float $>$ $>$ Fast\+Adjacency\+List\+::neighbors (\begin{DoxyParamCaption}\item[{const Vertex \&}]{u }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classFastAdjacencyList_a4de9025ba673fe791e688b421bcb1843}\label{classFastAdjacencyList_a4de9025ba673fe791e688b421bcb1843} 
+\index{FastAdjacencyList@{FastAdjacencyList}!print@{print}}
+\index{print@{print}!FastAdjacencyList@{FastAdjacencyList}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Fast\+Adjacency\+List\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classFastAdjacencyList_ab084c6eb02bf0cf3f3e201ec822e5e3e}\label{classFastAdjacencyList_ab084c6eb02bf0cf3f3e201ec822e5e3e} 
+\index{FastAdjacencyList@{FastAdjacencyList}!removeEdge@{removeEdge}}
+\index{removeEdge@{removeEdge}!FastAdjacencyList@{FastAdjacencyList}}
+\doxysubsubsection{\texorpdfstring{removeEdge()}{removeEdge()}}
+{\footnotesize\ttfamily void Fast\+Adjacency\+List\+::remove\+Edge (\begin{DoxyParamCaption}\item[{const Vertex \&}]{u,  }\item[{const Vertex \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classFastAdjacencyList_aff8bfffef27baa546f515cdbbe43e72f}\label{classFastAdjacencyList_aff8bfffef27baa546f515cdbbe43e72f} 
+\index{FastAdjacencyList@{FastAdjacencyList}!vertices@{vertices}}
+\index{vertices@{vertices}!FastAdjacencyList@{FastAdjacencyList}}
+\doxysubsubsection{\texorpdfstring{vertices()}{vertices()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ Vertex $>$ Fast\+Adjacency\+List\+::vertices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classFastAdjacencyList_ae3fd70e4eddb530d70b3c6efcfe84b45}\label{classFastAdjacencyList_ae3fd70e4eddb530d70b3c6efcfe84b45} 
+\index{FastAdjacencyList@{FastAdjacencyList}!weighted@{weighted}}
+\index{weighted@{weighted}!FastAdjacencyList@{FastAdjacencyList}}
+\doxysubsubsection{\texorpdfstring{weighted()}{weighted()}}
+{\footnotesize\ttfamily void Fast\+Adjacency\+List\+::weighted (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+weighted }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+graph/implementations/fast\+\_\+adjacency\+\_\+list.\+hpp\end{DoxyCompactItemize}

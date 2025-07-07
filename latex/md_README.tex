@@ -1,0 +1,119 @@
+\chapter{cpp-\/datastructures}
+\hypertarget{md_README}{}\label{md_README}\index{cpp-\/datastructures@{cpp-\/datastructures}}
+\label{md_README_autotoc_md0}%
+\Hypertarget{md_README_autotoc_md0}%
+Uma biblioteca educacional moderna em C++ contendo diversas estruturas de dados, como listas, pilhas, filas, filas de prioridade, grafos e matrizes.
+
+Perfeita para ser reutilizada em projetos acadêmicos através de {\bfseries{submódulos}} ou {\bfseries{subtrees Git}}.
+
+\DoxyHorRuler{0}
+\hypertarget{md_README_autotoc_md2}{}\doxysection{\texorpdfstring{📦 Como utilizar a biblioteca}{📦 Como utilizar a biblioteca}}\label{md_README_autotoc_md2}
+Você pode integrar a biblioteca no seu projeto de duas formas\+:
+
+\DoxyHorRuler{0}
+
+
+
+
+{\bfseries{🔗 Opção 1\+: Git Submodule (recomendado)}}\begin{adjustwidth}{1em}{0em}
+~\newline
+ O submódulo permite adicionar esta biblioteca como um "{}sub-\/repositório"{} vinculado a um commit específico.
+
+\end{adjustwidth}
+\hypertarget{md_README_autotoc_md4}{}\doxysubsubsection{\texorpdfstring{➕ Adicionando ao seu projeto}{➕ Adicionando ao seu projeto}}\label{md_README_autotoc_md4}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ submodule\ add\ https://github.com/LucasGualtieri/cpp-\/datastructures}
+\DoxyCodeLine{git\ submodule\ update\ -\/-\/init\ -\/-\/recursive}
+
+\end{DoxyCode}
+
+
+Isso criará a pasta cpp-\/datastructures/ com os arquivos da biblioteca.\hypertarget{md_README_autotoc_md5}{}\doxysubsection{\texorpdfstring{🧠 Vantagens\+:}{🧠 Vantagens:}}\label{md_README_autotoc_md5}
+
+\begin{DoxyItemize}
+\item Você mantém o repositório da lib separado e versionado.
+\item Pode facilmente atualizar a lib com\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ cpp-\/datastructures}
+\DoxyCodeLine{git\ pull\ origin\ main}
+
+\end{DoxyCode}
+ 
+
+\DoxyHorRuler{0}
+
+
+
+
+{\bfseries{🌳 Opção 2\+: Git Subtree (alternativa mais simples)}}\begin{adjustwidth}{1em}{0em}
+~\newline
+ Com o subtree, o conteúdo do outro repositório é mesclado diretamente na árvore do seu projeto.
+
+\end{adjustwidth}
+\hypertarget{md_README_autotoc_md7}{}\doxysubsubsection{\texorpdfstring{➕ Adicionando a lib como subtree}{➕ Adicionando a lib como subtree}}\label{md_README_autotoc_md7}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ subtree\ add\ -\/-\/prefix=cpp-\/datastructures\ https://github.com/LucasGualtieri/cpp-\/datastructures\ main\ -\/-\/squash}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md8}{}\doxysubsubsection{\texorpdfstring{🔄 Atualizando a subtree}{🔄 Atualizando a subtree}}\label{md_README_autotoc_md8}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ subtree\ pull\ -\/-\/prefix=cpp-\/datastructures\ https://github.com/LucasGualtieri/cpp-\/datastructures\ main\ -\/-\/squash}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md9}{}\doxysubsection{\texorpdfstring{🧠 Vantagens\+:}{🧠 Vantagens:}}\label{md_README_autotoc_md9}
+
+\begin{DoxyItemize}
+\item Não exige conhecimento de submódulos para quem clona o repositório.
+\item Tudo está no mesmo repositório, sem dependências externas.
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md10}{}\doxysubsection{\texorpdfstring{⚠️ Desvantagens\+:}{⚠️ Desvantagens:}}\label{md_README_autotoc_md10}
+
+\begin{DoxyItemize}
+\item Histórico da lib não é preservado.
+\item Atualizações precisam ser feitas manualmente via comando subtree pull. 
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md_README_autotoc_md12}{}\doxysubsection{\texorpdfstring{🛠️ Usando no CMake}{🛠️ Usando no CMake}}\label{md_README_autotoc_md12}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{add\_subdirectory(cpp-\/datastructures)}
+\DoxyCodeLine{target\_link\_libraries(seu\_projeto\ PRIVATE\ ds)}
+
+\end{DoxyCode}
+ \DoxyHorRuler{0}
+\hypertarget{md_README_autotoc_md14}{}\doxysubsection{\texorpdfstring{💻 incluindo no código}{💻 incluindo no código}}\label{md_README_autotoc_md14}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}cpp-\/datastructures/list/linear\_list.hpp"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }ds;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main()\ \{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ LinearList<int>\ list\ =\ \{\ 1,\ 2,\ 3,\ 4,\ 5\ \};}
+\DoxyCodeLine{\ \ \ \ cout\ <<\ list\ <<\ endl;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+⚙️ Sobre estrutura
+\begin{DoxyItemize}
+\item Os headers ficam em {\ttfamily cpp-\/datastructures/estrutura/}, então você sempre inclui com {\ttfamily \#include "{}cpp-\/datastructures/estrutura/estrutura.\+hpp"{}}
+\item 
+
+{\bfseries{📂 File Tree}}\begin{adjustwidth}{1em}{0em}
+
+
+{\ttfamily bash ├── LICENSE ├── README.\+md ├── graph │   ├── data\+\_\+structure.\+hpp │   ├── edge.\+hpp │   ├── graph.\+hpp │   ├── graph\+\_\+builder.\+hpp │   └── implementations │   ├── adjacency\+\_\+list.\+hpp │   ├── adjacency\+\_\+matrix.\+hpp │   ├── adjacency\+\_\+matrix\+\_\+pointers.\+hpp │   ├── adjacency\+\_\+tree.\+hpp │   └── fast\+\_\+adjacency\+\_\+list.\+hpp ├── list │   ├── doubly\+\_\+linked\+List.\+hpp │   ├── linear\+\_\+list.\+hpp │   ├── linked\+\_\+list.\+hpp │   └── list.\+hpp ├── matrix │   ├── matrix.\+hpp │   └── matrix\+Int.\+hpp ├── queue │   ├── linear\+\_\+queue.\+hpp │   ├── linked\+\_\+queue.\+hpp │   ├── max\+\_\+heap.\+hpp │   ├── min\+\_\+heap.\+hpp │   └── queue.\+hpp ├── stack │   ├── linear\+\_\+stack.\+hpp │   ├── linked\+\_\+stack.\+hpp │   └── stack.\+hpp ├── tests │   ├── test\+\_\+\+AVL.\+cpp │   ├── test\+\_\+adjacency\+\_\+list.\+cpp │   ├── test\+\_\+adjacency\+\_\+matrix.\+cpp │   ├── test\+\_\+doubly\+\_\+linked\+\_\+list.\+cpp │   ├── test\+\_\+fast\+\_\+adjacency\+\_\+list.\+cpp │   ├── test\+\_\+linear\+\_\+list.\+cpp │   ├── test\+\_\+linear\+\_\+queue.\+cpp │   ├── test\+\_\+linear\+\_\+stack.\+cpp │   ├── test\+\_\+linked\+\_\+list.\+cpp │   ├── test\+\_\+linked\+\_\+queue.\+cpp │   ├── test\+\_\+linked\+\_\+stack.\+cpp │   ├── test\+\_\+matrix.\+cpp │   ├── test\+\_\+matrix\+\_\+int.\+cpp │   └── test\+\_\+min\+\_\+heap.\+cpp ├── tree │   ├── AVL.\+hpp │   └── node.\+hpp └── utils ├── cell.\+hpp ├── pair.\+hpp ├── timer.\+hpp ├── triple.\+hpp ├── union\+\_\+find.\+hpp └── util.\+hpp } \end{adjustwidth}
+
+\end{DoxyItemize}

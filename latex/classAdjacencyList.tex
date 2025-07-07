@@ -1,0 +1,204 @@
+\doxysection{Adjacency\+List Class Reference}
+\hypertarget{classAdjacencyList}{}\label{classAdjacencyList}\index{AdjacencyList@{AdjacencyList}}
+
+
+Inheritance diagram for Adjacency\+List\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=164pt]{classAdjacencyList__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Adjacency\+List\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=164pt]{classAdjacencyList__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classAdjacencyList_a567107748f01be6bfa59de6320c3dfab}{add\+Edge}} (const Vertex \&u, const Vertex \&v, float weight=1.\+0) override
+\item 
+void \mbox{\hyperlink{classAdjacencyList_ab5a50dc230fb282a5d14cb9298437311}{change\+Edge\+Weight}} (const \mbox{\hyperlink{classEdge}{Edge}} \&e, const float \&weight) override
+\item 
+\mbox{\hyperlink{classEdge}{Edge}} \mbox{\hyperlink{classAdjacencyList_a864c5bf418fddc9a0703f2a61fea50e4}{get\+Edge}} (const \mbox{\hyperlink{classEdge}{Edge}} \&e) const override
+\item 
+void \mbox{\hyperlink{classAdjacencyList_a7da3a29547cb901283518d3aafd14ced}{add\+Vertex}} (const Vertex \&v) override
+\item 
+size\+\_\+t \mbox{\hyperlink{classAdjacencyList_ab6d8abc0e22a5fb7bf4b46af73a5fe34}{degree}} (const Vertex \&v) const override
+\item 
+bool \mbox{\hyperlink{classAdjacencyList_ad882b7549bc489994f13683aea0559d1}{has\+Edge}} (const Vertex \&u, const Vertex \&v, const float \&weight) const override
+\item 
+bool \mbox{\hyperlink{classAdjacencyList_a76f841b52e9f5822c2936cb1a738f97b}{has\+Edge}} (const Vertex \&u, const Vertex \&v) const override
+\item 
+bool \mbox{\hyperlink{classAdjacencyList_abef4c2992840e42435d63589bd8c0c05}{has\+Vertex}} (const Vertex \&v) const override
+\item 
+void \mbox{\hyperlink{classAdjacencyList_a5e276326ba0fa85ecb758a0e61861474}{weighted}} (bool \+\_\+weighted) override
+\item 
+void \mbox{\hyperlink{classAdjacencyList_a8da46a7142ce428086ddb096c657868f}{directed}} (bool \+\_\+directed) override
+\item 
+\mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ \mbox{\hyperlink{classEdge}{Edge}} $>$ \mbox{\hyperlink{classAdjacencyList_a6b1f149eaf1f96e14b1718c27d4fe1bb}{edges}} () const override
+\item 
+\mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ Vertex $>$ \mbox{\hyperlink{classAdjacencyList_a20a314d2be9c4369468c1e3d350611da}{vertices}} () const override
+\item 
+\mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ \mbox{\hyperlink{classPair}{Pair}}$<$ Vertex, float $>$ $>$ \mbox{\hyperlink{classAdjacencyList_a4079750a3938d0f6edfcbd08042e0bc7}{neighbors}} (const Vertex \&u) const override
+\item 
+void \mbox{\hyperlink{classAdjacencyList_a576f51e527a7c31944d23c97c89296b1}{print}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries remove\+Edge} (const Vertex \&u, const Vertex \&v)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classAdjacencyList_a567107748f01be6bfa59de6320c3dfab}\label{classAdjacencyList_a567107748f01be6bfa59de6320c3dfab} 
+\index{AdjacencyList@{AdjacencyList}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!AdjacencyList@{AdjacencyList}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily void Adjacency\+List\+::add\+Edge (\begin{DoxyParamCaption}\item[{const Vertex \&}]{u,  }\item[{const Vertex \&}]{v,  }\item[{float}]{weight = {\ttfamily 1.0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classAdjacencyList_a7da3a29547cb901283518d3aafd14ced}\label{classAdjacencyList_a7da3a29547cb901283518d3aafd14ced} 
+\index{AdjacencyList@{AdjacencyList}!addVertex@{addVertex}}
+\index{addVertex@{addVertex}!AdjacencyList@{AdjacencyList}}
+\doxysubsubsection{\texorpdfstring{addVertex()}{addVertex()}}
+{\footnotesize\ttfamily void Adjacency\+List\+::add\+Vertex (\begin{DoxyParamCaption}\item[{const Vertex \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classAdjacencyList_ab5a50dc230fb282a5d14cb9298437311}\label{classAdjacencyList_ab5a50dc230fb282a5d14cb9298437311} 
+\index{AdjacencyList@{AdjacencyList}!changeEdgeWeight@{changeEdgeWeight}}
+\index{changeEdgeWeight@{changeEdgeWeight}!AdjacencyList@{AdjacencyList}}
+\doxysubsubsection{\texorpdfstring{changeEdgeWeight()}{changeEdgeWeight()}}
+{\footnotesize\ttfamily void Adjacency\+List\+::change\+Edge\+Weight (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEdge}{Edge}} \&}]{e,  }\item[{const float \&}]{weight }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classAdjacencyList_ab6d8abc0e22a5fb7bf4b46af73a5fe34}\label{classAdjacencyList_ab6d8abc0e22a5fb7bf4b46af73a5fe34} 
+\index{AdjacencyList@{AdjacencyList}!degree@{degree}}
+\index{degree@{degree}!AdjacencyList@{AdjacencyList}}
+\doxysubsubsection{\texorpdfstring{degree()}{degree()}}
+{\footnotesize\ttfamily size\+\_\+t Adjacency\+List\+::degree (\begin{DoxyParamCaption}\item[{const Vertex \&}]{v }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classAdjacencyList_a8da46a7142ce428086ddb096c657868f}\label{classAdjacencyList_a8da46a7142ce428086ddb096c657868f} 
+\index{AdjacencyList@{AdjacencyList}!directed@{directed}}
+\index{directed@{directed}!AdjacencyList@{AdjacencyList}}
+\doxysubsubsection{\texorpdfstring{directed()}{directed()}}
+{\footnotesize\ttfamily void Adjacency\+List\+::directed (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+directed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classAdjacencyList_a6b1f149eaf1f96e14b1718c27d4fe1bb}\label{classAdjacencyList_a6b1f149eaf1f96e14b1718c27d4fe1bb} 
+\index{AdjacencyList@{AdjacencyList}!edges@{edges}}
+\index{edges@{edges}!AdjacencyList@{AdjacencyList}}
+\doxysubsubsection{\texorpdfstring{edges()}{edges()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ \mbox{\hyperlink{classEdge}{Edge}} $>$ Adjacency\+List\+::edges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classAdjacencyList_a864c5bf418fddc9a0703f2a61fea50e4}\label{classAdjacencyList_a864c5bf418fddc9a0703f2a61fea50e4} 
+\index{AdjacencyList@{AdjacencyList}!getEdge@{getEdge}}
+\index{getEdge@{getEdge}!AdjacencyList@{AdjacencyList}}
+\doxysubsubsection{\texorpdfstring{getEdge()}{getEdge()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{Edge}} Adjacency\+List\+::get\+Edge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEdge}{Edge}} \&}]{e }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classAdjacencyList_a76f841b52e9f5822c2936cb1a738f97b}\label{classAdjacencyList_a76f841b52e9f5822c2936cb1a738f97b} 
+\index{AdjacencyList@{AdjacencyList}!hasEdge@{hasEdge}}
+\index{hasEdge@{hasEdge}!AdjacencyList@{AdjacencyList}}
+\doxysubsubsection{\texorpdfstring{hasEdge()}{hasEdge()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Adjacency\+List\+::has\+Edge (\begin{DoxyParamCaption}\item[{const Vertex \&}]{u,  }\item[{const Vertex \&}]{v }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classAdjacencyList_ad882b7549bc489994f13683aea0559d1}\label{classAdjacencyList_ad882b7549bc489994f13683aea0559d1} 
+\index{AdjacencyList@{AdjacencyList}!hasEdge@{hasEdge}}
+\index{hasEdge@{hasEdge}!AdjacencyList@{AdjacencyList}}
+\doxysubsubsection{\texorpdfstring{hasEdge()}{hasEdge()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Adjacency\+List\+::has\+Edge (\begin{DoxyParamCaption}\item[{const Vertex \&}]{u,  }\item[{const Vertex \&}]{v,  }\item[{const float \&}]{weight }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classAdjacencyList_abef4c2992840e42435d63589bd8c0c05}\label{classAdjacencyList_abef4c2992840e42435d63589bd8c0c05} 
+\index{AdjacencyList@{AdjacencyList}!hasVertex@{hasVertex}}
+\index{hasVertex@{hasVertex}!AdjacencyList@{AdjacencyList}}
+\doxysubsubsection{\texorpdfstring{hasVertex()}{hasVertex()}}
+{\footnotesize\ttfamily bool Adjacency\+List\+::has\+Vertex (\begin{DoxyParamCaption}\item[{const Vertex \&}]{v }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classAdjacencyList_a4079750a3938d0f6edfcbd08042e0bc7}\label{classAdjacencyList_a4079750a3938d0f6edfcbd08042e0bc7} 
+\index{AdjacencyList@{AdjacencyList}!neighbors@{neighbors}}
+\index{neighbors@{neighbors}!AdjacencyList@{AdjacencyList}}
+\doxysubsubsection{\texorpdfstring{neighbors()}{neighbors()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ \mbox{\hyperlink{classPair}{Pair}}$<$ Vertex, float $>$ $>$ Adjacency\+List\+::neighbors (\begin{DoxyParamCaption}\item[{const Vertex \&}]{u }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classAdjacencyList_a576f51e527a7c31944d23c97c89296b1}\label{classAdjacencyList_a576f51e527a7c31944d23c97c89296b1} 
+\index{AdjacencyList@{AdjacencyList}!print@{print}}
+\index{print@{print}!AdjacencyList@{AdjacencyList}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Adjacency\+List\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classAdjacencyList_a20a314d2be9c4369468c1e3d350611da}\label{classAdjacencyList_a20a314d2be9c4369468c1e3d350611da} 
+\index{AdjacencyList@{AdjacencyList}!vertices@{vertices}}
+\index{vertices@{vertices}!AdjacencyList@{AdjacencyList}}
+\doxysubsubsection{\texorpdfstring{vertices()}{vertices()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ Vertex $>$ Adjacency\+List\+::vertices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+\Hypertarget{classAdjacencyList_a5e276326ba0fa85ecb758a0e61861474}\label{classAdjacencyList_a5e276326ba0fa85ecb758a0e61861474} 
+\index{AdjacencyList@{AdjacencyList}!weighted@{weighted}}
+\index{weighted@{weighted}!AdjacencyList@{AdjacencyList}}
+\doxysubsubsection{\texorpdfstring{weighted()}{weighted()}}
+{\footnotesize\ttfamily void Adjacency\+List\+::weighted (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+weighted }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classDataStructure}{Data\+Structure}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+graph/implementations/adjacency\+\_\+list.\+hpp\end{DoxyCompactItemize}

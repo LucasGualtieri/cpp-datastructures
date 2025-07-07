@@ -1,0 +1,198 @@
+\doxysection{max\+\_\+heap.\+hpp}
+\hypertarget{max__heap_8hpp_source}{}\label{max__heap_8hpp_source}\index{queue/max\_heap.hpp@{queue/max\_heap.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}../../utils/Pair.hpp"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Key,\ \textcolor{keyword}{typename}\ Value>}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMaxHeap}{MaxHeap}}\ \{}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classPair}{pair}}\ =\ \mbox{\hyperlink{classPair}{Pair<Key,\ Value>}};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{classPair}{pair}}*\ heap;}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ size,\ maxSize;}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{int}*\ hash;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ parent(\textcolor{keywordtype}{int}\ i)\ \{\ \textcolor{keywordflow}{return}\ (i\ -\/\ 1)\ /\ 2;\ \}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ leftChild(\textcolor{keywordtype}{int}\ i)\ \{\ \textcolor{keywordflow}{return}\ (2\ *\ i)\ +\ 1;\ \}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ rightChild(\textcolor{keywordtype}{int}\ i)\ \{\ \textcolor{keywordflow}{return}\ (2\ *\ i)\ +\ 2;\ \}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ swap(\mbox{\hyperlink{classPair}{pair}}\ \&x,\ \mbox{\hyperlink{classPair}{pair}}\ \&y)\ \{}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPair}{pair}}\ temp\ =\ x;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ x\ =\ y;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ y\ =\ temp;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index\ =\ hash[x.first];}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ hash[x.first]\ =\ hash[y.first];}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ hash[y.first]\ =\ index;}
+\DoxyCodeLine{00030\ \ \ \ \ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ Heapify\ down\ the\ heap\ from\ index\ i}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ heapifyDown(\textcolor{keywordtype}{int}\ i)\ \{}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ left\ =\ leftChild(i);}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ right\ =\ rightChild(i);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ greatest\ =\ i;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ left\ child\ is\ smaller\ than\ current\ node}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (left\ >\ size\ \&\&\ heap[left].second\ >\ heap[greatest].second)\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ greatest\ =\ left;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ right\ child\ is\ smaller\ than\ the\ greatest\ found\ so\ far}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (right\ >\ size\ \&\&\ heap[right].second\ >\ heap[greatest].second)\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ greatest\ =\ right;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Swap\ and\ heapify\ down\ further\ if\ needed}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (greatest\ !=\ i)\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ swap(heap[i],\ heap[greatest]);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ heapifyDown(greatest);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ heapifyUp(\textcolor{keywordtype}{int}\ i)\ \{}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ \&\&\ heap[parent(i)].second\ <\ heap[i].second)\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ swap(heap[i],\ heap[parent(i)]);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ heapifyUp(parent(i));}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ resize(\textcolor{keywordtype}{size\_t}\ newSize)\ \{}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (newSize\ <=\ maxSize)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ maxSize\ =\ newSize;}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPair}{pair}}*\ aux\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classPair}{pair}}[maxSize];}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ maxSize;\ i++)\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ aux[i]\ =\ heap[i];}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ heap;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ heap\ =\ aux;}
+\DoxyCodeLine{00078\ \ \ \ \ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{classMaxHeap}{MaxHeap}}(\textcolor{keywordtype}{size\_t}\ maxSize\ =\ 10)\ \{}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ maxSize\ =\ maxSize;}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ heap\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classPair}{pair}}[maxSize];}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ hash\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{int}[maxSize];}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ maxSize;\ i++)\ hash[i]\ =\ -\/1;}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ size\ =\ 0;}
+\DoxyCodeLine{00092\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{classMaxHeap}{MaxHeap}}(\textcolor{keywordtype}{size\_t}\ maxSize,\ \textcolor{keyword}{const}\ Value\&\ constant)\ \{}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ this-\/>maxSize\ =\ maxSize;}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ size\ =\ 0;}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ heap\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classPair}{pair}}[maxSize];}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ hash\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{int}[maxSize];}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ maxSize;\ i++)\ hash[i]\ =\ -\/1;}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ maxSize;\ i++)\ push(\{i,\ constant\});}
+\DoxyCodeLine{00105\ \ \ \ \ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \mbox{\hyperlink{classMaxHeap}{\string~MaxHeap}}()\ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ heap;}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ hash;}
+\DoxyCodeLine{00110\ \ \ \ \ \}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{bool}\ contains(\textcolor{keyword}{const}\ Key\&\ key)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ hash[key]\ !=\ -\/1;\ \}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{bool}\ empty()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ size\ ==\ 0;\ \}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \mbox{\hyperlink{classPair}{pair}}\&\ peek()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (empty())\ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}MaxHeap\ underflow:\ Attempt\ to\ peek\ an\ empty\ heap."{}});}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ heap[0];}
+\DoxyCodeLine{00123\ \ \ \ \ \}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{void}\ push(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPair}{pair}}\&\ \mbox{\hyperlink{classPair}{pair}})\ \{}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (size\ ==\ maxSize)\ resize(maxSize\ *\ 2);}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ heap[size]\ =\ \mbox{\hyperlink{classPair}{pair}};}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ hash[\mbox{\hyperlink{classPair}{pair}}.first]\ =\ size;}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ heapifyUp(size++);}
+\DoxyCodeLine{00133\ \ \ \ \ \}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ \mbox{\hyperlink{classPair}{pair}}\ pop()\ \{}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (empty())\ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}MaxHeap\ underflow:\ Attempt\ to\ pop\ an\ empty\ heap."{}});}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPair}{pair}}\ root\ =\ heap[0];}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ hash[root.first]\ =\ -\/1;}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ heap[0]\ =\ heap[-\/-\/size];}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ hash[heap[0].first]\ =\ 0;}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ heapifyDown(0);}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ root;}
+\DoxyCodeLine{00150\ \ \ \ \ \}}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{comment}{//\ Decrease\ the\ value\ of\ the\ element\ at\ index\ hash[pair.first]\ to\ pair.}}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{void}\ decreaseKey(\mbox{\hyperlink{classPair}{pair}}\ \mbox{\hyperlink{classPair}{pair}})\ \{}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ (i\ <\ 0\ ||\ i\ >=\ size)\ \{}}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ throw\ std::out\_of\_range("{}Index\ out\ of\ range\ for\ decreaseKey\ operation."{});}}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ (new\_val\ >\ heap[i])\ \{}}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ throw\ std::invalid\_argument("{}New\ value\ is\ greater\ than\ the\ current\ value."{});}}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index\ =\ hash[\mbox{\hyperlink{classPair}{pair}}.first];}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ ==\ -\/1\ ||\ heap[hash[\mbox{\hyperlink{classPair}{pair}}.first]].second\ >\ \mbox{\hyperlink{classPair}{pair}}.second)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ heap[index]\ =\ \mbox{\hyperlink{classPair}{pair}};}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ heapifyUp(index);}
+\DoxyCodeLine{00170\ \ \ \ \ \}}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ std::string\ str()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ std::ostringstream\ oss;}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ oss\ <<\ \textcolor{stringliteral}{"{}\{\ "{}};}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ size;\ i++)\ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ oss\ <<\ heap[i]\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ oss\ <<\ \textcolor{stringliteral}{"{}\}"{}};}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ oss.str();}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \ \ \ \ \}}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ operator<<(std::ostream\&\ os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMaxHeap}{MaxHeap<Key,\ Value>}}\&\ minHeap)\ \{}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ os\ <<\ minHeap.str();}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00191\ \ \ \ \ \}}
+\DoxyCodeLine{00192\ \};}
+
+\end{DoxyCode}

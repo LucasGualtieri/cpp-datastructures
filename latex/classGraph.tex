@@ -1,0 +1,770 @@
+\doxysection{Graph Class Reference}
+\hypertarget{classGraph}{}\label{classGraph}\index{Graph@{Graph}}
+
+
+Constructs a graph with the specified structure, size, and properties.  
+
+
+
+
+{\ttfamily \#include $<$graph.\+hpp$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classGraph_a2c8f3954034f98fa1292b1f41412c3ff}\label{classGraph_a2c8f3954034f98fa1292b1f41412c3ff} 
+enum {\bfseries Data\+Structures} \{ {\bfseries Adjacency\+Matrix}
+, {\bfseries Adjacency\+Matrix\+Pointers}
+, {\bfseries Adjacency\+List}
+, {\bfseries Fast\+Adjacency\+List}
+ \}
+\item 
+\Hypertarget{classGraph_a9d2d84a185c067d238c7e4e4d27df797}\label{classGraph_a9d2d84a185c067d238c7e4e4d27df797} 
+using {\bfseries Prop} = \mbox{\hyperlink{classPair}{Pair}}$<$ std\+::string, std\+::string $>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classGraph_a1e20d5f80d1e6ae782ffcda63d6a0544}\label{classGraph_a1e20d5f80d1e6ae782ffcda63d6a0544} 
+{\bfseries Graph} (Data\+Structures choice, size\+\_\+t n, size\+\_\+t m, bool directed, bool weighted)
+\item 
+\mbox{\hyperlink{classGraph_ac14ccdebe4c689652159a74bba1c08b5}{Graph}} (const \mbox{\hyperlink{classGraph}{Graph}} \&clone)
+\begin{DoxyCompactList}\small\item\em Copy constructor for the \doxylink{classGraph}{Graph}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classGraph}{Graph}} \& \mbox{\hyperlink{classGraph_acbff1f6b9e52c55390a0ab1325b423b3}{operator=}} (const \mbox{\hyperlink{classGraph}{Graph}} \&G)
+\begin{DoxyCompactList}\small\item\em Assignment operator for the \doxylink{classGraph}{Graph}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classGraph}{Graph}} \mbox{\hyperlink{classGraph_a4b6c7378308d46c16af4fc44e74e4779}{clone\+Data\+Structure}} (size\+\_\+t n=0) const
+\begin{DoxyCompactList}\small\item\em Clones the current graph\textquotesingle{}s structure without its data. \end{DoxyCompactList}\item 
+\Hypertarget{classGraph_a0981bbe7c5010948ce2695d2dd9f9ce6}\label{classGraph_a0981bbe7c5010948ce2695d2dd9f9ce6} 
+void {\bfseries print\+Data\+Structure} ()
+\begin{DoxyCompactList}\small\item\em Prints the current underlying data structure. \end{DoxyCompactList}\item 
+\Hypertarget{classGraph_a902c5b3eacb66d60752525ab23297a95}\label{classGraph_a902c5b3eacb66d60752525ab23297a95} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Graph} ()
+\begin{DoxyCompactList}\small\item\em Destructor that deallocates the data structure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_a0428ccbebfd061c6f1f4853aeecf0ad2}{add\+Vertex}} (const Vertex \&v)
+\begin{DoxyCompactList}\small\item\em Adds a vertex to the graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_adbc630ef09c293f7f3b942f18c1c36ec}{add\+Vertex}} (const Vertex \&v, const \mbox{\hyperlink{classPair}{Pair}}$<$ std\+::string, std\+::string $>$ \&props)
+\begin{DoxyCompactList}\small\item\em Adds a vertex with associated properties. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_ac30fca94655eb8b393040eff8a5418da}{add\+Vertex}} (const Vertex \&v, std\+::string \&label)
+\begin{DoxyCompactList}\small\item\em Adds a vertex with a label. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_a493909b4e19875afca676ca62dcc2c9d}{add\+Vertex}} (const Vertex \&v, const std\+::string \&label, const \mbox{\hyperlink{classPair}{Pair}}$<$ std\+::string, std\+::string $>$ \&props)
+\begin{DoxyCompactList}\small\item\em Adds a vertex with both label and properties. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classGraph_a2a7dd03fa59df7d59ea44431e54850e3}{get\+Label}} (const Vertex \&v) const
+\begin{DoxyCompactList}\small\item\em Retrieves the label of a given vertex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_a7e73f7faf18c4ee073ed7fef26dfec9d}{add\+Edge}} (const Vertex \&u, const Vertex \&v, const float \&weight)
+\begin{DoxyCompactList}\small\item\em Adds a weighted edge between two vertices. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_a65cf5dd5d92fd23d0bbd3473bc6bb5aa}{add\+Edge}} (const Vertex \&u, const Vertex \&v)
+\begin{DoxyCompactList}\small\item\em Adds an unweighted edge between two vertices. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_acfa905e187be89842f7b89420ca30238}{add\+Edge}} (const Vertex \&u, const Vertex \&v, const \mbox{\hyperlink{classPair}{Pair}}$<$ std\+::string, std\+::string $>$ \&props)
+\begin{DoxyCompactList}\small\item\em Adds an edge with associated properties. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_addf2061e39580ac678115a40a2da278a}{add\+Edge}} (const \mbox{\hyperlink{classEdge}{Edge}} \&e)
+\begin{DoxyCompactList}\small\item\em Adds an edge to the graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_a4fb36470bf5373edc876426805d98f40}{add\+Edge}} (const \mbox{\hyperlink{classEdge}{Edge}} \&e, const \mbox{\hyperlink{classPair}{Pair}}$<$ std\+::string, std\+::string $>$ \&props)
+\begin{DoxyCompactList}\small\item\em Adds an edge with properties. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_a91523d50762d29eaf7f7c87872c6f1db}{remove\+Edge}} (const \mbox{\hyperlink{classEdge}{Edge}} \&e)
+\begin{DoxyCompactList}\small\item\em Removes an edge from the graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_aaee6c960f3894d1a699e30f972741ab2}{change\+Edge\+Props}} (const Vertex \&u, const Vertex \&v, const \mbox{\hyperlink{classPair}{Prop}} prop)
+\begin{DoxyCompactList}\small\item\em Updates the properties of an edge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_accdfbef1b7603695091bdefbd6250aaa}{change\+Edge\+Props}} (const \mbox{\hyperlink{classEdge}{Edge}} \&e, const \mbox{\hyperlink{classPair}{Prop}} prop)
+\begin{DoxyCompactList}\small\item\em Updates the properties of an edge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_aa341e4152a85a801d99de4b4b6707fde}{change\+Vertex\+Props}} (const Vertex \&v, const \mbox{\hyperlink{classPair}{Prop}} \&prop)
+\begin{DoxyCompactList}\small\item\em Updates the properties of a vertex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_a86548b1227d0074545f71b5154f4aefe}{change\+Vertex\+Label}} (const Vertex \&v, const std\+::string \&label)
+\begin{DoxyCompactList}\small\item\em Updates the label of a vertex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_a4963bfde0e06398be0df3a163468547b}{change\+Edge\+Weight}} (const \mbox{\hyperlink{classEdge}{Edge}} \&e, const float \&weight)
+\begin{DoxyCompactList}\small\item\em Updates the weight of an edge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_aba351e5ae49f486e102b1d74b79810f0}{change\+Edge\+Weight}} (const Vertex \&u, const Vertex \&v, const float \&weight)
+\begin{DoxyCompactList}\small\item\em Updates the weight of an edge. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEdge}{Edge}} \mbox{\hyperlink{classGraph_a09e6d310eb4afff440b2149d910db897}{get\+Edge}} (const \mbox{\hyperlink{classEdge}{Edge}} \&e) const
+\begin{DoxyCompactList}\small\item\em Retrieves an edge object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEdge}{Edge}} \mbox{\hyperlink{classGraph_af92ccf6b334c4c10ba0b6821a286a6c5}{get\+Edge}} (const Vertex \&u, const Vertex \&v) const
+\begin{DoxyCompactList}\small\item\em Retrieves an edge object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGraph_a59075e763916916e59a90151c197aca3}{has\+Edge}} (const \mbox{\hyperlink{classEdge}{Edge}} \&e) const
+\begin{DoxyCompactList}\small\item\em Checks if an edge exists in the graph. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGraph_a9957fec55738b8fa0b91cdfc862ccbf8}{has\+Edge}} (const Vertex \&u, const Vertex \&v) const
+\begin{DoxyCompactList}\small\item\em Checks if an edge exists in the graph. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classGraph_a6339488418418fd07d2438b6e0ae399b}{degree}} (const Vertex \&v) const
+\begin{DoxyCompactList}\small\item\em Returns the degree of a vertex. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ \mbox{\hyperlink{classEdge}{Edge}} $>$ \mbox{\hyperlink{classGraph_a85ecacb3194ad500b180478fc9979e8a}{edges}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves a list of all edges. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ Vertex $>$ \mbox{\hyperlink{classGraph_a419d3b03df870300cb07d3b53d00d3c6}{vertices}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves a list of all vertices. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ \mbox{\hyperlink{classPair}{Pair}}$<$ Vertex, float $>$ $>$ \mbox{\hyperlink{classGraph_ac2ddd1ccf8a8446362d5887dcac08d60}{edges\+Of}} (const Vertex \&u) const
+\begin{DoxyCompactList}\small\item\em Retrieves a list of neighboring vertices and weights. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ Vertex $>$ \mbox{\hyperlink{classGraph_abdf38fd394b249d7925ef2cf07a6d4a8}{neighbors}} (const Vertex \&u) const
+\begin{DoxyCompactList}\small\item\em Retrieves a list of neighboring vertices. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ \mbox{\hyperlink{classPair}{Pair}}$<$ Vertex, float $>$ $>$ \mbox{\hyperlink{classGraph_a12266dde664bfa99c1000f05ceb3671c}{operator\mbox{[}$\,$\mbox{]}}} (const Vertex \&u)
+\begin{DoxyCompactList}\small\item\em Returns the list of neighbors of a vertex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_ad049c1a04701f756454286b754846852}{export\+\_\+to\+\_\+png}} (const std\+::string \&filename, const std\+::string \&engine="{}dot"{}, size\+\_\+t dpi=300) const
+\begin{DoxyCompactList}\small\item\em Exports the graph to a PNG file using Graphviz. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classGraph_a3af3aa89b009de362eb1decd7b7fc20d}{str}} () const
+\begin{DoxyCompactList}\small\item\em Converts the graph to a string representation. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classGraph_ab3940f9da6df6682cbce1278a77e53c7}{density}} (const int \&precision=3) const
+\begin{DoxyCompactList}\small\item\em Computes the graph\textquotesingle{}s density. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classGraph_a89699d89839c97c79e33d429d63d83f7}{sparsness}} (const int \&precision=3) const
+\begin{DoxyCompactList}\small\item\em Computes the sparsness of the graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_a65f00930e89e32d2d850fced34d469c7}{export\+\_\+to\+\_\+binary}} (const std\+::string \&filename) const
+\begin{DoxyCompactList}\small\item\em Exports the graph to a binary file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classGraph}{Graph}} \mbox{\hyperlink{classGraph_a80b88807ba2afa5e7e8e54034cbfad74}{import\+\_\+from\+\_\+binary}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Imports a graph from a binary file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classGraph_a6196749068b51bc6bd9c4b81bbf68b5b}\label{classGraph_a6196749068b51bc6bd9c4b81bbf68b5b} 
+size\+\_\+t {\bfseries n}
+\item 
+\Hypertarget{classGraph_a6880fc5fa7af2603a45ad9b0f6f613ba}\label{classGraph_a6880fc5fa7af2603a45ad9b0f6f613ba} 
+size\+\_\+t {\bfseries m}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classGraph_adf51f295888cedb3330bb99435492e34}\label{classGraph_adf51f295888cedb3330bb99435492e34} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&os, const \mbox{\hyperlink{classGraph}{Graph}} \&g)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Constructs a graph with the specified structure, size, and properties. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em choice} & The data structure to be used for graph representation. \\
+\hline
+{\em n} & Number of vertices. \\
+\hline
+{\em m} & Number of edges. \\
+\hline
+{\em directed} & Whether the graph is directed. \\
+\hline
+{\em weighted} & Whether the graph is weighted. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGraph_ac14ccdebe4c689652159a74bba1c08b5}\label{classGraph_ac14ccdebe4c689652159a74bba1c08b5} 
+\index{Graph@{Graph}!Graph@{Graph}}
+\index{Graph@{Graph}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{Graph()}{Graph()}}
+{\footnotesize\ttfamily Graph\+::\+Graph (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classGraph}{Graph}} \&}]{clone }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Copy constructor for the \doxylink{classGraph}{Graph}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clone} & \doxylink{classGraph}{Graph} to be copied. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGraph_addf2061e39580ac678115a40a2da278a}\label{classGraph_addf2061e39580ac678115a40a2da278a} 
+\index{Graph@{Graph}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily void Graph\+::add\+Edge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEdge}{Edge}} \&}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds an edge to the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & \doxylink{classEdge}{Edge} object. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraph_a4fb36470bf5373edc876426805d98f40}\label{classGraph_a4fb36470bf5373edc876426805d98f40} 
+\index{Graph@{Graph}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily void Graph\+::add\+Edge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEdge}{Edge}} \&}]{e,  }\item[{const \mbox{\hyperlink{classPair}{Pair}}$<$ std\+::string, std\+::string $>$ \&}]{props }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds an edge with properties. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & \doxylink{classEdge}{Edge} object. \\
+\hline
+{\em props} & Properties associated with the edge. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraph_a65cf5dd5d92fd23d0bbd3473bc6bb5aa}\label{classGraph_a65cf5dd5d92fd23d0bbd3473bc6bb5aa} 
+\index{Graph@{Graph}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily void Graph\+::add\+Edge (\begin{DoxyParamCaption}\item[{const Vertex \&}]{u,  }\item[{const Vertex \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds an unweighted edge between two vertices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & Source vertex. \\
+\hline
+{\em v} & Destination vertex. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraph_a7e73f7faf18c4ee073ed7fef26dfec9d}\label{classGraph_a7e73f7faf18c4ee073ed7fef26dfec9d} 
+\index{Graph@{Graph}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily void Graph\+::add\+Edge (\begin{DoxyParamCaption}\item[{const Vertex \&}]{u,  }\item[{const Vertex \&}]{v,  }\item[{const float \&}]{weight }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds a weighted edge between two vertices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & Source vertex. \\
+\hline
+{\em v} & Destination vertex. \\
+\hline
+{\em weight} & Weight of the edge. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraph_acfa905e187be89842f7b89420ca30238}\label{classGraph_acfa905e187be89842f7b89420ca30238} 
+\index{Graph@{Graph}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily void Graph\+::add\+Edge (\begin{DoxyParamCaption}\item[{const Vertex \&}]{u,  }\item[{const Vertex \&}]{v,  }\item[{const \mbox{\hyperlink{classPair}{Pair}}$<$ std\+::string, std\+::string $>$ \&}]{props }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds an edge with associated properties. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & Source vertex. \\
+\hline
+{\em v} & Destination vertex. \\
+\hline
+{\em props} & \doxylink{classPair}{Pair} of string properties. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraph_a0428ccbebfd061c6f1f4853aeecf0ad2}\label{classGraph_a0428ccbebfd061c6f1f4853aeecf0ad2} 
+\index{Graph@{Graph}!addVertex@{addVertex}}
+\index{addVertex@{addVertex}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addVertex()}{addVertex()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily void Graph\+::add\+Vertex (\begin{DoxyParamCaption}\item[{const Vertex \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds a vertex to the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Vertex identifier. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraph_adbc630ef09c293f7f3b942f18c1c36ec}\label{classGraph_adbc630ef09c293f7f3b942f18c1c36ec} 
+\index{Graph@{Graph}!addVertex@{addVertex}}
+\index{addVertex@{addVertex}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addVertex()}{addVertex()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily void Graph\+::add\+Vertex (\begin{DoxyParamCaption}\item[{const Vertex \&}]{v,  }\item[{const \mbox{\hyperlink{classPair}{Pair}}$<$ std\+::string, std\+::string $>$ \&}]{props }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds a vertex with associated properties. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Vertex identifier. \\
+\hline
+{\em props} & \doxylink{classPair}{Pair} of string properties associated with the vertex. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraph_a493909b4e19875afca676ca62dcc2c9d}\label{classGraph_a493909b4e19875afca676ca62dcc2c9d} 
+\index{Graph@{Graph}!addVertex@{addVertex}}
+\index{addVertex@{addVertex}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addVertex()}{addVertex()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily void Graph\+::add\+Vertex (\begin{DoxyParamCaption}\item[{const Vertex \&}]{v,  }\item[{const std\+::string \&}]{label,  }\item[{const \mbox{\hyperlink{classPair}{Pair}}$<$ std\+::string, std\+::string $>$ \&}]{props }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds a vertex with both label and properties. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Vertex identifier. \\
+\hline
+{\em label} & Label for the vertex. \\
+\hline
+{\em props} & Properties associated with the vertex. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraph_ac30fca94655eb8b393040eff8a5418da}\label{classGraph_ac30fca94655eb8b393040eff8a5418da} 
+\index{Graph@{Graph}!addVertex@{addVertex}}
+\index{addVertex@{addVertex}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addVertex()}{addVertex()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily void Graph\+::add\+Vertex (\begin{DoxyParamCaption}\item[{const Vertex \&}]{v,  }\item[{std\+::string \&}]{label }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds a vertex with a label. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Vertex identifier. \\
+\hline
+{\em label} & Label associated with the vertex. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraph_accdfbef1b7603695091bdefbd6250aaa}\label{classGraph_accdfbef1b7603695091bdefbd6250aaa} 
+\index{Graph@{Graph}!changeEdgeProps@{changeEdgeProps}}
+\index{changeEdgeProps@{changeEdgeProps}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{changeEdgeProps()}{changeEdgeProps()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Graph\+::change\+Edge\+Props (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEdge}{Edge}} \&}]{e,  }\item[{const \mbox{\hyperlink{classPair}{Prop}}}]{prop }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Updates the properties of an edge. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & \doxylink{classEdge}{Edge} to be updated. \\
+\hline
+{\em prop} & New properties. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraph_aaee6c960f3894d1a699e30f972741ab2}\label{classGraph_aaee6c960f3894d1a699e30f972741ab2} 
+\index{Graph@{Graph}!changeEdgeProps@{changeEdgeProps}}
+\index{changeEdgeProps@{changeEdgeProps}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{changeEdgeProps()}{changeEdgeProps()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Graph\+::change\+Edge\+Props (\begin{DoxyParamCaption}\item[{const Vertex \&}]{u,  }\item[{const Vertex \&}]{v,  }\item[{const \mbox{\hyperlink{classPair}{Prop}}}]{prop }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Updates the properties of an edge. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & Source vertex. \\
+\hline
+{\em v} & Destination vertex. \\
+\hline
+{\em prop} & New properties. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraph_a4963bfde0e06398be0df3a163468547b}\label{classGraph_a4963bfde0e06398be0df3a163468547b} 
+\index{Graph@{Graph}!changeEdgeWeight@{changeEdgeWeight}}
+\index{changeEdgeWeight@{changeEdgeWeight}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{changeEdgeWeight()}{changeEdgeWeight()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Graph\+::change\+Edge\+Weight (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEdge}{Edge}} \&}]{e,  }\item[{const float \&}]{weight }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Updates the weight of an edge. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & \doxylink{classEdge}{Edge} to update. \\
+\hline
+{\em weight} & New weight. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraph_aba351e5ae49f486e102b1d74b79810f0}\label{classGraph_aba351e5ae49f486e102b1d74b79810f0} 
+\index{Graph@{Graph}!changeEdgeWeight@{changeEdgeWeight}}
+\index{changeEdgeWeight@{changeEdgeWeight}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{changeEdgeWeight()}{changeEdgeWeight()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Graph\+::change\+Edge\+Weight (\begin{DoxyParamCaption}\item[{const Vertex \&}]{u,  }\item[{const Vertex \&}]{v,  }\item[{const float \&}]{weight }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Updates the weight of an edge. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & Source vertex. \\
+\hline
+{\em v} & Destination vertex. \\
+\hline
+{\em weight} & New weight. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraph_a86548b1227d0074545f71b5154f4aefe}\label{classGraph_a86548b1227d0074545f71b5154f4aefe} 
+\index{Graph@{Graph}!changeVertexLabel@{changeVertexLabel}}
+\index{changeVertexLabel@{changeVertexLabel}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{changeVertexLabel()}{changeVertexLabel()}}
+{\footnotesize\ttfamily void Graph\+::change\+Vertex\+Label (\begin{DoxyParamCaption}\item[{const Vertex \&}]{v,  }\item[{const std\+::string \&}]{label }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Updates the label of a vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Vertex to be updated. \\
+\hline
+{\em label} & New label. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraph_aa341e4152a85a801d99de4b4b6707fde}\label{classGraph_aa341e4152a85a801d99de4b4b6707fde} 
+\index{Graph@{Graph}!changeVertexProps@{changeVertexProps}}
+\index{changeVertexProps@{changeVertexProps}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{changeVertexProps()}{changeVertexProps()}}
+{\footnotesize\ttfamily void Graph\+::change\+Vertex\+Props (\begin{DoxyParamCaption}\item[{const Vertex \&}]{v,  }\item[{const \mbox{\hyperlink{classPair}{Prop}} \&}]{prop }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Updates the properties of a vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Vertex to be updated. \\
+\hline
+{\em prop} & New properties. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraph_a4b6c7378308d46c16af4fc44e74e4779}\label{classGraph_a4b6c7378308d46c16af4fc44e74e4779} 
+\index{Graph@{Graph}!cloneDataStructure@{cloneDataStructure}}
+\index{cloneDataStructure@{cloneDataStructure}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{cloneDataStructure()}{cloneDataStructure()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classGraph}{Graph}} Graph\+::clone\+Data\+Structure (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{n = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Clones the current graph\textquotesingle{}s structure without its data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & Optional new vertex count for the clone. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{classGraph}{Graph} with the same structure type and properties. 
+\end{DoxyReturn}
+\Hypertarget{classGraph_a6339488418418fd07d2438b6e0ae399b}\label{classGraph_a6339488418418fd07d2438b6e0ae399b} 
+\index{Graph@{Graph}!degree@{degree}}
+\index{degree@{degree}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{degree()}{degree()}}
+{\footnotesize\ttfamily size\+\_\+t Graph\+::degree (\begin{DoxyParamCaption}\item[{const Vertex \&}]{v }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the degree of a vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Vertex identifier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of neighbors. 
+\end{DoxyReturn}
+\Hypertarget{classGraph_ab3940f9da6df6682cbce1278a77e53c7}\label{classGraph_ab3940f9da6df6682cbce1278a77e53c7} 
+\index{Graph@{Graph}!density@{density}}
+\index{density@{density}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{density()}{density()}}
+{\footnotesize\ttfamily double Graph\+::density (\begin{DoxyParamCaption}\item[{const int \&}]{precision = {\ttfamily 3} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Computes the graph\textquotesingle{}s density. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em precision} & Number of decimal places in the result. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Density of the graph. 
+\end{DoxyReturn}
+\Hypertarget{classGraph_a85ecacb3194ad500b180478fc9979e8a}\label{classGraph_a85ecacb3194ad500b180478fc9979e8a} 
+\index{Graph@{Graph}!edges@{edges}}
+\index{edges@{edges}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{edges()}{edges()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ \mbox{\hyperlink{classEdge}{Edge}} $>$ Graph\+::edges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves a list of all edges. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classList}{List} of edges. 
+\end{DoxyReturn}
+\Hypertarget{classGraph_ac2ddd1ccf8a8446362d5887dcac08d60}\label{classGraph_ac2ddd1ccf8a8446362d5887dcac08d60} 
+\index{Graph@{Graph}!edgesOf@{edgesOf}}
+\index{edgesOf@{edgesOf}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{edgesOf()}{edgesOf()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ \mbox{\hyperlink{classPair}{Pair}}$<$ Vertex, float $>$ $>$ Graph\+::edges\+Of (\begin{DoxyParamCaption}\item[{const Vertex \&}]{u }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves a list of neighboring vertices and weights. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & Vertex identifier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classList}{List} of pairs (neighbor, weight). 
+\end{DoxyReturn}
+\Hypertarget{classGraph_a65f00930e89e32d2d850fced34d469c7}\label{classGraph_a65f00930e89e32d2d850fced34d469c7} 
+\index{Graph@{Graph}!export\_to\_binary@{export\_to\_binary}}
+\index{export\_to\_binary@{export\_to\_binary}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{export\_to\_binary()}{export\_to\_binary()}}
+{\footnotesize\ttfamily void Graph\+::export\+\_\+to\+\_\+binary (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Exports the graph to a binary file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Output file name. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraph_ad049c1a04701f756454286b754846852}\label{classGraph_ad049c1a04701f756454286b754846852} 
+\index{Graph@{Graph}!export\_to\_png@{export\_to\_png}}
+\index{export\_to\_png@{export\_to\_png}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{export\_to\_png()}{export\_to\_png()}}
+{\footnotesize\ttfamily void Graph\+::export\+\_\+to\+\_\+png (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{const std\+::string \&}]{engine = {\ttfamily "{}dot"{}},  }\item[{size\+\_\+t}]{dpi = {\ttfamily 300} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Exports the graph to a PNG file using Graphviz. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Output file name (without extension). \\
+\hline
+{\em engine} & Layout engine (e.\+g., "{}dot"{}, "{}neato"{}). \\
+\hline
+{\em dpi} & Resolution in dots per inch. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraph_a09e6d310eb4afff440b2149d910db897}\label{classGraph_a09e6d310eb4afff440b2149d910db897} 
+\index{Graph@{Graph}!getEdge@{getEdge}}
+\index{getEdge@{getEdge}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getEdge()}{getEdge()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{Edge}} Graph\+::get\+Edge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEdge}{Edge}} \&}]{e }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves an edge object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & \doxylink{classEdge}{Edge} to retrieve. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The edge object from the structure. 
+\end{DoxyReturn}
+\Hypertarget{classGraph_af92ccf6b334c4c10ba0b6821a286a6c5}\label{classGraph_af92ccf6b334c4c10ba0b6821a286a6c5} 
+\index{Graph@{Graph}!getEdge@{getEdge}}
+\index{getEdge@{getEdge}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getEdge()}{getEdge()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{Edge}} Graph\+::get\+Edge (\begin{DoxyParamCaption}\item[{const Vertex \&}]{u,  }\item[{const Vertex \&}]{v }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves an edge object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & Source vertex. \\
+\hline
+{\em v} & Destination vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The edge object from the structure. 
+\end{DoxyReturn}
+\Hypertarget{classGraph_a2a7dd03fa59df7d59ea44431e54850e3}\label{classGraph_a2a7dd03fa59df7d59ea44431e54850e3} 
+\index{Graph@{Graph}!getLabel@{getLabel}}
+\index{getLabel@{getLabel}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getLabel()}{getLabel()}}
+{\footnotesize\ttfamily std\+::string Graph\+::get\+Label (\begin{DoxyParamCaption}\item[{const Vertex \&}]{v }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves the label of a given vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Vertex identifier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Label as a string. 
+\end{DoxyReturn}
+\Hypertarget{classGraph_a59075e763916916e59a90151c197aca3}\label{classGraph_a59075e763916916e59a90151c197aca3} 
+\index{Graph@{Graph}!hasEdge@{hasEdge}}
+\index{hasEdge@{hasEdge}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{hasEdge()}{hasEdge()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Graph\+::has\+Edge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEdge}{Edge}} \&}]{e }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if an edge exists in the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & \doxylink{classEdge}{Edge} to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if exists, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{classGraph_a9957fec55738b8fa0b91cdfc862ccbf8}\label{classGraph_a9957fec55738b8fa0b91cdfc862ccbf8} 
+\index{Graph@{Graph}!hasEdge@{hasEdge}}
+\index{hasEdge@{hasEdge}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{hasEdge()}{hasEdge()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Graph\+::has\+Edge (\begin{DoxyParamCaption}\item[{const Vertex \&}]{u,  }\item[{const Vertex \&}]{v }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if an edge exists in the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & Source vertex. \\
+\hline
+{\em v} & Destination vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if exists, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{classGraph_a80b88807ba2afa5e7e8e54034cbfad74}\label{classGraph_a80b88807ba2afa5e7e8e54034cbfad74} 
+\index{Graph@{Graph}!import\_from\_binary@{import\_from\_binary}}
+\index{import\_from\_binary@{import\_from\_binary}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{import\_from\_binary()}{import\_from\_binary()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classGraph}{Graph}} Graph\+::import\+\_\+from\+\_\+binary (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Imports a graph from a binary file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Input file name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Loaded \doxylink{classGraph}{Graph} object. 
+\end{DoxyReturn}
+\Hypertarget{classGraph_abdf38fd394b249d7925ef2cf07a6d4a8}\label{classGraph_abdf38fd394b249d7925ef2cf07a6d4a8} 
+\index{Graph@{Graph}!neighbors@{neighbors}}
+\index{neighbors@{neighbors}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{neighbors()}{neighbors()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ Vertex $>$ Graph\+::neighbors (\begin{DoxyParamCaption}\item[{const Vertex \&}]{u }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves a list of neighboring vertices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & Vertex identifier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classList}{List} of neighbors. 
+\end{DoxyReturn}
+\Hypertarget{classGraph_acbff1f6b9e52c55390a0ab1325b423b3}\label{classGraph_acbff1f6b9e52c55390a0ab1325b423b3} 
+\index{Graph@{Graph}!operator=@{operator=}}
+\index{operator=@{operator=}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classGraph}{Graph}} \& Graph\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classGraph}{Graph}} \&}]{G }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Assignment operator for the \doxylink{classGraph}{Graph}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em G} & \doxylink{classGraph}{Graph} to be assigned. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to this graph after assignment. 
+\end{DoxyReturn}
+\Hypertarget{classGraph_a12266dde664bfa99c1000f05ceb3671c}\label{classGraph_a12266dde664bfa99c1000f05ceb3671c} 
+\index{Graph@{Graph}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ \mbox{\hyperlink{classPair}{Pair}}$<$ Vertex, float $>$ $>$ Graph\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const Vertex \&}]{u }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the list of neighbors of a vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & Vertex identifier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classList}{List} of neighbor pairs (vertex, weight). 
+\end{DoxyReturn}
+\Hypertarget{classGraph_a91523d50762d29eaf7f7c87872c6f1db}\label{classGraph_a91523d50762d29eaf7f7c87872c6f1db} 
+\index{Graph@{Graph}!removeEdge@{removeEdge}}
+\index{removeEdge@{removeEdge}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{removeEdge()}{removeEdge()}}
+{\footnotesize\ttfamily void Graph\+::remove\+Edge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEdge}{Edge}} \&}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Removes an edge from the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & \doxylink{classEdge}{Edge} to be removed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraph_a89699d89839c97c79e33d429d63d83f7}\label{classGraph_a89699d89839c97c79e33d429d63d83f7} 
+\index{Graph@{Graph}!sparsness@{sparsness}}
+\index{sparsness@{sparsness}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{sparsness()}{sparsness()}}
+{\footnotesize\ttfamily float Graph\+::sparsness (\begin{DoxyParamCaption}\item[{const int \&}]{precision = {\ttfamily 3} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Computes the sparsness of the graph. 
+
+\begin{DoxyReturn}{Returns}
+Sparsness value between 0 and 1. 
+\end{DoxyReturn}
+\Hypertarget{classGraph_a3af3aa89b009de362eb1decd7b7fc20d}\label{classGraph_a3af3aa89b009de362eb1decd7b7fc20d} 
+\index{Graph@{Graph}!str@{str}}
+\index{str@{str}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{str()}{str()}}
+{\footnotesize\ttfamily std\+::string Graph\+::str (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Converts the graph to a string representation. 
+
+\begin{DoxyReturn}{Returns}
+Stringified version of the graph. 
+\end{DoxyReturn}
+\Hypertarget{classGraph_a419d3b03df870300cb07d3b53d00d3c6}\label{classGraph_a419d3b03df870300cb07d3b53d00d3c6} 
+\index{Graph@{Graph}!vertices@{vertices}}
+\index{vertices@{vertices}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{vertices()}{vertices()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLinearList}{Linear\+List}}$<$ Vertex $>$ Graph\+::vertices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves a list of all vertices. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classList}{List} of vertices. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+graph/graph.\+hpp\end{DoxyCompactItemize}
