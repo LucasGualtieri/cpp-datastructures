@@ -11,8 +11,8 @@ Perfeita para ser reutilizada em projetos acadêmicos através de **submódulos*
 Você pode integrar esta biblioteca ao seu projeto de duas formas:
 
 ---
-
-### 🔗 Opção 1: Git Submodule (recomendado)
+<details>
+<summary><h3>🔗 Opção 1: Git Submodule (recomendado)</h3></summary>
 
 O submódulo permite adicionar esta biblioteca como um "sub-repositório" vinculado a um commit específico.
 
@@ -25,13 +25,6 @@ git submodule update --init --recursive
 
 Isso criará a pasta cpp-datastructures/ com os arquivos da biblioteca.
 
-### 🛠️ Usando no CMake
-
-```cmake
-add_subdirectory(cpp-datastructures)
-target_link_libraries(seu_projeto PRIVATE ds)
-```
-
 ### 🧠 Vantagens:
 - Você mantém o repositório da lib separado e versionado.
 - Pode facilmente atualizar a lib com:
@@ -40,10 +33,12 @@ target_link_libraries(seu_projeto PRIVATE ds)
 cd cpp-datastructures
 git pull origin main
 ```
+</details>
 
 ---
 
-### 🌳 Opção 2: Git Subtree (alternativa mais simples)
+<details>
+<summary><h3>🔗 🌳 Opção 2: Git Subtree (alternativa mais simples)</h3></summary>
 Com o subtree, o conteúdo do outro repositório é mesclado diretamente na árvore do seu projeto.
 
 #### ➕ Adicionando a lib como subtree
@@ -64,7 +59,16 @@ git subtree pull --prefix=cpp-datastructures https://github.com/LucasGualtieri/c
 ### ⚠️ Desvantagens:
 - Histórico da lib não é preservado.
 - Atualizações precisam ser feitas manualmente via comando subtree pull.
+</details>
 
+---
+
+### 🛠️ Usando no CMake
+
+```cmake
+add_subdirectory(cpp-datastructures)
+target_link_libraries(seu_projeto PRIVATE ds)
+```
 ---
 
 ### 💻 incluindo no código
@@ -84,5 +88,5 @@ int main() {
 ```
 
 ⚙️ Sobre estrutura
-- Os headers ficam em ``cpp-datastructures/``, então você sempre inclui com ``#include "cpp-datastructures/estrutura/estrutura.hpp"``
+- Os headers ficam em ``cpp-datastructures/estrutura/``, então você sempre inclui com ``#include "cpp-datastructures/estrutura/estrutura.hpp"``
 <!-- - Não é necessário referenciar a pasta ``include/`` nos ``#include``, pois ela é tratada como raiz via CMake ou -I -->
