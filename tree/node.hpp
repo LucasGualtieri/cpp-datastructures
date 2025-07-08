@@ -1,9 +1,7 @@
-#ifndef NODE_HPP
-#define NODE_HPP
+#pragma once
 
 #include <algorithm>
 #include <cstddef>
-#include <stdlib.h>
 
 template<typename T>
 struct Node {
@@ -28,7 +26,4 @@ struct Node {
 	int getFactor() {
 		return (right ? right->level : 0) - (left ? left->level : 0);
 	}
-
 };
-
-#endif

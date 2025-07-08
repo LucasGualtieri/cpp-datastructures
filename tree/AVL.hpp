@@ -1,5 +1,4 @@
-#ifndef AVL_HPP
-#define AVL_HPP
+#pragma once
 
 #include <cstdlib>
 #include <format>
@@ -29,7 +28,7 @@ class AVL {
 
 	void freeNodes(Node<T>* node) {
 		if (node != nullptr) {
-			freeNodes(node->left);
+			freeNodes();
 			freeNodes(node->right);
 			delete node;
 		}
@@ -146,7 +145,7 @@ class AVL {
 		if (node == nullptr) {
 			node = new Node<T>(value);
 		}
-		
+
 		else if (value < node->value) {
 			node->left = insert(value, node->left, height + 1);
 		}
@@ -261,5 +260,3 @@ class AVL {
 		}
 	}
 };
-
-#endif // !AVL_HPP
