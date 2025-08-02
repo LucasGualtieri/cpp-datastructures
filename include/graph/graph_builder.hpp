@@ -39,6 +39,7 @@ class GraphBuilder {
 		return *this;
 	}
 
+	template<typename T>
 	GraphBuilder& dataStructure(const Graph::DataStructures& choice) {
 		this->choice = choice;
 		return *this;

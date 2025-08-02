@@ -1,11 +1,13 @@
 #pragma once
 
+#include <cstdlib>
 #include <initializer_list>
 #include <sstream>
 #include <limits>
 #include <unordered_set>
-#include "list.hpp"
 #include <iostream>
+
+#include "list.hpp"
 
 template <typename T>
 class LinearList : public List<T> {
@@ -326,20 +328,24 @@ class LinearList : public List<T> {
 		return os;
 	}
 
-	T& operator[](size_t index) const {
+	const T& operator[](int index) const {
 
-		if (index >= this->_size) {
+		if (abs(index) >= this->size()) {
 			throw std::out_of_range("Index out of bounds");
 		}
+
+		if (index < 0) index = this->size() + index;
 
 		return array[index];
 	}
 
-	T& operator[](size_t index) {
+	T& operator[](int index) {
 
-		if (index >= this->_size) {
+		if (abs(index) >= this->size()) {
 			throw std::out_of_range("Index out of bounds");
 		}
+
+		if (index < 0) index = this->size() + index;
 
 		return array[index];
 	}

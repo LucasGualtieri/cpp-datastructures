@@ -9,14 +9,17 @@ using namespace std;
 
 int main() {
 
-	cout << "Running MinHeap Tests...\n";
+	cout << "Running Graph Tests...\n";
 
 	Graph G = GraphBuilder()
-		.dataStructure(Graph::AdjacencyMatrix)
-		.directed()
+		.dataStructure<int>(Graph::AdjacencyMatrix)
 		.weighted()
+		.directed()
 	.build();
 
+	// G.addVertex();
+
 	cout << "All tests passed successfully!" << endl;
+
 	return 0;
 }
